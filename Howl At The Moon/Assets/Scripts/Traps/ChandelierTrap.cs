@@ -9,9 +9,12 @@ public class ChandelierTrap : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //TODO: check if the werewolf is on fire and the trap has not been used.
-        if (collision.CompareTag("Enemy")) {
+        if (collision.CompareTag("Enemy") && !bWasUsed) {
             print("Smash");
             Chandelier.WakeUp();
+            
+            bWasUsed = true;
         }
     }
+
 }
