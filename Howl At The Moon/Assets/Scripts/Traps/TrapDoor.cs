@@ -15,6 +15,7 @@ public class TrapDoor : MonoBehaviour
         {
             connectedPlatform.gravityScale = 1;
             GetComponent<Collider2D>().enabled = false;
+            GetComponent<WerewolfAI>().newState = WerewolfAI.EWerewolfStates.Trapped;
             StartCoroutine("HangTimer");
         }
     }

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
+
 /// <summary>
 /// Author: Kevin Caton-Largent
 /// Controls Servant AI Behavior
@@ -12,11 +14,10 @@ public class ServantAI : AI
     
     public float wolfsbaneSpeedDefault;
     public float wolfsbaneMakeTimer;
-    [SerializeField]
-    private bool hasWolfsbane = false;
-    private bool wolfsbaneTimerActive = false;
+    public  bool hasWolfsbane = false;
+    public bool wolfsbaneTimerActive = false;
 
-    public enum EServantStates { Normal = 0, Running = 1, Wolfsbane = 2, Dead = 3 };
+    public enum EServantStates { Normal = 0, Running = 1, CreatingWolfsbane = 2, PresentingWolfsbane = 3, Dead = 4 };
     private EServantStates currentState = EServantStates.Normal;
     public EServantStates newState;
 
@@ -25,17 +26,48 @@ public class ServantAI : AI
         base.SetDefaultValues();
 
         newState = currentState;
-        
-        hp = 2f;
+
+        hpMax = 2f;
+        hp = hpMax;
 
         if (wolfsbaneSpeedDefault <= 0f)            
             wolfsbaneSpeedDefault = 1.5f;
-        
+
+        targets = patrolWaypoints;
     }
     void UpdateState()
     {
         currentState = newState;
         newState = currentState;
+
+        if (currentState == EServantStates.Normal)
+        {
+            walkSpeed = defaultWalkSpeed;
+            targets = patrolWaypoints;
+            currentTarget = 0;
+            currentWaypoint = 0;
+            UpdateNavigation();
+        }
+        else if (currentState == EServantStates.Running)
+        {
+            targets = levelWaypoints;
+            currentTarget = 0;
+            currentWaypoint = 0;
+            UpdateNavigation();
+        }
+        else if (currentState == EServantStates.CreatingWolfsbane)
+        {
+            walkSpeed = 0f;
+        }
+        else if (currentState == EServantStates.PresentingWolfsbane)
+        {
+            walkSpeed = defaultWalkSpeed;
+        }
+        else if (currentState == EServantStates.Dead)
+        {
+            Destroy(this.gameObject);
+        }
+
     }
     protected void InvokeWolfsbaneCountdown()
     {
@@ -55,48 +87,50 @@ public class ServantAI : AI
                 wolfsbaneTimerActive = false;
                 hasWolfsbane = true;
                 canMakeWolfsbane = false;
+                newState = EServantStates.Normal;
             }
         }
     }
     protected override void Action()
     {
-        hasWolfsbane = false;
-        if (singleTarget.CompareTag("Enemy"))
-        {
-            singleTarget.gameObject.GetComponent<WerewolfAI>().newState = WerewolfAI.EWerewolfStates.Trapped;
-            newState = EServantStates.Running;
-        }
-        
-    }
-    protected override void UpdateNavigation()
-    {
         if (singleTarget != null)
         {
             if (hasWolfsbane)
-                Action();
+            {
+                hasWolfsbane = false;
+                if (singleTarget.CompareTag("Enemy"))
+                {
+                    singleTarget.gameObject.GetComponent<WerewolfAI>().newState = WerewolfAI.EWerewolfStates.Trapped;
+                    newState = EServantStates.Running;
+                }
+            }
         }
-        base.UpdateNavigation();
+        
     }
-    protected override void FixedUpdate()
+    private void Update()
     {
-        print(HP);
         if (HP <= 0.0f)
-        {
             newState = EServantStates.Dead;
-        }
+
         if (newState != currentState)
             UpdateState();
 
-        base.FixedUpdate();
-    }
-
-    void Update()
-    {
-
-        if (wolfsbaneTimerActive)
+        if (reachedEndOfPath)
         {
-            TickCountdowns();
+            if (currentState == EServantStates.PresentingWolfsbane)
+                Action();
+            else if (currentState == EServantStates.Normal)
+            {
+                if (currentTarget == targets.Count - 1)
+                {
+                   
+                }
+            }
+                
         }
+            
+        if (wolfsbaneTimerActive)
+            TickCountdowns(); 
     }
 
 }

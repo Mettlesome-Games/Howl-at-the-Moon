@@ -16,21 +16,46 @@ public class EyesightTrigger : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
+        ServantAI servant = AIParent.GetComponent<ServantAI>();
+        WerewolfAI werewolf = AIParent.GetComponent<WerewolfAI>();
 
-        if (collision.CompareTag("Servant"))
+        if (collision.CompareTag("Servant") && werewolf != null)
+        { 
+            werewolf.newState = WerewolfAI.EWerewolfStates.Chasing;
+            werewolf.singleTarget = collision.gameObject.transform;
+        }
+        else if (collision.CompareTag("Enemy") && servant != null)
+        {            
+            if (servant.hasWolfsbane)
+            {
+                servant.newState = ServantAI.EServantStates.PresentingWolfsbane;
+                servant.singleTarget = collision.gameObject.transform;
+            }
+            else 
+            {
+                servant.newState = ServantAI.EServantStates.Running;
+            }
+        }
+        else if (collision.CompareTag("Food Bowl") && servant != null)
         {
-            AIParent.GetComponent<WerewolfAI>().newState = WerewolfAI.EWerewolfStates.Chasing;
-            AIParent.GetComponent<WerewolfAI>().singleTarget = collision.gameObject.transform; 
+            if (servant.canMakeWolfsbane)
+            {
+                servant.newState = ServantAI.EServantStates.CreatingWolfsbane;
+                servant.singleTarget = collision.gameObject.transform;
+            }
+          
+            
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Servant"))
+        WerewolfAI werewolf = AIParent.GetComponent<WerewolfAI>();
+
+        if (collision.CompareTag("Servant") && werewolf != null)
         {
-            Debug.Log("what's going on");
-            AIParent.GetComponent<WerewolfAI>().newState = AIParent.GetComponent<WerewolfAI>().PreviousStates;
-            AIParent.GetComponent<WerewolfAI>().singleTarget = collision.gameObject.transform;
+            werewolf.newState = WerewolfAI.EWerewolfStates.Chasing;
+            werewolf.singleTarget = collision.gameObject.transform;
         }
     }
 

@@ -15,7 +15,7 @@ public class FoodTrap : MonoBehaviour
 
         if (collision.CompareTag("Enemy") && foodPoisoned) {
             print("Werewolf knockout!!!");
-            //TODO: Tell AI it is trapped.
+            GetComponent<WerewolfAI>().newState = WerewolfAI.EWerewolfStates.Trapped;
             this.GetComponent<Collider2D>().enabled = false;
         }
     }

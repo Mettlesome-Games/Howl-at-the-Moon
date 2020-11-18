@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Enemy
   - Servant
+  - Level Waypoints
+  - Patrol Waypoints
+  - Food Bowl
   layers:
   - Default
   - TransparentFX

@@ -14,6 +14,10 @@ public class StairsTrigger : MonoBehaviour
         {
             collision.gameObject.GetComponent<WerewolfAI>().climbing = true;
         }
+        else if (collision.CompareTag("Servant"))
+        {
+            collision.gameObject.GetComponent<ServantAI>().climbing = true;
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -21,6 +25,11 @@ public class StairsTrigger : MonoBehaviour
         {
             collision.gameObject.GetComponent<WerewolfAI>().climbing = false;
         }
+        else if (collision.CompareTag("Servant"))
+        {
+            collision.gameObject.GetComponent<ServantAI>().climbing = false;
+        }
+
     }
 
 }

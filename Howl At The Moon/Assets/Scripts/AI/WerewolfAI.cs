@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 /// <summary>
 /// Author: Kevin Caton-Largent
 /// Controls Werewolf AI Behavior
@@ -88,6 +89,8 @@ public class WerewolfAI : AI
         else
             defaultCursedAttackSpeed = cursedAttackSpeed;
 
+        targets = levelWaypoints; 
+
     }
     void UpdateState()
     {
@@ -148,35 +151,28 @@ public class WerewolfAI : AI
     }
     protected override void Action()
     {
-        canSwingAttack = false;
-        if (singleTarget.CompareTag("Servant"))
-        {
-            singleTarget.GetComponent<AI>().HP -= attackDmg;
-        }
-        InvokeAttackCountdown();
-    }
-    protected override void UpdateNavigation()
-    {
         if (singleTarget != null)
-        {
-            if (canSwingAttack)
-                Action();
+        {   if (canSwingAttack)
+            {
+                canSwingAttack = false;
+                if (singleTarget.CompareTag("Servant"))
+                    singleTarget.GetComponent<ServantAI>().TakeDamage(attackDmg);
+
+                InvokeAttackCountdown();
+            }
         }
-        base.UpdateNavigation();
     }
-    protected override void FixedUpdate()
+
+    private void Update()
     {
         if (newState != currentState)
-            UpdateState();
+            UpdateState(); 
 
-        base.FixedUpdate();
-    }
-    void Update()
-    {
+        if (reachedEndOfPath)
+            Action();
+
         if (attackTimerActive)
-        {
             TickCountdowns();
-        }   
     }
 
 }

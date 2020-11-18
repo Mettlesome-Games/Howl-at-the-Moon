@@ -11,6 +11,10 @@ abstract public class AI : MonoBehaviour
 {
     public Transform singleTarget;
     public List<Transform> targets;
+    [SerializeField]
+    protected List<Transform> patrolWaypoints, levelWaypoints;
+    public enum EAIWaypointsEditing { AutoSearchLevel = 0, ManualAlotment = 1};
+    public EAIWaypointsEditing CurrentWaypointEditingMode = EAIWaypointsEditing.AutoSearchLevel;
 
     public float walkSpeed;
     public float nextWaypointDistance;
@@ -21,19 +25,12 @@ abstract public class AI : MonoBehaviour
     public Transform characterEyesight;
 
     protected float hp;
-
+    protected float hpMax;
     public float HP
     {
-        get 
+        get
         {
             return hp;
-        }
-        set
-        {
-            if (hp - value < 0.0f)
-                hp = 0f;
-            else
-                hp -= value;
         }
     }
 
@@ -43,6 +40,7 @@ abstract public class AI : MonoBehaviour
 
     protected int currentWaypoint = 0;
     protected int currentTarget = 0;
+
     protected bool reachedEndOfPath = false;
 
     protected Seeker seeker;
@@ -50,8 +48,37 @@ abstract public class AI : MonoBehaviour
 
     protected float reversedCharacterX;
     protected float reversedEyesightX;
+
+    public void TakeDamage(float value)
+    {
+        if (hp - value <= 0.0f)
+            hp = 0f;
+        else
+            hp = hp - value;
+    }
+
+    public void HealDamage(float value)
+    {
+        if (hp + value >= hpMax)
+            hp = hpMax;
+        else
+            hp = hp + value;
+    }
     protected virtual void SetDefaultValues()
     {
+        if (CurrentWaypointEditingMode == EAIWaypointsEditing.AutoSearchLevel)
+        {
+            levelWaypoints = new List<Transform>();
+            Transform levelWaypointsParent = GameObject.FindGameObjectWithTag("Level Waypoints").transform;
+            foreach (Transform lChild in levelWaypointsParent)
+                levelWaypoints.Add(lChild);
+
+            patrolWaypoints = new List<Transform>();
+            Transform patrolWaypointsParent = GameObject.FindGameObjectWithTag("Patrol Waypoints").transform;
+
+            foreach (Transform pChild in patrolWaypointsParent)
+                patrolWaypoints.Add(pChild);
+        }
         reversedCharacterX = -1 * characterGFX.localScale.x;
         reversedEyesightX = -1 * characterEyesight.localScale.x;
 
@@ -62,20 +89,23 @@ abstract public class AI : MonoBehaviour
         }
         else
             defaultWalkSpeed = walkSpeed;
-       
+
+
     }
     void OnPathComplete(Path p)
     {
         if (!p.error)
         {
             path = p;
-            if (targets.Count > 0 && currentTarget < targets.Count - 1)
-                currentTarget++;
-
+            if (singleTarget == null)
+            {
+                if (targets.Count > 0 && currentTarget < targets.Count - 1)
+                    currentTarget++;
+            }
             currentWaypoint = 0;
         }
     }
-    void SwitchGFXDirection(Vector2 inForce)
+    private void SwitchGFXDirection(Vector2 inForce)
     {
         if (rb.velocity.x >= 0.01f)
         {
@@ -90,10 +120,12 @@ abstract public class AI : MonoBehaviour
     }
    
     protected abstract void Action();
-    protected virtual void Movement()
+    private void Movement()
     {
         if (path == null)
+        {
             return;
+        }
 
         if (climbing)
         {
@@ -144,7 +176,7 @@ abstract public class AI : MonoBehaviour
         InvokeRepeating("UpdateNavigation", 0f, .5f); 
     }
 
-    protected virtual void UpdateNavigation()
+    protected void UpdateNavigation()
     {
         if (seeker.IsDone())
         {
@@ -160,7 +192,7 @@ abstract public class AI : MonoBehaviour
 
     }
 
-    protected virtual void FixedUpdate()
+    private void FixedUpdate()
     {
         Movement();
     }
