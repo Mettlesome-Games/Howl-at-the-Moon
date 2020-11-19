@@ -14,10 +14,9 @@ public class ServantAI : AI
     
     public float wolfsbaneSpeedDefault;
     public float wolfsbaneMakeTimer;
-    public  bool hasWolfsbane = false;
+    public bool hasWolfsbane = false;
     public bool wolfsbaneTimerActive = false;
-
-    public enum EServantStates { Normal = 0, Running = 1, CreatingWolfsbane = 2, PresentingWolfsbane = 3, Dead = 4 };
+    public enum EServantStates {Normal = 0, Running = 1, CreatingWolfsbane = 2, PresentingWolfsbane = 3, Dead = 4 };
     private EServantStates currentState = EServantStates.Normal;
     public EServantStates newState;
 
@@ -26,8 +25,9 @@ public class ServantAI : AI
         base.SetDefaultValues();
 
         newState = currentState;
+        currentWaypointMode = EAIWaypointMode.Patrol;
 
-        hpMax = 2f;
+        hpMax = 1f;
         hp = hpMax;
 
         if (wolfsbaneSpeedDefault <= 0f)            
@@ -35,15 +35,19 @@ public class ServantAI : AI
 
         targets = patrolWaypoints;
     }
+
     void UpdateState()
     {
         currentState = newState;
         newState = currentState;
-
+        
         if (currentState == EServantStates.Normal)
         {
             walkSpeed = defaultWalkSpeed;
             targets = patrolWaypoints;
+
+            currentWaypointMode = EAIWaypointMode.Patrol;
+
             currentTarget = 0;
             currentWaypoint = 0;
             UpdateNavigation();
@@ -51,6 +55,7 @@ public class ServantAI : AI
         else if (currentState == EServantStates.Running)
         {
             targets = levelWaypoints;
+            currentWaypointMode = EAIWaypointMode.OneWay;
             currentTarget = 0;
             currentWaypoint = 0;
             UpdateNavigation();
@@ -62,6 +67,7 @@ public class ServantAI : AI
         else if (currentState == EServantStates.PresentingWolfsbane)
         {
             walkSpeed = defaultWalkSpeed;
+            currentWaypointMode = EAIWaypointMode.OneWay;
         }
         else if (currentState == EServantStates.Dead)
         {
@@ -101,6 +107,7 @@ public class ServantAI : AI
                 if (singleTarget.CompareTag("Enemy"))
                 {
                     singleTarget.gameObject.GetComponent<WerewolfAI>().newState = WerewolfAI.EWerewolfStates.Trapped;
+                    singleTarget = null;
                     newState = EServantStates.Running;
                 }
             }
@@ -117,16 +124,12 @@ public class ServantAI : AI
 
         if (reachedEndOfPath)
         {
-            if (currentState == EServantStates.PresentingWolfsbane)
-                Action();
-            else if (currentState == EServantStates.Normal)
+            if (singleTarget != null)
             {
-                if (currentTarget == targets.Count - 1)
-                {
-                   
-                }
+                float distance = Vector2.Distance(transform.position, singleTarget.position);
+                if (currentState == EServantStates.PresentingWolfsbane && distance < 2f)
+                    Action();
             }
-                
         }
             
         if (wolfsbaneTimerActive)

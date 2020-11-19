@@ -25,6 +25,7 @@ public class WerewolfAI : AI
     private bool attackTimerActive = false;
     private bool canSwingAttack = true;
 
+    // Distracted was a planned feature to have additional environmental distractions for werewolves but we ran out of time
     public enum EWerewolfStates { Normal = 0, Chasing = 1, Distracted = 2, Trapped = 3, Cursed = 4};
     private EWerewolfStates currentState = EWerewolfStates.Normal;
     private EWerewolfStates previousStates;
@@ -166,10 +167,17 @@ public class WerewolfAI : AI
     private void Update()
     {
         if (newState != currentState)
-            UpdateState(); 
+            UpdateState();
 
         if (reachedEndOfPath)
-            Action();
+        {
+            if (singleTarget != null)
+            {
+                float distance = Vector2.Distance(transform.position, singleTarget.position);
+                if (currentState == EWerewolfStates.Chasing && distance < 1f)
+                    Action();
+            }
+        }
 
         if (attackTimerActive)
             TickCountdowns();

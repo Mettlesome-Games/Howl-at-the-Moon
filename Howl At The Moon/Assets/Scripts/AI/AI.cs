@@ -11,11 +11,11 @@ abstract public class AI : MonoBehaviour
 {
     public Transform singleTarget;
     public List<Transform> targets;
-    [SerializeField]
     protected List<Transform> patrolWaypoints, levelWaypoints;
     public enum EAIWaypointsEditing { AutoSearchLevel = 0, ManualAlotment = 1};
     public EAIWaypointsEditing CurrentWaypointEditingMode = EAIWaypointsEditing.AutoSearchLevel;
-
+    public enum EAIWaypointMode {OneWay = 0, Patrol = 1}
+    public EAIWaypointMode currentWaypointMode = EAIWaypointMode.OneWay;
     public float walkSpeed;
     public float nextWaypointDistance;
 
@@ -37,11 +37,14 @@ abstract public class AI : MonoBehaviour
     protected Path path;
 
     protected float defaultWalkSpeed;
-
+    [SerializeField]
     protected int currentWaypoint = 0;
+    [SerializeField]
     protected int currentTarget = 0;
 
+    [SerializeField]
     protected bool reachedEndOfPath = false;
+    protected bool reachedEndOfPatrol = false;
 
     protected Seeker seeker;
     protected Rigidbody2D rb;
@@ -79,8 +82,8 @@ abstract public class AI : MonoBehaviour
             foreach (Transform pChild in patrolWaypointsParent)
                 patrolWaypoints.Add(pChild);
         }
-        reversedCharacterX = -1 * characterGFX.localScale.x;
-        reversedEyesightX = -1 * characterEyesight.localScale.x;
+        reversedCharacterX = -1f * characterGFX.localScale.x;
+        reversedEyesightX = -1f * characterEyesight.localScale.x;
 
         if (walkSpeed <= 0f)
         {
@@ -92,40 +95,69 @@ abstract public class AI : MonoBehaviour
 
 
     }
-    void OnPathComplete(Path p)
-    {
-        if (!p.error)
-        {
-            path = p;
-            if (singleTarget == null)
-            {
-                if (targets.Count > 0 && currentTarget < targets.Count - 1)
-                    currentTarget++;
-            }
-            currentWaypoint = 0;
-        }
-    }
-    private void SwitchGFXDirection(Vector2 inForce)
+   
+    private void SwitchGFXDirection(Vector2 force)
     {
         if (rb.velocity.x >= 0.01f)
-        {
-            characterGFX.localScale = new Vector3(characterGFX.localScale.x, characterGFX.localScale.y, characterGFX.localScale.z);
-            characterEyesight.localScale = new Vector3(characterEyesight.localScale.x, characterEyesight.localScale.y, characterEyesight.localScale.z);
-        }
-        else if (rb.velocity.x <= -0.01f)
         {
             characterGFX.localScale = new Vector3(reversedCharacterX, characterGFX.localScale.y, characterGFX.localScale.z);
             characterEyesight.localScale = new Vector3(reversedEyesightX, characterEyesight.localScale.y, characterEyesight.localScale.z);
         }
+        else if (rb.velocity.x <= -0.01f)
+        {
+            characterGFX.localScale = new Vector3(characterGFX.localScale.x, characterGFX.localScale.y, characterGFX.localScale.z);
+            characterEyesight.localScale = new Vector3(characterEyesight.localScale.x, characterEyesight.localScale.y, characterEyesight.localScale.z);
+        }
     }
    
     protected abstract void Action();
+    protected virtual bool ReachedEndOfPath()
+    {
+        if (currentWaypoint >= path.vectorPath.Count)
+        {
+            if (singleTarget == null)
+            {
+                if (currentWaypointMode == EAIWaypointMode.OneWay)
+                {
+                    if (currentTarget < targets.Count - 1)
+                    {
+                        currentTarget++;
+                    }
+                }
+                else if (currentWaypointMode == EAIWaypointMode.Patrol)
+                {
+                    if (currentTarget < targets.Count - 1 && !reachedEndOfPatrol)
+                    {
+                        currentTarget++;
+                    }
+                    else
+                    {
+                        reachedEndOfPatrol = true;
+                        currentTarget--;
+                        if (currentTarget == 0)
+                            reachedEndOfPatrol = false;
+                        
+                    }
+                }
+            }
+            reachedEndOfPath = true;
+            return reachedEndOfPath;
+        }
+        else
+        {
+            reachedEndOfPath = false;
+            return reachedEndOfPath;
+        }
+    }
+
+
     private void Movement()
     {
         if (path == null)
         {
             return;
         }
+
 
         if (climbing)
         {
@@ -142,15 +174,8 @@ abstract public class AI : MonoBehaviour
             }
         }
 
-        if (currentWaypoint >= path.vectorPath.Count)
-        {
-            reachedEndOfPath = true;
+        if (ReachedEndOfPath())
             return;
-        }
-        else
-        {
-            reachedEndOfPath = false;
-        }
 
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
         Vector2 force = direction * walkSpeed * Time.deltaTime;
@@ -162,11 +187,10 @@ abstract public class AI : MonoBehaviour
         {
             currentWaypoint++;
         }
-
         SwitchGFXDirection(force);
     }
 
-    protected virtual void Awake()
+    private void Awake()
     {
         SetDefaultValues();
 
@@ -190,6 +214,15 @@ abstract public class AI : MonoBehaviour
             }
         }
 
+    }
+
+    private void OnPathComplete(Path p)
+    {
+        if (!p.error)
+        {
+            path = p;
+            currentWaypoint = 0;
+        }
     }
 
     private void FixedUpdate()
