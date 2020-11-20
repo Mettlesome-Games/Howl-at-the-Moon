@@ -27,7 +27,9 @@ public class WerewolfAI : AI
 
     // Distracted was a planned feature to have additional environmental distractions for werewolves but we ran out of time
     public enum EWerewolfStates { Normal = 0, Chasing = 1, Distracted = 2, Trapped = 3, Cursed = 4};
+    [SerializeField]
     private EWerewolfStates currentState = EWerewolfStates.Normal;
+    [SerializeField]
     private EWerewolfStates previousStates;
 
     public EWerewolfStates PreviousStates
@@ -49,7 +51,10 @@ public class WerewolfAI : AI
     protected override void SetDefaultValues()
     {
         base.SetDefaultValues();
+
+        PreviousStates = currentState;
         newState = currentState;
+
         if (attackSpeed <= 0f)
         {
             defaultAttackSpeed = 5f;
@@ -166,6 +171,14 @@ public class WerewolfAI : AI
 
     private void Update()
     {
+        if (singleTarget == null && currentState == EWerewolfStates.Chasing)
+        {
+            canSwingAttack = true;
+            attackTimerActive = false;
+            attackTimer = attackSpeed;
+            newState = previousStates;
+        }
+
         if (newState != currentState)
             UpdateState();
 
@@ -178,7 +191,6 @@ public class WerewolfAI : AI
                     Action();
             }
         }
-
         if (attackTimerActive)
             TickCountdowns();
     }

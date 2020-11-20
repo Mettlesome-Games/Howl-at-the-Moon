@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
 /// Author: Kevin Caton-Largent
-/// An area trigger to tell the enemy to use stairs
+/// An area trigger to tell the enemy and servant to use stairs
 /// </summary>
 public class StairsTrigger : MonoBehaviour
 {
