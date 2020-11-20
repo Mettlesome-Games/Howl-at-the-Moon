@@ -23,9 +23,12 @@ public class ServantAI : AI
     protected override void SetDefaultValues()
     {
         base.SetDefaultValues();
-
+        AIType = EAISelection.Servant;
         newState = currentState;
         currentWaypointMode = EAIWaypointMode.Patrol;
+        
+        movementEnabled = true;
+        attackEnabled = true;
 
         hpMax = 1f;
         hp = hpMax;
@@ -97,7 +100,7 @@ public class ServantAI : AI
             }
         }
     }
-    protected override void Action()
+    protected override void PerformAction()
     {
         if (singleTarget != null)
         {
@@ -127,7 +130,7 @@ public class ServantAI : AI
             if (singleTarget != null)
             {
                 float distance = Vector2.Distance(transform.position, singleTarget.position);
-                if (currentState == EServantStates.PresentingWolfsbane && distance < 2f)
+                if (currentState == EServantStates.PresentingWolfsbane && distance <= 2f)
                     Action();
             }
         }

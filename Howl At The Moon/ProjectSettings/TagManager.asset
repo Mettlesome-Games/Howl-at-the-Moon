@@ -9,6 +9,7 @@ TagManager:
   - Level Waypoints
   - Patrol Waypoints
   - Food Bowl
+  - Spawnpoints
   layers:
   - Default
   - TransparentFX

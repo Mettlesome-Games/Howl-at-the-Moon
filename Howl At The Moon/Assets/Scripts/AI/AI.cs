@@ -12,14 +12,21 @@ abstract public class AI : MonoBehaviour
     public Transform singleTarget;
     public List<Transform> targets;
     protected List<Transform> patrolWaypoints, levelWaypoints;
-    public enum EAIWaypointsEditing { AutoSearchLevel = 0, ManualAlotment = 1};
+    public enum EAIWaypointsEditing { AutoSearchLevel = 0, ManualAlotment = 1}
     public EAIWaypointsEditing CurrentWaypointEditingMode = EAIWaypointsEditing.AutoSearchLevel;
+
+    public enum EAISelection {Werewolf = 0, Servant = 1} 
+    public EAISelection AIType;
+
+
     public enum EAIWaypointMode {OneWay = 0, Patrol = 1}
     public EAIWaypointMode currentWaypointMode = EAIWaypointMode.OneWay;
     public float walkSpeed;
     public float nextWaypointDistance;
 
     public bool climbing = false;
+    public bool movementEnabled = true;
+    public bool attackEnabled = true;
 
     public Transform characterGFX;
     public Transform characterEyesight;
@@ -101,16 +108,22 @@ abstract public class AI : MonoBehaviour
         if (rb.velocity.x >= 0.01f)
         {
             characterGFX.localScale = new Vector3(reversedCharacterX, characterGFX.localScale.y, characterGFX.localScale.z);
-            characterEyesight.localScale = new Vector3(reversedEyesightX, characterEyesight.localScale.y, characterEyesight.localScale.z);
+            //characterEyesight.localScale = new Vector3(reversedEyesightX, characterEyesight.localScale.y, characterEyesight.localScale.z);
         }
         else if (rb.velocity.x <= -0.01f)
         {
             characterGFX.localScale = new Vector3(characterGFX.localScale.x, characterGFX.localScale.y, characterGFX.localScale.z);
-            characterEyesight.localScale = new Vector3(characterEyesight.localScale.x, characterEyesight.localScale.y, characterEyesight.localScale.z);
+            //characterEyesight.localScale = new Vector3(characterEyesight.localScale.x, characterEyesight.localScale.y, characterEyesight.localScale.z);
         }
     }
    
-    protected abstract void Action();
+    protected void Action()
+    {
+        if (attackEnabled)
+            PerformAction();
+    }
+    protected abstract void PerformAction();
+
     protected virtual bool ReachedEndOfPath()
     {
         if (currentWaypoint >= path.vectorPath.Count)
@@ -153,41 +166,44 @@ abstract public class AI : MonoBehaviour
 
     private void Movement()
     {
-        if (path == null)
+        if (movementEnabled)
         {
-            return;
-        }
-
-
-        if (climbing)
-        {
-            if (rb != null)
+            if (path == null)
             {
-                rb.gravityScale = 0;
+                return;
             }
-        }
-        else
-        {
-            if (rb != null)
+
+
+            if (climbing)
             {
-                rb.gravityScale = 1;
+                if (rb != null)
+                {
+                    rb.gravityScale = 0;
+                }
             }
+            else
+            {
+                if (rb != null)
+                {
+                    rb.gravityScale = 1;
+                }
+            }
+
+            if (ReachedEndOfPath())
+                return;
+
+            Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+            Vector2 force = direction * walkSpeed * Time.deltaTime;
+            rb.AddForce(force);
+
+            float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+
+            if (distance < nextWaypointDistance)
+            {
+                currentWaypoint++;
+            }
+            SwitchGFXDirection(force);
         }
-
-        if (ReachedEndOfPath())
-            return;
-
-        Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        Vector2 force = direction * walkSpeed * Time.deltaTime;
-        rb.AddForce(force);
-
-        float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
-
-        if (distance < nextWaypointDistance)
-        {
-            currentWaypoint++;
-        }
-        SwitchGFXDirection(force);
     }
 
     private void Awake()

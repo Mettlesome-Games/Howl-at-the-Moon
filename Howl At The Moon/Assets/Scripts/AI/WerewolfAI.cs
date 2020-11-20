@@ -8,6 +8,8 @@ using Pathfinding;
 /// </summary>
 public class WerewolfAI : AI
 {
+    public WaveController masterCommander;
+    public uint MonsterID, WaveID;
     private float defaultAttackSpeed;
     private float defaultAttackDmg;
     private float defaultChaseWalkSpeed;
@@ -30,29 +32,20 @@ public class WerewolfAI : AI
     [SerializeField]
     private EWerewolfStates currentState = EWerewolfStates.Normal;
     [SerializeField]
-    private EWerewolfStates previousStates;
+    public EWerewolfStates previousStates;
 
     public EWerewolfStates PreviousStates
     {
-        get
-        {
-            return previousStates;
-        }
-        set
-        {
-            if (value == EWerewolfStates.Normal)
-                previousStates = value;
-            else if (value == EWerewolfStates.Cursed)
-                previousStates = value;
-        }
+        get; private set; 
     }
     public EWerewolfStates newState; 
 
     protected override void SetDefaultValues()
     {
         base.SetDefaultValues();
+        AIType = EAISelection.Werewolf;
 
-        PreviousStates = currentState;
+        previousStates = currentState;
         newState = currentState;
 
         if (attackSpeed <= 0f)
@@ -100,7 +93,7 @@ public class WerewolfAI : AI
     }
     void UpdateState()
     {
-        PreviousStates = currentState;
+        previousStates = currentState;
         currentState = newState;
         newState = currentState;
         if (currentState == EWerewolfStates.Normal)
@@ -127,6 +120,7 @@ public class WerewolfAI : AI
             walkSpeed = 0f;
             attackSpeed = 0f;
             singleTarget = null;
+            masterCommander.TickKilledEnemies();
         }
         else if (currentState == EWerewolfStates.Cursed)
         {
@@ -155,7 +149,7 @@ public class WerewolfAI : AI
             }
         }
     }
-    protected override void Action()
+    protected override void PerformAction()
     {
         if (singleTarget != null)
         {   if (canSwingAttack)
@@ -179,7 +173,7 @@ public class WerewolfAI : AI
             newState = previousStates;
         }
 
-        if (newState != currentState)
+        if (newState != currentState && currentState != EWerewolfStates.Trapped)
             UpdateState();
 
         if (reachedEndOfPath)
@@ -187,8 +181,9 @@ public class WerewolfAI : AI
             if (singleTarget != null)
             {
                 float distance = Vector2.Distance(transform.position, singleTarget.position);
-                if (currentState == EWerewolfStates.Chasing && distance < 1f)
-                    Action();
+                if (currentState == EWerewolfStates.Chasing || currentState == EWerewolfStates.Cursed)
+                    if (distance <= 1f)
+                        Action();
             }
         }
         if (attackTimerActive)
