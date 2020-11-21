@@ -114,12 +114,25 @@ public class WerewolfAI : AI
         {
             walkSpeed = 0f;
             attackSpeed = 0f;
+            singleTarget = null;
+
+            movementEnabled = false;
+            attackEnabled = false;
+            rb.gravityScale = 0f;
+            myCollider.enabled = false;
+
         }
         else if (currentState == EWerewolfStates.Trapped)
         {
             walkSpeed = 0f;
             attackSpeed = 0f;
             singleTarget = null;
+
+            movementEnabled = false;
+            attackEnabled = false;
+
+            rb.gravityScale = 0f;
+            myCollider.enabled = false;
             masterCommander.TickKilledEnemies();
         }
         else if (currentState == EWerewolfStates.Cursed)

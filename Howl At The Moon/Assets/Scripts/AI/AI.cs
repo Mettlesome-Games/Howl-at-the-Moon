@@ -58,6 +58,7 @@ abstract public class AI : MonoBehaviour
 
     protected float reversedCharacterX;
     protected float reversedEyesightX;
+    protected CircleCollider2D myCollider;
 
     public void TakeDamage(float value)
     {
@@ -91,6 +92,7 @@ abstract public class AI : MonoBehaviour
         }
         reversedCharacterX = -1f * characterGFX.localScale.x;
         reversedEyesightX = -1f * characterEyesight.localScale.x;
+        myCollider = this.GetComponent<CircleCollider2D>();
 
         if (walkSpeed <= 0f)
         {
@@ -178,14 +180,14 @@ abstract public class AI : MonoBehaviour
             {
                 if (rb != null)
                 {
-                    rb.gravityScale = 0;
+                    rb.gravityScale = 0f;
                 }
             }
             else
             {
                 if (rb != null)
                 {
-                    rb.gravityScale = 1;
+                    rb.gravityScale = 1f;
                 }
             }
 
