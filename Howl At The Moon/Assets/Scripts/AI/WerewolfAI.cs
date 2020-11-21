@@ -91,6 +91,21 @@ public class WerewolfAI : AI
         targets = levelWaypoints; 
 
     }
+
+    protected override void SwitchGFXDirection(Vector2 force)
+    {
+        if (rb.velocity.x >= 0.01f)
+        {
+            characterGFX.localScale = new Vector3(defaultCharacterLocalscaleX, characterGFX.localScale.y, characterGFX.localScale.z);
+            characterEyesight.localPosition = new Vector3(defaultEyesightLocalpositionX, characterEyesight.localPosition.y, characterEyesight.localPosition.z);
+        }
+        else if (rb.velocity.x <= -0.01f)
+        {
+            characterGFX.localScale = new Vector3(reversedCharacterLocalscaleX, characterGFX.localScale.y, characterGFX.localScale.z);
+            characterEyesight.localPosition = new Vector3(reversedEyesightLocalpositionX, characterEyesight.localPosition.y, characterEyesight.localPosition.z);
+        }
+    }
+
     void UpdateState()
     {
         previousStates = currentState;

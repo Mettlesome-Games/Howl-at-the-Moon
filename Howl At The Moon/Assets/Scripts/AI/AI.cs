@@ -56,8 +56,8 @@ abstract public class AI : MonoBehaviour
     protected Seeker seeker;
     protected Rigidbody2D rb;
 
-    protected float reversedCharacterX;
-    protected float reversedEyesightX;
+    protected float defaultCharacterLocalscaleX, reversedCharacterLocalscaleX;
+    protected float defaultEyesightLocalpositionX, reversedEyesightLocalpositionX;
     protected CircleCollider2D myCollider;
 
     public void TakeDamage(float value)
@@ -90,8 +90,12 @@ abstract public class AI : MonoBehaviour
             foreach (Transform pChild in patrolWaypointsParent)
                 patrolWaypoints.Add(pChild);
         }
-        reversedCharacterX = -1f * characterGFX.localScale.x;
-        reversedEyesightX = -1f * characterEyesight.localScale.x;
+
+        defaultCharacterLocalscaleX = characterGFX.localScale.x;
+        reversedCharacterLocalscaleX = -1f * characterGFX.localScale.x;
+        defaultEyesightLocalpositionX = characterEyesight.localPosition.x;
+        reversedEyesightLocalpositionX = -1f * characterEyesight.localPosition.x;
+
         myCollider = this.GetComponent<CircleCollider2D>();
 
         if (walkSpeed <= 0f)
@@ -105,17 +109,17 @@ abstract public class AI : MonoBehaviour
 
     }
    
-    private void SwitchGFXDirection(Vector2 force)
+    protected virtual void SwitchGFXDirection(Vector2 force)
     {
         if (rb.velocity.x >= 0.01f)
         {
-            characterGFX.localScale = new Vector3(reversedCharacterX, characterGFX.localScale.y, characterGFX.localScale.z);
-            //characterEyesight.localScale = new Vector3(reversedEyesightX, characterEyesight.localScale.y, characterEyesight.localScale.z);
+            characterGFX.localScale = new Vector3(reversedCharacterLocalscaleX, characterGFX.localScale.y, characterGFX.localScale.z);
+            characterEyesight.localPosition = new Vector3(reversedEyesightLocalpositionX, characterEyesight.localPosition.y, characterEyesight.localPosition.z);
         }
         else if (rb.velocity.x <= -0.01f)
         {
-            characterGFX.localScale = new Vector3(characterGFX.localScale.x, characterGFX.localScale.y, characterGFX.localScale.z);
-            //characterEyesight.localScale = new Vector3(characterEyesight.localScale.x, characterEyesight.localScale.y, characterEyesight.localScale.z);
+            characterGFX.localScale = new Vector3(defaultCharacterLocalscaleX, characterGFX.localScale.y, characterGFX.localScale.z);
+            characterEyesight.localPosition = new Vector3(defaultEyesightLocalpositionX, characterEyesight.localPosition.y, characterEyesight.localPosition.z);
         }
     }
    
@@ -204,6 +208,7 @@ abstract public class AI : MonoBehaviour
             {
                 currentWaypoint++;
             }
+            Debug.LogFormat("<color=#01751a> Force: {0} </color>", force.x);
             SwitchGFXDirection(force);
         }
     }

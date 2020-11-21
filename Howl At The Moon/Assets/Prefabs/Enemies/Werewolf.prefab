@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 4953867885005208729}
   - component: {fileID: 4953867885005208734}
   m_Layer: 0
-  m_Name: Enemy All-In-One
+  m_Name: Werewolf
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -203,11 +203,14 @@ MonoBehaviour:
   walkSpeed: 0
   nextWaypointDistance: 1
   climbing: 0
+  movementEnabled: 1
+  attackEnabled: 1
   characterGFX: {fileID: 4953867884669714231}
   characterEyesight: {fileID: 4953867885197177579}
   currentWaypoint: 0
   currentTarget: 0
   reachedEndOfPath: 0
+  masterCommander: {fileID: 0}
   MonsterID: 0
   WaveID: 0
   attackTimer: 0
@@ -246,7 +249,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4953867885197177576}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.56, y: 0, z: 0}
+  m_LocalPosition: {x: 7.49, y: 0.22, z: 0}
   m_LocalScale: {x: 2.2, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4953867885005208730}
@@ -265,7 +268,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 9.864841, y: 0.21647024}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -276,7 +279,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 18.750526, y: 0.5670595}
+  m_Size: {x: 6.5, y: 0.5}
   m_EdgeRadius: 0
 --- !u!114 &4953867885197177573
 MonoBehaviour:
