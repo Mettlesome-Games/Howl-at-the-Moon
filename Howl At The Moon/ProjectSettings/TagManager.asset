@@ -10,6 +10,7 @@ TagManager:
   - Patrol Waypoints
   - Food Bowl
   - Spawnpoints
+  - Servant
   layers:
   - Default
   - TransparentFX

@@ -23,12 +23,12 @@ public class GridMap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateMap(gridManager.row0, mapRow0);
+        /*UpdateMap(gridManager.row0, mapRow0);
         UpdateMap(gridManager.row1, mapRow1);
         UpdateMap(gridManager.row2, mapRow2);
         UpdateMap(gridManager.col0, mapCol0, false);
         UpdateMap(gridManager.col1, mapCol1, false);
-        UpdateMap(gridManager.col2, mapCol2, false);
+        UpdateMap(gridManager.col2, mapCol2, false);*/
     }
 
     void UpdateMap(Color[] rowCol, Transform mapGroups, bool isRow = true)

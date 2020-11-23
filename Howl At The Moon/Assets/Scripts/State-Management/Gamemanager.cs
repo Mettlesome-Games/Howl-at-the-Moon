@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Gamemanager : MonoBehaviour
 {
    // When Called if the instance is null spawn and assign a new instance.
@@ -40,4 +41,13 @@ public class Gamemanager : MonoBehaviour
     public void WinGame()
     { print("You Win"); }
 
+    //Use to Switch Scenes
+    public void LoadLevel(string SceneName)
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(SceneName);
+    }
+
+    public void PauseGame() { Time.timeScale = 0.0f; }
+    public void ResumeGame() { Time.timeScale = 1.0f; }
+    
 }
