@@ -152,11 +152,11 @@ public class GridCursor : MonoBehaviour
         int i = 0;
         foreach(GameObject tile in rowCol)
         {
-            if(tile.transform.position.x + rotation.x > gridManager.originalPositionsRow0[i].x +2)//do not go past one tile to the right
+            if(tile.transform.position.x + rotation.x > gridManager.originalPositionsRow1[i].x +2)//do not go past one tile to the right
             {
                 tile.transform.Translate(Vector3.zero, Space.Self);
             }
-            else if (tile.transform.position.x + rotation.x < gridManager.originalPositionsRow0[i].x - 2)//do not go past one tile to the left
+            else if (tile.transform.position.x + rotation.x < gridManager.originalPositionsRow1[i].x - 2)//do not go past one tile to the left
             {
 
             }
@@ -189,6 +189,7 @@ public class GridCursor : MonoBehaviour
             else
             {
                 tile.transform.Translate(rotation, Space.Self);
+                //if (tile.GetComponent<Room>().traps.Length > 0) { tile.GetComponent<Room>().traps[0].transform.Translate(rotation, Space.World); }
             }
             //tile.transform.Translate(rotation, Space.Self);
             i++;

@@ -11,6 +11,10 @@ abstract public class AI : MonoBehaviour
 {
     public Transform singleTarget;
     public List<Transform> targets;
+
+    [SerializeField]
+    [Space(10f)]
+    [Header("Internal values exposed only for debugging")]
     protected List<Transform> patrolWaypoints, levelWaypoints;
     public enum EAIWaypointsEditing { AutoSearchLevel = 0, ManualAlotment = 1}
     public EAIWaypointsEditing CurrentWaypointEditingMode = EAIWaypointsEditing.AutoSearchLevel;
@@ -84,11 +88,12 @@ abstract public class AI : MonoBehaviour
             foreach (Transform lChild in levelWaypointsParent)
                 levelWaypoints.Add(lChild);
 
+            /*
             patrolWaypoints = new List<Transform>();
             Transform patrolWaypointsParent = GameObject.FindGameObjectWithTag("Patrol Waypoints").transform;
 
             foreach (Transform pChild in patrolWaypointsParent)
-                patrolWaypoints.Add(pChild);
+                patrolWaypoints.Add(pChild);*/
         }
 
         defaultCharacterLocalscaleX = characterGFX.localScale.x;
@@ -208,7 +213,7 @@ abstract public class AI : MonoBehaviour
             {
                 currentWaypoint++;
             }
-            Debug.LogFormat("<color=#01751a> Force: {0} </color>", force.x);
+            //Debug.LogFormat("<color=#01751a> Force: {0} </color>", force.x);
             SwitchGFXDirection(force);
         }
     }

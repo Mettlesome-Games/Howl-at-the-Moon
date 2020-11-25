@@ -84,12 +84,10 @@ public class WaveController : MonoBehaviour
         {
             if (SpawnSystemToggle == EWaveSystemVersion.AfterDuration)
             {
-                print("Hello1");
                 WaveClock.InvokeTimer(0);
             }
             else if (SpawnSystemToggle == EWaveSystemVersion.AfterLastEnemyInWave)
             {
-                print("Hello2");
                 if (SpawnQuotaGoal == EnemiesDeadInWave)
                 {
                     WaveClock.InvokeTimer(0);
@@ -99,13 +97,11 @@ public class WaveController : MonoBehaviour
             {
                 if (CurrentSpawnedEnemies != SpawnQuotaGoal)
                 {
-                    print("Hello3");
                     WaveClock.InvokeTimer(1);
                 }
             }
             else if (SpawnSystemToggle == EWaveSystemVersion.AfterLastEnemyInWaveWithDelay)
             {
-                print("Hello4");
                 if (SpawnQuotaGoal == EnemiesDeadInWave)
                 {
                     CurrentSpawnedEnemies = 0;

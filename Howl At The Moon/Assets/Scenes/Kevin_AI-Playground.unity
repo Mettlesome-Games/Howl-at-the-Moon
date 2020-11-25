@@ -238,6 +238,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &228770960 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3520587041499105240, guid: 184e350aaa968c14893aeafada57e97f, type: 3}
+  m_PrefabInstance: {fileID: 3520587040842298273}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &452970414
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,6 +274,11 @@ Transform:
   m_Father: {fileID: 111140384}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &624675139 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3520587041723591466, guid: 184e350aaa968c14893aeafada57e97f, type: 3}
+  m_PrefabInstance: {fileID: 3520587040842298273}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1436296289
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,6 +622,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Servant
       objectReference: {fileID: 0}
+    - target: {fileID: 450578889902534677, guid: 619e2ecb22202994f8a7327af4114769, type: 3}
+      propertyPath: targets.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 450578889902534677, guid: 619e2ecb22202994f8a7327af4114769, type: 3}
+      propertyPath: CurrentWaypointEditingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 450578889902534677, guid: 619e2ecb22202994f8a7327af4114769, type: 3}
+      propertyPath: patrolWaypoints.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 450578889902534677, guid: 619e2ecb22202994f8a7327af4114769, type: 3}
+      propertyPath: patrolWaypoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 624675139}
+    - target: {fileID: 450578889902534677, guid: 619e2ecb22202994f8a7327af4114769, type: 3}
+      propertyPath: patrolWaypoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 228770960}
     - target: {fileID: 450578889902534681, guid: 619e2ecb22202994f8a7327af4114769, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -668,6 +698,10 @@ PrefabInstance:
     - target: {fileID: 1250085135732109122, guid: a35c45414f00725429a712d75f1004c5, type: 3}
       propertyPath: m_Name
       value: WaveController KAP
+      objectReference: {fileID: 0}
+    - target: {fileID: 1250085135732109122, guid: a35c45414f00725429a712d75f1004c5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1250085135732109124, guid: a35c45414f00725429a712d75f1004c5, type: 3}
       propertyPath: m_RootOrder
@@ -960,7 +994,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4953867885005208730, guid: 249d1fd02878e0d46860905c6e5536c4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.479
+      value: -2.14
       objectReference: {fileID: 0}
     - target: {fileID: 4953867885005208730, guid: 249d1fd02878e0d46860905c6e5536c4, type: 3}
       propertyPath: m_LocalPosition.z

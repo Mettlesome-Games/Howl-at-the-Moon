@@ -7,7 +7,7 @@ public class Room : MonoBehaviour
 {
     public Sprite roomSprite;
     public bool canSlide;
-    public GameObject Chandler;
+    public GameObject[] traps;
     public string[] hindrances;
     public int[] moonlight;
     private ChandelierTrap chanChan;
@@ -26,12 +26,6 @@ public class Room : MonoBehaviour
 
     public void SetUpTraps()
     {
-        if (Chandler != null)
-        {
-            chanChan = Chandler.GetComponent<ChandelierTrap>();
-            chanChan.SetParent(this);
-            chanChan.SetLocalPos(0, -1);
-        }
-        Instantiate(Chandler);
+        
     }
 }

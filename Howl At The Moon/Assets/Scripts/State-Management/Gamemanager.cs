@@ -22,6 +22,7 @@ public class Gamemanager : MonoBehaviour
     }
     #endregion
 
+    public static bool GameIsPaused = false;
 
     private void Awake()
     {
@@ -47,7 +48,13 @@ public class Gamemanager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene(SceneName);
     }
 
-    public void PauseGame() { Time.timeScale = 0.0f; }
-    public void ResumeGame() { Time.timeScale = 1.0f; }
+    public void PauseGame() { 
+        Time.timeScale = 0.0f; 
+        GameIsPaused = true; 
+    }
+    public void ResumeGame() { 
+        Time.timeScale = 1.0f;
+        GameIsPaused = false;
+    }
     
 }

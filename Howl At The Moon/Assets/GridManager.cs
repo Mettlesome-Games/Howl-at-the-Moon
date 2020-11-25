@@ -58,6 +58,35 @@ public class GridManager : MonoBehaviour
         SetOriginalPos(gridPanelsCol0, originalPositionsCol0);
         SetOriginalPos(gridPanelsCol1, originalPositionsCol1);
         SetOriginalPos(gridPanelsCol2, originalPositionsCol2);
+
+        UpdateMainNine(false);
+        SecondGroupMatching(false);
+        //set up traps in rows not columns. doing both will duplicate objects (hardcoded but can't waste time on efficiency now)
+        SetUpTraps(testRow1, gridPanelsRow0);
+        SetUpTraps(testRow2, gridPanelsRow1);
+        SetUpTraps(testRow3, gridPanelsRow2);
+        //SetUpTraps(testCol1, gridPanelsCol0);
+        //SetUpTraps(testCol2, gridPanelsCol1);
+        //SetUpTraps(testCol3, gridPanelsCol2);
+        //gridPanelsRow0[1].GetComponent<Room>().traps = new GameObject[testRow1[0].GetComponent<Room>().traps.Length];
+        //gridPanelsRow0[1].GetComponent<Room>().traps[0] = Instantiate<GameObject>(testRow1[0].GetComponent<Room>().traps[0]);
+        //testRow1[0].GetComponent<Room>().traps = gridPanelsRow0[1].GetComponent<Room>().traps;
+        //gridPanelsRow0[1].GetComponent<Room>().traps[0].transform.parent = gridPanelsRow0[1].transform;
+        //gridPanelsRow0[1].GetComponent<Room>().traps[0].transform.position = gridPanelsRow0[1].GetComponent<Room>().traps[0].transform.parent.transform.position + new Vector3(0,.35f,0);
+        
+        //set up this one separate, because when you setup the whole column it creates duplicate of any trap already created in the rows. 
+        //There is actually still one square that hasn't had traps set up (below 7 or BM) but that's fine. Just don't put traps there 
+        int i = 0;
+        gridPanelsCol1[0].GetComponent<Room>().traps = new GameObject[testCol2[testCol2.Length-1].GetComponent<Room>().traps.Length];
+        foreach(GameObject trap in testCol2[testCol2.Length - 1].GetComponent<Room>().traps)
+        {
+            gridPanelsCol1[0].GetComponent<Room>().traps[i] = Instantiate<GameObject>(trap);
+            gridPanelsCol1[0].GetComponent<Room>().traps[i].transform.parent = gridPanelsCol1[0].transform;
+            gridPanelsCol1[0].GetComponent<Room>().traps[i].transform.position = gridPanelsCol1[0].transform.position;// GetComponent<Room>().traps[i].transform.parent.transform.position;
+            gridPanelsCol1[0].GetComponent<Room>().traps[i].transform.localScale = trap.transform.localScale;
+            i++;
+        }
+        testCol2[testCol2.Length - 1].GetComponent<Room>().traps = gridPanelsCol1[0].GetComponent<Room>().traps;
     }
 
     // Update is called once per frame
@@ -286,11 +315,30 @@ public class GridManager : MonoBehaviour
             if (i == 0)
             {
                 tile.GetComponent<SpriteRenderer>().sprite = rowSource[rowSource.Length - 1].roomSprite;
+                tile.GetComponent<Room>().traps = rowSource[rowSource.Length - 1].traps;
+                //tile.GetComponent<Room>().traps[0].transform.parent = tile.transform;
+                int j = 0;
+                foreach(GameObject trap in tile.GetComponent<Room>().traps)
+                {
+                    tile.GetComponent<Room>().traps[j].transform.parent = tile.transform;
+                    tile.GetComponent<Room>().traps[j].transform.position = tile.GetComponent<Room>().traps[j].transform.parent.transform.position;
+                    j++;
+                }
             }
             else
             {
                 tile.GetComponent<SpriteRenderer>().sprite = rowSource[i - 1].roomSprite;
+                tile.GetComponent<Room>().traps = rowSource[i - 1].traps;
+                int j = 0;
+                foreach (GameObject trap in tile.GetComponent<Room>().traps)
+                {
+                    tile.GetComponent<Room>().traps[j].transform.parent = tile.transform;
+                    tile.GetComponent<Room>().traps[j].transform.position = tile.GetComponent<Room>().traps[j].transform.parent.transform.position;
+                    j++;
+                }
+                //if (tile.GetComponent<Room>().traps.Length > 0) { Instantiate(tile.GetComponent<Room>().traps[0]); }
             }
+            //tile.GetComponent<Room>().traps = rowSource[i - 1].traps;
             i++;
         }
     }
@@ -312,6 +360,43 @@ public class GridManager : MonoBehaviour
         foreach (GameObject pan in rowCol)
         {
             originalRowCol.Add(new Vector3(pan.transform.position.x, pan.transform.position.y));
+        }
+    }
+
+    void SetUpTraps(Room[] rowSource, List<GameObject> gridRowCol)
+    {
+        int i = 0;
+        foreach(GameObject tile in gridRowCol)
+        {
+            if (i == 0)
+            {
+                tile.GetComponent<Room>().traps = new GameObject[rowSource[rowSource.Length - 1].GetComponent<Room>().traps.Length];
+                int j = 0;
+                foreach (GameObject trap in rowSource[rowSource.Length - 1].GetComponent<Room>().traps)
+                {
+                    tile.GetComponent<Room>().traps[j] = Instantiate(trap);
+                    tile.GetComponent<Room>().traps[j].transform.parent = tile.transform;
+                    tile.GetComponent<Room>().traps[j].transform.position = tile.GetComponent<Room>().traps[j].transform.parent.transform.position;
+                    tile.GetComponent<Room>().traps[j].transform.localScale = trap.transform.localScale;
+                    j++;
+                }
+                rowSource[rowSource.Length - 1].GetComponent<Room>().traps = tile.GetComponent<Room>().traps;
+            }
+            else
+            {
+                tile.GetComponent<Room>().traps = new GameObject[rowSource[i-1].GetComponent<Room>().traps.Length];
+                int j = 0;
+                foreach(GameObject trap in rowSource[i-1].GetComponent<Room>().traps)
+                {
+                    tile.GetComponent<Room>().traps[j] = Instantiate(trap);
+                    tile.GetComponent<Room>().traps[j].transform.parent = tile.transform;
+                    tile.GetComponent<Room>().traps[j].transform.position = tile.GetComponent<Room>().traps[j].transform.parent.transform.position;
+                    tile.GetComponent<Room>().traps[j].transform.localScale = trap.transform.localScale;
+                    j++;
+                }
+                rowSource[i-1].GetComponent<Room>().traps = tile.GetComponent<Room>().traps;
+            }
+            i++;
         }
     }
 
