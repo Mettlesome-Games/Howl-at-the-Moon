@@ -141,7 +141,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.91769695, g: 0.9254902, b: 0.08235295, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -162,7 +162,7 @@ GameObject:
   m_Component:
   - component: {fileID: 450578889902534681}
   - component: {fileID: 450578889902534680}
-  - component: {fileID: 450578889902534683}
+  - component: {fileID: 604963318916645274}
   - component: {fileID: 450578889902534682}
   - component: {fileID: 450578889902534677}
   m_Layer: 0
@@ -216,8 +216,8 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
---- !u!58 &450578889902534683
-CircleCollider2D:
+--- !u!61 &604963318916645274
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -230,8 +230,18 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!50 &450578889902534682
 Rigidbody2D:
   serializedVersion: 4
@@ -267,6 +277,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   singleTarget: {fileID: 0}
   targets: []
+  patrolWaypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  levelWaypoints: []
   CurrentWaypointEditingMode: 0
   AIType: 0
   currentWaypointMode: 1

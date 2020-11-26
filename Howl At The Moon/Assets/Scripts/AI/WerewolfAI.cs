@@ -25,20 +25,24 @@ public class WerewolfAI : AI
 
     [SerializeField]
     private bool attackTimerActive = false;
+    [SerializeField]
     private bool canSwingAttack = true;
 
     // Distracted was a planned feature to have additional environmental distractions for werewolves but we ran out of time
     public enum EWerewolfStates { Normal = 0, Chasing = 1, Distracted = 2, Trapped = 3, Cursed = 4};
     [SerializeField]
     private EWerewolfStates currentState = EWerewolfStates.Normal;
-    [SerializeField]
     public EWerewolfStates previousStates;
 
     public EWerewolfStates PreviousStates
     {
         get; private set; 
     }
-    public EWerewolfStates newState; 
+    public EWerewolfStates newState;
+
+    public AnimationClip redEyesWalking, redEyesIdle, redEyesAttack;
+
+    protected AnimatorOverrideController myAnimatorOverrideController;
 
     protected override void SetDefaultValues()
     {
@@ -47,6 +51,9 @@ public class WerewolfAI : AI
 
         previousStates = currentState;
         newState = currentState;
+
+        myAnimatorOverrideController = new AnimatorOverrideController(myAnimator.runtimeAnimatorController);
+        myAnimator.runtimeAnimatorController = myAnimatorOverrideController;
 
         if (attackSpeed <= 0f)
         {
@@ -154,6 +161,9 @@ public class WerewolfAI : AI
         {
             walkSpeed = cursedWalkSpeed;
             attackSpeed = cursedAttackSpeed;
+            myAnimatorOverrideController["werewolf_idle"] = redEyesIdle;
+            myAnimatorOverrideController["werewolf_walking"] = redEyesWalking;
+            myAnimatorOverrideController["werewolf_attack"] = redEyesAttack;
         }
     }
     protected void InvokeAttackCountdown()
@@ -184,7 +194,10 @@ public class WerewolfAI : AI
             {
                 canSwingAttack = false;
                 if (singleTarget.CompareTag("Servant"))
+                {
                     singleTarget.GetComponent<ServantAI>().TakeDamage(attackDmg);
+                    myAnimator.SetBool("Attack", true);
+                }
 
                 InvokeAttackCountdown();
             }
@@ -209,8 +222,9 @@ public class WerewolfAI : AI
             if (singleTarget != null)
             {
                 float distance = Vector2.Distance(transform.position, singleTarget.position);
+                Debug.LogFormat("<color=#04b592> Distance: {0} </color>", distance );
                 if (currentState == EWerewolfStates.Chasing || currentState == EWerewolfStates.Cursed)
-                    if (distance <= 1f)
+                    if (distance <= 2f)
                         Action();
             }
         }

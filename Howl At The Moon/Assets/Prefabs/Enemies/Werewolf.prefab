@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4953867884669714231}
   - component: {fileID: 4953867884669714225}
   - component: {fileID: 4953867885225532559}
+  - component: {fileID: 4882803839935814002}
   m_Layer: 0
   m_Name: WerewolfGFX
   m_TagString: Untagged
@@ -102,6 +103,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4882803839935814002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4953867884669714228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c69ecd2057eb2c4fb352272b693da6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4953867885005208735
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,11 +240,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   singleTarget: {fileID: 0}
   targets: []
+  patrolWaypoints: []
+  levelWaypoints: []
   CurrentWaypointEditingMode: 0
   AIType: 0
   currentWaypointMode: 0
   walkSpeed: 0
-  nextWaypointDistance: 1
+  nextWaypointDistance: 2
   climbing: 0
   movementEnabled: 1
   attackEnabled: 1
@@ -250,9 +265,13 @@ MonoBehaviour:
   cursedWalkSpeed: 0
   cursedAttackSpeed: 0
   attackTimerActive: 0
+  canSwingAttack: 1
   currentState: 0
   previousStates: 0
   newState: 0
+  redEyesWalking: {fileID: 7400000, guid: 4879527bea34c0147977f72f3e30622b, type: 2}
+  redEyesIdle: {fileID: 7400000, guid: 3bc338277e1ee0448a8a83e00cdc4d6a, type: 2}
+  redEyesAttack: {fileID: 7400000, guid: 5d2545eb64553484cbcd9ad86216b615, type: 2}
 --- !u!1 &4953867885197177576
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,7 +317,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.1056838, y: -0.36536407}
+  m_Offset: {x: 0.1056838, y: -0.62223244}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -309,7 +328,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.7113676, y: 1.2307281}
+  m_Size: {x: 6.7113676, y: 2.9676456}
   m_EdgeRadius: 0
 --- !u!114 &4953867885197177573
 MonoBehaviour:

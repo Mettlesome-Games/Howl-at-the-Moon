@@ -10,7 +10,7 @@ public class OptionsMenu : MonoBehaviour
 
     Resolution[] resolutions;
 
-    private void Start(){
+    private void Awake(){
         resolutions = Screen.resolutions; //store all avalible resolutions on this hardware.
         resolutionDropdown.ClearOptions();
 

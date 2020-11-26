@@ -62,7 +62,9 @@ abstract public class AI : MonoBehaviour
 
     protected float defaultCharacterLocalscaleX, reversedCharacterLocalscaleX;
     protected float defaultEyesightLocalpositionX, reversedEyesightLocalpositionX;
-    protected CircleCollider2D myCollider;
+    protected BoxCollider2D myCollider;
+
+    protected Animator myAnimator;
 
     public void TakeDamage(float value)
     {
@@ -101,8 +103,9 @@ abstract public class AI : MonoBehaviour
         defaultEyesightLocalpositionX = characterEyesight.localPosition.x;
         reversedEyesightLocalpositionX = -1f * characterEyesight.localPosition.x;
 
-        myCollider = this.GetComponent<CircleCollider2D>();
-
+        myCollider = this.GetComponent<BoxCollider2D>();
+        myAnimator = characterGFX.GetComponent<Animator>();
+       
         if (walkSpeed <= 0f)
         {
             defaultWalkSpeed = 400f;
@@ -206,6 +209,8 @@ abstract public class AI : MonoBehaviour
             Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
             Vector2 force = direction * walkSpeed * Time.deltaTime;
             rb.AddForce(force);
+
+            myAnimator.SetFloat("Speed", Mathf.Abs(force.x));
 
             float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
 

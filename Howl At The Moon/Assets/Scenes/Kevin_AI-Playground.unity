@@ -502,6 +502,30 @@ Transform:
   m_Father: {fileID: 111140384}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1876792781 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 450578889215903001, guid: 619e2ecb22202994f8a7327af4114769, type: 3}
+  m_PrefabInstance: {fileID: 450578888920524098}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1876792782
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876792781}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5d6db3b8a6db7044c8619cad4650f376, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2034994390
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,7 +552,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2034994390}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.3, y: 1.08, z: 0}
+  m_LocalPosition: {x: -0.3, y: 2.3, z: 0}
   m_LocalScale: {x: 119.6279, y: 23.364887, z: 1}
   m_Children: []
   m_Father: {fileID: 1761498163}
@@ -622,17 +646,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Servant
       objectReference: {fileID: 0}
-    - target: {fileID: 450578889902534677, guid: 619e2ecb22202994f8a7327af4114769, type: 3}
-      propertyPath: targets.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 450578889902534677, guid: 619e2ecb22202994f8a7327af4114769, type: 3}
-      propertyPath: CurrentWaypointEditingMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 450578889902534677, guid: 619e2ecb22202994f8a7327af4114769, type: 3}
-      propertyPath: patrolWaypoints.Array.size
-      value: 2
+    - target: {fileID: 450578889902534676, guid: 619e2ecb22202994f8a7327af4114769, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 450578889902534677, guid: 619e2ecb22202994f8a7327af4114769, type: 3}
       propertyPath: patrolWaypoints.Array.data[0]
@@ -1093,6 +1109,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5822059856013045425, guid: 1e869dc412230af41ba6365758a00dda, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 5822059856013045425, guid: 1e869dc412230af41ba6365758a00dda, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.72
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e869dc412230af41ba6365758a00dda, type: 3}
 --- !u!1001 &8701904526429249670
@@ -1102,6 +1126,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8701904525473894495, guid: 1ba4c1118b2351241a8162c193fc5f76, type: 3}
+      propertyPath: m_Size.y
+      value: 1.1828213
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701904525473894495, guid: 1ba4c1118b2351241a8162c193fc5f76, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.09141113
+      objectReference: {fileID: 0}
     - target: {fileID: 8701904526302871886, guid: 1ba4c1118b2351241a8162c193fc5f76, type: 3}
       propertyPath: m_Name
       value: Stairs
