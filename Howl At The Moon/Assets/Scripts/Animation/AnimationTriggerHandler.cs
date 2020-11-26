@@ -14,8 +14,8 @@ public class AnimationTriggerHandler : MonoBehaviour
         myAnimator = this.GetComponent<Animator>();
     }
 
-    public void AttackStop()
+    public void TurnAnimationBoolOff(string toTurnOff)
     {
-        myAnimator.SetBool("Attack", false);
+        myAnimator.SetBool(toTurnOff, false);
     }
 }

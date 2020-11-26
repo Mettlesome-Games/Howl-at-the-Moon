@@ -210,7 +210,7 @@ abstract public class AI : MonoBehaviour
             Vector2 force = direction * walkSpeed * Time.deltaTime;
             rb.AddForce(force);
 
-            myAnimator.SetFloat("Speed", Mathf.Abs(force.x));
+            myAnimator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
 
             float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
 

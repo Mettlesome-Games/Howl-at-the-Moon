@@ -8,9 +8,15 @@ public class OptionsMenu : MonoBehaviour
     
     public TMPro.TMP_Dropdown resolutionDropdown;
 
-    Resolution[] resolutions;
+    [SerializeField] UnityEngine.UI.Slider masterSlider, dialogueSlider, SFXSlider, musicSlider;
 
-    private void Awake(){
+    Resolution[] resolutions;
+    bool isFresh = true;
+    bool isFullscreen;
+
+    private void Start(){
+        isFullscreen = Screen.fullScreen;
+
         resolutions = Screen.resolutions; //store all avalible resolutions on this hardware.
         resolutionDropdown.ClearOptions();
 
@@ -41,10 +47,34 @@ public class OptionsMenu : MonoBehaviour
 
     public void SetResolution(int resolutionIndex) {
         //Resolution resolution = resolutions[resolutionIndex];
-        Screen.SetResolution(resolutions[resolutionIndex].width, resolutions[resolutionIndex].height, Screen.fullScreen);  
+        if (isFresh /*&& Screen.currentResolution.width == resolutions[resolutionIndex].width && Screen.currentResolution.height == resolutions[resolutionIndex].height*/) 
+        {
+            isFresh = false;
+            return; 
+        }
+        else { Screen.SetResolution(resolutions[resolutionIndex].width, resolutions[resolutionIndex].height, isFullscreen); }
     }
 
-    public void SetFullscreen(bool isFullscreen) { Screen.fullScreen = isFullscreen; }
+    public void ToggleFullscreen(bool fillScreen) 
+    { 
+        Screen.fullScreen = fillScreen;
+        isFullscreen = fillScreen;
+    }
 
+    private void OnEnable()
+    {
+        float volumeValue;
+        audioMixer.GetFloat("MasterVolume", out volumeValue);
+        masterSlider.value = volumeValue;
+
+        audioMixer.GetFloat("DialogueVolume", out volumeValue);
+        dialogueSlider.value = volumeValue;
+
+        audioMixer.GetFloat("SFXVolume", out volumeValue);
+        SFXSlider.value = volumeValue;
+
+        audioMixer.GetFloat("MusicVolume", out volumeValue);
+        musicSlider.value = volumeValue;
+    }
 
 }

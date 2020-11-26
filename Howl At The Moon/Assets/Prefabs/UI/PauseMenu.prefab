@@ -1615,7 +1615,7 @@ GameObject:
   - component: {fileID: 3560186234064133990}
   - component: {fileID: 1891302654650087901}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: MasterSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2697,6 +2697,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: e0a4dc306a4291f44a4d867c38ff63df, type: 2}
   resolutionDropdown: {fileID: 1335456323621418395}
+  masterSlider: {fileID: 1891302654650087901}
+  dialogueSlider: {fileID: 477725024036996703}
+  SFXSlider: {fileID: 6762410450336349513}
+  musicSlider: {fileID: 9121610537819492042}
 --- !u!1 &2079875737546851108
 GameObject:
   m_ObjectHideFlags: 0
@@ -3411,7 +3415,7 @@ GameObject:
   - component: {fileID: 6189040400179632184}
   - component: {fileID: 477725024036996703}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: DialogueSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4837,7 +4841,7 @@ GameObject:
   - component: {fileID: 6239797114203281435}
   - component: {fileID: 6762410450336349513}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: SFXSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5228,7 +5232,7 @@ GameObject:
   - component: {fileID: 9077187075338271296}
   - component: {fileID: 9121610537819492042}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: MusicSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

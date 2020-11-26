@@ -50,6 +50,8 @@ public class ServantAI : AI
             targets = patrolWaypoints;
 
             currentWaypointMode = EAIWaypointMode.Patrol;
+            
+            myAnimator.SetBool("Running", false);
 
             currentTarget = 0;
             currentWaypoint = 0;
@@ -62,6 +64,8 @@ public class ServantAI : AI
             currentTarget = 0;
             currentWaypoint = 0;
             UpdateNavigation();
+
+            myAnimator.SetBool("Running", true);
         }
         else if (currentState == EServantStates.CreatingWolfsbane)
         {
@@ -71,6 +75,8 @@ public class ServantAI : AI
         {
             walkSpeed = defaultWalkSpeed;
             currentWaypointMode = EAIWaypointMode.OneWay;
+
+        
         }
         else if (currentState == EServantStates.Dead)
         {
@@ -112,6 +118,7 @@ public class ServantAI : AI
                     singleTarget.gameObject.GetComponent<WerewolfAI>().newState = WerewolfAI.EWerewolfStates.Trapped;
                     singleTarget = null;
                     newState = EServantStates.Running;
+                    myAnimator.SetBool("Presenting Wolfsbane", false);
                 }
             }
         }
@@ -121,16 +128,20 @@ public class ServantAI : AI
     {
         if (HP <= 0.0f)
             newState = EServantStates.Dead;
-
+        if (hasWolfsbane)
+        {
+            myAnimator.SetBool("Running", false);
+            myAnimator.SetBool("Presenting Wolfsbane", true);
+        }
         if (newState != currentState)
             UpdateState();
-
+     
         if (reachedEndOfPath)
         {
             if (singleTarget != null)
             {
                 float distance = Vector2.Distance(transform.position, singleTarget.position);
-                if (currentState == EServantStates.PresentingWolfsbane && distance <= 2f)
+                if (currentState == EServantStates.PresentingWolfsbane && distance <= 3f)
                     Action();
             }
         }
