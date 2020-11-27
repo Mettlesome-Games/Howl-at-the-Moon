@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 749279066327360626}
   m_Layer: 0
   m_Name: ManorLord
-  m_TagString: Untagged
+  m_TagString: ManorLord
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

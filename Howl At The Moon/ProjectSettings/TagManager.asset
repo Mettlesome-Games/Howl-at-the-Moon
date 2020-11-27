@@ -11,6 +11,7 @@ TagManager:
   - Food Bowl
   - Spawnpoints
   - Servant
+  - ManorLord
   layers:
   - Default
   - TransparentFX
