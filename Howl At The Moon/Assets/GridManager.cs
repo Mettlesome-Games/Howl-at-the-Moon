@@ -13,16 +13,17 @@ public class GridManager : MonoBehaviour
     
 
     //keep track of the current row and col so we know which ones to slide
-    [HideInInspector] public Room[] currentRow;
-    [HideInInspector] public Room[] currentCol;
+    [HideInInspector] public GameObject[] currentRow;
+    [HideInInspector] public GameObject[] currentCol;
 
+    public GameObject MoonPrefab;
     //testing adding in rooms to replace colors(map will need a new way to represent things)
-    public Room[] testRow1 = new Room[6];
-    public Room[] testRow2 = new Room[6];
-    public Room[] testRow3 = new Room[6];
-    public Room[] testCol1 = new Room[6];
-    public Room[] testCol2 = new Room[6];
-    public Room[] testCol3 = new Room[6];
+    public GameObject[] testRow1 = new GameObject[6];
+    public GameObject[] testRow2 = new GameObject[6];
+    public GameObject[] testRow3 = new GameObject[6];
+    public GameObject[] testCol1 = new GameObject[6];
+    public GameObject[] testCol2 = new GameObject[6];
+    public GameObject[] testCol3 = new GameObject[6];
     //The rows and cols of colors - to be rooms later
     Color[] row0 = { Color.white, Color.white, Color.white, Color.red, Color.red, Color.red, Color.yellow, Color.yellow, Color.yellow, Color.magenta, Color.magenta, Color.magenta };
     Color[] row1 = { Color.white, Color.white, Color.white, Color.red, Color.red, Color.red, Color.yellow, Color.yellow, Color.yellow, Color.magenta, Color.magenta, Color.magenta };
@@ -87,6 +88,11 @@ public class GridManager : MonoBehaviour
             i++;
         }
         testCol2[testCol2.Length - 1].GetComponent<Room>().traps = gridPanelsCol1[0].GetComponent<Room>().traps;
+
+        //set up the moonlight colliders
+        SetUpMoonlight(testRow1, gridPanelsRow0);
+        SetUpMoonlight(testRow2, gridPanelsRow1);
+        SetUpMoonlight(testRow3, gridPanelsRow2);
     }
 
     // Update is called once per frame
@@ -99,9 +105,9 @@ public class GridManager : MonoBehaviour
     //shifts up for cols or left for rows
     //just adjusts the data in one row
     //needs to be adjusted in overlapping rows after
-    public Room[] ShiftUpLeft(Room[] shifted)
+    public GameObject[] ShiftUpLeft(GameObject[] shifted)
     {
-        Room[] temp = new Room[shifted.Length];
+        GameObject[] temp = new GameObject[shifted.Length];
         /*for (int i = 0; i < shifted.Length; i++)
         {
             if (i == shifted.Length - 1)
@@ -117,7 +123,7 @@ public class GridManager : MonoBehaviour
         int saved_index = -10;
         for(int i = 0; i < shifted.Length; i++)
         {
-            if (!shifted[i].canSlide)
+            if (!shifted[i].GetComponent<Room>().canSlide)
             {
                 saved_index = i == 0 ? shifted.Length : i;
                 //saved_index = i;
@@ -142,9 +148,9 @@ public class GridManager : MonoBehaviour
     //shifts down for cols or right for rows
     //just adjusts the data in one row
     //needs to be adjusted in overlapping rows after
-    public Room[] ShiftDownRight(Room[] shifted)
+    public GameObject[] ShiftDownRight(GameObject[] shifted)
     {
-        Room[] temp = new Room[shifted.Length];
+        GameObject[] temp = new GameObject[shifted.Length];
         /*for (int i = 0; i < shifted.Length; i++)
         {
             if (i == 0)
@@ -159,7 +165,7 @@ public class GridManager : MonoBehaviour
         int saved_index = -10;
         for (int i = 0; i < shifted.Length; i++)
         {
-            if (!shifted[i].canSlide)
+            if (!shifted[i].GetComponent<Room>().canSlide)
             {
                 saved_index = i == 0 ? 0 : i;
                 //saved_index = i;
@@ -307,36 +313,73 @@ public class GridManager : MonoBehaviour
     //draw each of the tiles in each row
     //index 0 will be the last value in the Room array
     //index 1-4 should be the same as its counterpart in the Room array -1
-    public void DrawRoomRow(List<GameObject> panelRow, Room[] rowSource)
+    public void DrawRoomRow(List<GameObject> panelRow, GameObject[] rowSource)
     {
         int i = 0;
         foreach (GameObject tile in panelRow)
         {
             if (i == 0)
             {
-                tile.GetComponent<SpriteRenderer>().sprite = rowSource[rowSource.Length - 1].roomSprite;
-                tile.GetComponent<Room>().traps = rowSource[rowSource.Length - 1].traps;
+                tile.GetComponent<SpriteRenderer>().sprite = rowSource[rowSource.Length - 1].GetComponent<Room>().roomSprite;
+                tile.GetComponent<Room>().traps = rowSource[rowSource.Length - 1].GetComponent<Room>().traps;
+                tile.GetComponent<Room>().localP = rowSource[rowSource.Length - 1].GetComponent<Room>().localP;
+                tile.GetComponent<BoxCollider2D>().offset = rowSource[rowSource.Length - 1].GetComponent<Room>().floor.offset;
+                tile.GetComponent<BoxCollider2D>().size = rowSource[rowSource.Length - 1].GetComponent<Room>().floor.size;
                 //tile.GetComponent<Room>().traps[0].transform.parent = tile.transform;
                 int j = 0;
                 foreach(GameObject trap in tile.GetComponent<Room>().traps)
                 {
                     tile.GetComponent<Room>().traps[j].transform.parent = tile.transform;
                     tile.GetComponent<Room>().traps[j].transform.position = tile.GetComponent<Room>().traps[j].transform.parent.transform.position;
+                    tile.GetComponent<Room>().traps[j].transform.localPosition = tile.GetComponent<Room>().localP;
                     j++;
+                }
+                if(rowSource[rowSource.Length - 1].GetComponent<Room>().moon != null)
+                {
+                    tile.GetComponent<Room>().moon = rowSource[rowSource.Length - 1].GetComponent<Room>().moon;
+                    tile.GetComponent<Room>().moon.transform.parent = tile.transform;
+                    tile.GetComponent<Room>().moon.transform.position = tile.GetComponent<Room>().moon.transform.parent.transform.position;
+                    tile.GetComponent<Room>().moon.transform.localScale = MoonPrefab.transform.localScale;
+                    tile.GetComponent<Room>().moon.GetComponentInChildren<BoxCollider2D>().offset = rowSource[rowSource.Length - 1].GetComponent<Room>().moonOffset;
+                    tile.GetComponent<Room>().moon.GetComponentInChildren<BoxCollider2D>().size = rowSource[rowSource.Length - 1].GetComponent<Room>().moonSize;
+                    rowSource[rowSource.Length - 1].GetComponent<Room>().moon = tile.GetComponent<Room>().moon;
+                }
+                else
+                {
+                    tile.GetComponent<Room>().moon = null;
+                    tile.GetComponent<Room>().moonSize = Vector2.zero;
                 }
             }
             else
             {
-                tile.GetComponent<SpriteRenderer>().sprite = rowSource[i - 1].roomSprite;
-                tile.GetComponent<Room>().traps = rowSource[i - 1].traps;
+                tile.GetComponent<SpriteRenderer>().sprite = rowSource[i - 1].GetComponent<Room>().roomSprite;
+                tile.GetComponent<Room>().traps = rowSource[i - 1].GetComponent<Room>().traps;
+                tile.GetComponent<Room>().localP = rowSource[i - 1].GetComponent<Room>().localP;
+                tile.GetComponent<BoxCollider2D>().offset = rowSource[i - 1].GetComponent<Room>().floor.offset;
+                tile.GetComponent<BoxCollider2D>().size = rowSource[i - 1].GetComponent<Room>().floor.size;
                 int j = 0;
                 foreach (GameObject trap in tile.GetComponent<Room>().traps)
                 {
                     tile.GetComponent<Room>().traps[j].transform.parent = tile.transform;
                     tile.GetComponent<Room>().traps[j].transform.position = tile.GetComponent<Room>().traps[j].transform.parent.transform.position;
+                    tile.GetComponent<Room>().traps[j].transform.localPosition = tile.GetComponent<Room>().localP;
                     j++;
                 }
-                //if (tile.GetComponent<Room>().traps.Length > 0) { Instantiate(tile.GetComponent<Room>().traps[0]); }
+                if (rowSource[i - 1].GetComponent<Room>().moon != null)
+                {
+                    tile.GetComponent<Room>().moon = rowSource[i - 1].GetComponent<Room>().moon;
+                    tile.GetComponent<Room>().moon.transform.parent = tile.transform;
+                    tile.GetComponent<Room>().moon.transform.position = tile.GetComponent<Room>().moon.transform.parent.transform.position;
+                    tile.GetComponent<Room>().moon.transform.localScale = MoonPrefab.transform.localScale;
+                    tile.GetComponent<Room>().moon.GetComponentInChildren<BoxCollider2D>().offset = rowSource[i - 1].GetComponent<Room>().moonOffset;
+                    tile.GetComponent<Room>().moon.GetComponentInChildren<BoxCollider2D>().size = rowSource[i - 1].GetComponent<Room>().moonSize;
+                    rowSource[i - 1].GetComponent<Room>().moon = tile.GetComponent<Room>().moon;
+                }
+                else
+                {
+                    tile.GetComponent<Room>().moon = null;
+                    tile.GetComponent<Room>().moonSize = Vector2.zero;
+                }
             }
             //tile.GetComponent<Room>().traps = rowSource[i - 1].traps;
             i++;
@@ -363,7 +406,7 @@ public class GridManager : MonoBehaviour
         }
     }
 
-    void SetUpTraps(Room[] rowSource, List<GameObject> gridRowCol)
+    void SetUpTraps(GameObject[] rowSource, List<GameObject> gridRowCol)
     {
         int i = 0;
         foreach(GameObject tile in gridRowCol)
@@ -377,10 +420,13 @@ public class GridManager : MonoBehaviour
                     tile.GetComponent<Room>().traps[j] = Instantiate(trap);
                     tile.GetComponent<Room>().traps[j].transform.parent = tile.transform;
                     tile.GetComponent<Room>().traps[j].transform.position = tile.GetComponent<Room>().traps[j].transform.parent.transform.position;
+                    tile.GetComponent<Room>().traps[j].transform.localPosition = rowSource[rowSource.Length - 1].GetComponent<Room>().localP;
+                    tile.GetComponent<Room>().localP = tile.GetComponent<Room>().traps[j].transform.localPosition;
                     tile.GetComponent<Room>().traps[j].transform.localScale = trap.transform.localScale;
                     j++;
                 }
                 rowSource[rowSource.Length - 1].GetComponent<Room>().traps = tile.GetComponent<Room>().traps;
+                //rowSource[rowSource.Length - 1].GetComponent<Room>().localP = tile.GetComponent<Room>().localP;
             }
             else
             {
@@ -391,10 +437,45 @@ public class GridManager : MonoBehaviour
                     tile.GetComponent<Room>().traps[j] = Instantiate(trap);
                     tile.GetComponent<Room>().traps[j].transform.parent = tile.transform;
                     tile.GetComponent<Room>().traps[j].transform.position = tile.GetComponent<Room>().traps[j].transform.parent.transform.position;
+                    tile.GetComponent<Room>().traps[j].transform.localPosition = rowSource[rowSource.Length - 1].GetComponent<Room>().localP;
+                    tile.GetComponent<Room>().localP = tile.GetComponent<Room>().traps[j].transform.localPosition;
                     tile.GetComponent<Room>().traps[j].transform.localScale = trap.transform.localScale;
                     j++;
                 }
                 rowSource[i-1].GetComponent<Room>().traps = tile.GetComponent<Room>().traps;
+                //rowSource[i - 1].GetComponent<Room>().localP = tile.GetComponent<Room>().localP;
+            }
+            i++;
+        }
+    }
+
+    void SetUpMoonlight(GameObject[] rowSource, List<GameObject> gridRowCol)
+    {
+        int i = 0;
+        foreach (GameObject tile in gridRowCol)
+        {
+            if (i == 0 && rowSource[rowSource.Length - 1].GetComponent<Room>().moonSize != Vector2.zero)
+            {
+                tile.GetComponent<Room>().moon = Instantiate(MoonPrefab);
+                tile.GetComponent<Room>().moon.transform.parent = tile.transform;
+                tile.GetComponent<Room>().moon.transform.position = tile.GetComponent<Room>().moon.transform.parent.transform.position;
+                //tile.GetComponent<Room>().traps[j].transform.localPosition = rowSource[rowSource.Length - 1].GetComponent<Room>().localP;
+                tile.GetComponent<Room>().moon.transform.localScale = MoonPrefab.transform.localScale;
+                tile.GetComponent<Room>().moon.GetComponentInChildren<BoxCollider2D>().offset = rowSource[rowSource.Length - 1].GetComponent<Room>().moonOffset;
+                tile.GetComponent<Room>().moon.GetComponentInChildren<BoxCollider2D>().size = rowSource[rowSource.Length - 1].GetComponent<Room>().moonSize;
+                rowSource[rowSource.Length - 1].GetComponent<Room>().moon = tile.GetComponent<Room>().moon;
+
+            }
+            else if(i > 0 && rowSource[i - 1].GetComponent<Room>().moonSize != Vector2.zero)
+            {
+                tile.GetComponent<Room>().moon = Instantiate(MoonPrefab);
+                tile.GetComponent<Room>().moon.transform.parent = tile.transform;
+                tile.GetComponent<Room>().moon.transform.position = tile.GetComponent<Room>().moon.transform.parent.transform.position;
+                //tile.GetComponent<Room>().traps[j].transform.localPosition = rowSource[rowSource.Length - 1].GetComponent<Room>().localP;
+                tile.GetComponent<Room>().moon.transform.localScale = MoonPrefab.transform.localScale;
+                tile.GetComponent<Room>().moon.GetComponentInChildren<BoxCollider2D>().offset = rowSource[i - 1].GetComponent<Room>().moonOffset;
+                tile.GetComponent<Room>().moon.GetComponentInChildren<BoxCollider2D>().size = rowSource[i - 1].GetComponent<Room>().moonSize;
+                rowSource[i - 1].GetComponent<Room>().moon = tile.GetComponent<Room>().moon;
             }
             i++;
         }

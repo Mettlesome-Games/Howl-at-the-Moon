@@ -373,6 +373,7 @@ GameObject:
   - component: {fileID: 42253720}
   - component: {fileID: 42253719}
   - component: {fileID: 42253721}
+  - component: {fileID: 42253722}
   m_Layer: 0
   m_Name: RM
   m_TagString: Untagged
@@ -460,8 +461,37 @@ MonoBehaviour:
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
   traps: []
-  hindrances: []
-  moonlight: 
+  localP: {x: 0, y: 0, z: 0}
+  floor: {fileID: 0}
+  moon: {fileID: 0}
+  moonOffset: {x: 0, y: 0}
+  moonSize: {x: 0, y: 0}
+--- !u!61 &42253722
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42253718}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
 --- !u!1 &47195754
 GameObject:
   m_ObjectHideFlags: 0
@@ -630,6 +660,7 @@ GameObject:
   - component: {fileID: 86235961}
   - component: {fileID: 86235962}
   - component: {fileID: 86235963}
+  - component: {fileID: 86235964}
   m_Layer: 0
   m_Name: 2
   m_TagString: Untagged
@@ -717,8 +748,37 @@ MonoBehaviour:
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
   traps: []
-  hindrances: []
-  moonlight: 
+  localP: {x: 0, y: 0, z: 0}
+  floor: {fileID: 0}
+  moon: {fileID: 0}
+  moonOffset: {x: 0, y: 0}
+  moonSize: {x: 0, y: 0}
+--- !u!61 &86235964
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86235960}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
 --- !u!1 &93978740
 GameObject:
   m_ObjectHideFlags: 0
@@ -894,13 +954,14 @@ GameObject:
   - component: {fileID: 105352453}
   - component: {fileID: 105352455}
   - component: {fileID: 105352454}
+  - component: {fileID: 105352456}
   m_Layer: 0
   m_Name: BL2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &105352453
 Transform:
   m_ObjectHideFlags: 0
@@ -930,8 +991,11 @@ MonoBehaviour:
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
   traps: []
-  hindrances: []
-  moonlight: 
+  localP: {x: 0, y: 0, z: 0}
+  floor: {fileID: 0}
+  moon: {fileID: 0}
+  moonOffset: {x: 0, y: 0}
+  moonSize: {x: 0, y: 0}
 --- !u!212 &105352455
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -983,6 +1047,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &105352456
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105352452}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
 --- !u!1 &117436821
 GameObject:
   m_ObjectHideFlags: 0
@@ -1788,6 +1878,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 217137079}
   m_CullTransparentMesh: 0
+--- !u!1 &254961171
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 254961172}
+  - component: {fileID: 254961174}
+  - component: {fileID: 254961173}
+  m_Layer: 0
+  m_Name: Image (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &254961172
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254961171}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1960720382}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.000015259, y: 0.000005722}
+  m_SizeDelta: {x: 1919.9999, y: 1080}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &254961173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254961171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: c05473635e2352b48b73b5cb1df8cf6a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &254961174
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254961171}
+  m_CullTransparentMesh: 0
 --- !u!1 &268270541
 GameObject:
   m_ObjectHideFlags: 0
@@ -2069,6 +2234,7 @@ GameObject:
   - component: {fileID: 309510264}
   - component: {fileID: 309510265}
   - component: {fileID: 309510266}
+  - component: {fileID: 309510267}
   m_Layer: 0
   m_Name: 7
   m_TagString: Untagged
@@ -2156,8 +2322,37 @@ MonoBehaviour:
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
   traps: []
-  hindrances: []
-  moonlight: 
+  localP: {x: 0, y: 0, z: 0}
+  floor: {fileID: 0}
+  moon: {fileID: 0}
+  moonOffset: {x: 0, y: 0}
+  moonSize: {x: 0, y: 0}
+--- !u!61 &309510267
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309510263}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
 --- !u!1 &310178686
 GameObject:
   m_ObjectHideFlags: 0
@@ -2169,6 +2364,7 @@ GameObject:
   - component: {fileID: 310178688}
   - component: {fileID: 310178687}
   - component: {fileID: 310178689}
+  - component: {fileID: 310178690}
   m_Layer: 0
   m_Name: LM
   m_TagString: Untagged
@@ -2256,8 +2452,37 @@ MonoBehaviour:
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
   traps: []
-  hindrances: []
-  moonlight: 
+  localP: {x: 0, y: 0, z: 0}
+  floor: {fileID: 0}
+  moon: {fileID: 0}
+  moonOffset: {x: 0, y: 0}
+  moonSize: {x: 0, y: 0}
+--- !u!61 &310178690
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310178686}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
 --- !u!1 &314867757
 GameObject:
   m_ObjectHideFlags: 0
@@ -3044,6 +3269,7 @@ GameObject:
   - component: {fileID: 379507590}
   - component: {fileID: 379507589}
   - component: {fileID: 379507591}
+  - component: {fileID: 379507592}
   m_Layer: 0
   m_Name: BM
   m_TagString: Untagged
@@ -3131,8 +3357,37 @@ MonoBehaviour:
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
   traps: []
-  hindrances: []
-  moonlight: 
+  localP: {x: 0, y: 0, z: 0}
+  floor: {fileID: 0}
+  moon: {fileID: 0}
+  moonOffset: {x: 0, y: 0}
+  moonSize: {x: 0, y: 0}
+--- !u!61 &379507592
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379507588}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
 --- !u!1 &388660982
 GameObject:
   m_ObjectHideFlags: 0
@@ -3915,6 +4170,7 @@ GameObject:
   - component: {fileID: 479118450}
   - component: {fileID: 479118449}
   - component: {fileID: 479118451}
+  - component: {fileID: 479118452}
   m_Layer: 0
   m_Name: BL
   m_TagString: Untagged
@@ -4002,8 +4258,37 @@ MonoBehaviour:
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
   traps: []
-  hindrances: []
-  moonlight: 
+  localP: {x: 0, y: 0, z: 0}
+  floor: {fileID: 0}
+  moon: {fileID: 0}
+  moonOffset: {x: 0, y: 0}
+  moonSize: {x: 0, y: 0}
+--- !u!61 &479118452
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479118448}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
 --- !u!1 &482179938
 GameObject:
   m_ObjectHideFlags: 0
@@ -4544,6 +4829,7 @@ GameObject:
   - component: {fileID: 514413192}
   - component: {fileID: 514413193}
   - component: {fileID: 514413194}
+  - component: {fileID: 514413195}
   m_Layer: 0
   m_Name: 5
   m_TagString: Untagged
@@ -4631,8 +4917,37 @@ MonoBehaviour:
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
   traps: []
-  hindrances: []
-  moonlight: 
+  localP: {x: 0, y: 0, z: 0}
+  floor: {fileID: 0}
+  moon: {fileID: 0}
+  moonOffset: {x: 0, y: 0}
+  moonSize: {x: 0, y: 0}
+--- !u!61 &514413195
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514413191}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
 --- !u!1 &526966564
 GameObject:
   m_ObjectHideFlags: 0
@@ -5217,6 +5532,7 @@ GameObject:
   - component: {fileID: 599983708}
   - component: {fileID: 599983707}
   - component: {fileID: 599983709}
+  - component: {fileID: 599983710}
   m_Layer: 0
   m_Name: TM
   m_TagString: Untagged
@@ -5304,8 +5620,37 @@ MonoBehaviour:
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
   traps: []
-  hindrances: []
-  moonlight: 
+  localP: {x: 0, y: 0, z: 0}
+  floor: {fileID: 0}
+  moon: {fileID: 0}
+  moonOffset: {x: 0, y: 0}
+  moonSize: {x: 0, y: 0}
+--- !u!61 &599983710
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599983706}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
 --- !u!1 &607140864
 GameObject:
   m_ObjectHideFlags: 0
@@ -5508,6 +5853,7 @@ GameObject:
   - component: {fileID: 621342883}
   - component: {fileID: 621342884}
   - component: {fileID: 621342885}
+  - component: {fileID: 621342886}
   m_Layer: 0
   m_Name: 1
   m_TagString: Untagged
@@ -5595,8 +5941,37 @@ MonoBehaviour:
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
   traps: []
-  hindrances: []
-  moonlight: 
+  localP: {x: 0, y: 0, z: 0}
+  floor: {fileID: 0}
+  moon: {fileID: 0}
+  moonOffset: {x: 0, y: 0}
+  moonSize: {x: 0, y: 0}
+--- !u!61 &621342886
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621342882}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
 --- !u!1 &630289421
 GameObject:
   m_ObjectHideFlags: 0
@@ -5655,6 +6030,7 @@ GameObject:
   - component: {fileID: 641344691}
   - component: {fileID: 641344692}
   - component: {fileID: 641344693}
+  - component: {fileID: 641344694}
   m_Layer: 0
   m_Name: 8
   m_TagString: Untagged
@@ -5742,8 +6118,37 @@ MonoBehaviour:
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
   traps: []
-  hindrances: []
-  moonlight: 
+  localP: {x: 0, y: 0, z: 0}
+  floor: {fileID: 0}
+  moon: {fileID: 0}
+  moonOffset: {x: 0, y: 0}
+  moonSize: {x: 0, y: 0}
+--- !u!61 &641344694
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641344690}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
 --- !u!1 &654153601
 GameObject:
   m_ObjectHideFlags: 0
@@ -6754,6 +7159,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 738042819}
   m_CullTransparentMesh: 0
+--- !u!1 &759248321
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 759248322}
+  - component: {fileID: 759248324}
+  - component: {fileID: 759248323}
+  m_Layer: 0
+  m_Name: Image (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &759248322
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759248321}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1960720382}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -6.429199, y: -2.125}
+  m_SizeDelta: {x: 1311.1416, y: 1084.2498}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &759248323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759248321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: c05473635e2352b48b73b5cb1df8cf6a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &759248324
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759248321}
+  m_CullTransparentMesh: 0
 --- !u!1 &762979029
 GameObject:
   m_ObjectHideFlags: 0
@@ -7030,7 +7510,7 @@ Transform:
   - {fileID: 827852813}
   - {fileID: 268270542}
   m_Father: {fileID: 1960720382}
-  m_RootOrder: 2
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &795967608
 GameObject:
@@ -9119,6 +9599,81 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &948524889
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 948524890}
+  - component: {fileID: 948524892}
+  - component: {fileID: 948524891}
+  m_Layer: 0
+  m_Name: Image (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &948524890
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948524889}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1960720382}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 20.8, y: -35.9}
+  m_SizeDelta: {x: 934.7999, y: 1016.7}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &948524891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948524889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: c05473635e2352b48b73b5cb1df8cf6a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &948524892
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948524889}
+  m_CullTransparentMesh: 0
 --- !u!1 &950144296
 GameObject:
   m_ObjectHideFlags: 0
@@ -10592,6 +11147,7 @@ GameObject:
   - component: {fileID: 1155201214}
   - component: {fileID: 1155201213}
   - component: {fileID: 1155201215}
+  - component: {fileID: 1155201216}
   m_Layer: 0
   m_Name: TR
   m_TagString: Untagged
@@ -10679,8 +11235,37 @@ MonoBehaviour:
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
   traps: []
-  hindrances: []
-  moonlight: 
+  localP: {x: 0, y: 0, z: 0}
+  floor: {fileID: 0}
+  moon: {fileID: 0}
+  moonOffset: {x: 0, y: 0}
+  moonSize: {x: 0, y: 0}
+--- !u!61 &1155201216
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1155201212}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
 --- !u!1 &1162449149
 GameObject:
   m_ObjectHideFlags: 0
@@ -11022,81 +11607,6 @@ Transform:
   m_Father: {fileID: 1763795265}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1175380392
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1175380393}
-  - component: {fileID: 1175380395}
-  - component: {fileID: 1175380394}
-  m_Layer: 5
-  m_Name: Cursor
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1175380393
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1175380392}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 100}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2027316168}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -565, y: 318}
-  m_SizeDelta: {x: 60, y: 60}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1175380394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1175380392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.4669811, b: 0.4669811, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1175380395
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1175380392}
-  m_CullTransparentMesh: 0
 --- !u!1 &1188933473
 GameObject:
   m_ObjectHideFlags: 0
@@ -11638,6 +12148,7 @@ GameObject:
   - component: {fileID: 1247115248}
   - component: {fileID: 1247115250}
   - component: {fileID: 1247115249}
+  - component: {fileID: 1247115251}
   m_Layer: 0
   m_Name: RM2
   m_TagString: Untagged
@@ -11674,8 +12185,11 @@ MonoBehaviour:
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
   traps: []
-  hindrances: []
-  moonlight: 
+  localP: {x: 0, y: 0, z: 0}
+  floor: {fileID: 0}
+  moon: {fileID: 0}
+  moonOffset: {x: 0, y: 0}
+  moonSize: {x: 0, y: 0}
 --- !u!212 &1247115250
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11727,6 +12241,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1247115251
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247115247}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
 --- !u!1 &1247529579
 GameObject:
   m_ObjectHideFlags: 0
@@ -12574,6 +13114,7 @@ GameObject:
   - component: {fileID: 1308831647}
   - component: {fileID: 1308831646}
   - component: {fileID: 1308831648}
+  - component: {fileID: 1308831649}
   m_Layer: 0
   m_Name: LT
   m_TagString: Untagged
@@ -12661,8 +13202,37 @@ MonoBehaviour:
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
   traps: []
-  hindrances: []
-  moonlight: 
+  localP: {x: 0, y: 0, z: 0}
+  floor: {fileID: 0}
+  moon: {fileID: 0}
+  moonOffset: {x: 0, y: 0}
+  moonSize: {x: 0, y: 0}
+--- !u!61 &1308831649
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308831645}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
 --- !u!1 &1310206090
 GameObject:
   m_ObjectHideFlags: 0
@@ -12913,6 +13483,7 @@ GameObject:
   - component: {fileID: 1331737845}
   - component: {fileID: 1331737846}
   - component: {fileID: 1331737847}
+  - component: {fileID: 1331737848}
   m_Layer: 0
   m_Name: 4
   m_TagString: Untagged
@@ -13000,8 +13571,37 @@ MonoBehaviour:
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
   traps: []
-  hindrances: []
-  moonlight: 
+  localP: {x: 0, y: 0, z: 0}
+  floor: {fileID: 0}
+  moon: {fileID: 0}
+  moonOffset: {x: 0, y: 0}
+  moonSize: {x: 0, y: 0}
+--- !u!61 &1331737848
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331737844}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
 --- !u!1 &1332088501
 GameObject:
   m_ObjectHideFlags: 0
@@ -13122,13 +13722,14 @@ GameObject:
   - component: {fileID: 1339500186}
   - component: {fileID: 1339500188}
   - component: {fileID: 1339500187}
+  - component: {fileID: 1339500189}
   m_Layer: 0
   m_Name: RT2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1339500186
 Transform:
   m_ObjectHideFlags: 0
@@ -13158,8 +13759,11 @@ MonoBehaviour:
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
   traps: []
-  hindrances: []
-  moonlight: 
+  localP: {x: 0, y: 0, z: 0}
+  floor: {fileID: 0}
+  moon: {fileID: 0}
+  moonOffset: {x: 0, y: 0}
+  moonSize: {x: 0, y: 0}
 --- !u!212 &1339500188
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13211,6 +13815,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1339500189
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339500185}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
 --- !u!1 &1348535376
 GameObject:
   m_ObjectHideFlags: 0
@@ -13611,6 +14241,7 @@ GameObject:
   - component: {fileID: 1421154923}
   - component: {fileID: 1421154924}
   - component: {fileID: 1421154925}
+  - component: {fileID: 1421154926}
   m_Layer: 0
   m_Name: 6
   m_TagString: Untagged
@@ -13698,8 +14329,37 @@ MonoBehaviour:
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
   traps: []
-  hindrances: []
-  moonlight: 
+  localP: {x: 0, y: 0, z: 0}
+  floor: {fileID: 0}
+  moon: {fileID: 0}
+  moonOffset: {x: 0, y: 0}
+  moonSize: {x: 0, y: 0}
+--- !u!61 &1421154926
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421154922}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
 --- !u!1 &1439297936
 GameObject:
   m_ObjectHideFlags: 0
@@ -13820,13 +14480,14 @@ GameObject:
   - component: {fileID: 1459823153}
   - component: {fileID: 1459823155}
   - component: {fileID: 1459823154}
+  - component: {fileID: 1459823156}
   m_Layer: 0
   m_Name: BR2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1459823153
 Transform:
   m_ObjectHideFlags: 0
@@ -13856,8 +14517,11 @@ MonoBehaviour:
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
   traps: []
-  hindrances: []
-  moonlight: 
+  localP: {x: 0, y: 0, z: 0}
+  floor: {fileID: 0}
+  moon: {fileID: 0}
+  moonOffset: {x: 0, y: 0}
+  moonSize: {x: 0, y: 0}
 --- !u!212 &1459823155
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13909,6 +14573,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1459823156
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459823152}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
 --- !u!1 &1481796565
 GameObject:
   m_ObjectHideFlags: 0
@@ -14320,6 +15010,7 @@ GameObject:
   - component: {fileID: 1518548422}
   - component: {fileID: 1518548423}
   - component: {fileID: 1518548424}
+  - component: {fileID: 1518548425}
   m_Layer: 0
   m_Name: 3
   m_TagString: Untagged
@@ -14407,8 +15098,37 @@ MonoBehaviour:
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
   traps: []
-  hindrances: []
-  moonlight: 
+  localP: {x: 0, y: 0, z: 0}
+  floor: {fileID: 0}
+  moon: {fileID: 0}
+  moonOffset: {x: 0, y: 0}
+  moonSize: {x: 0, y: 0}
+--- !u!61 &1518548425
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518548421}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
 --- !u!1 &1523399883
 GameObject:
   m_ObjectHideFlags: 0
@@ -15543,6 +16263,7 @@ GameObject:
   - component: {fileID: 1629583085}
   - component: {fileID: 1629583084}
   - component: {fileID: 1629583086}
+  - component: {fileID: 1629583087}
   m_Layer: 0
   m_Name: TL
   m_TagString: Untagged
@@ -15630,8 +16351,37 @@ MonoBehaviour:
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
   traps: []
-  hindrances: []
-  moonlight: 
+  localP: {x: 0, y: 0, z: 0}
+  floor: {fileID: 0}
+  moon: {fileID: 0}
+  moonOffset: {x: 0, y: 0}
+  moonSize: {x: 0, y: 0}
+--- !u!61 &1629583087
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629583083}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
 --- !u!1 &1630973963
 GameObject:
   m_ObjectHideFlags: 0
@@ -15718,13 +16468,14 @@ GameObject:
   - component: {fileID: 1643005179}
   - component: {fileID: 1643005181}
   - component: {fileID: 1643005180}
+  - component: {fileID: 1643005182}
   m_Layer: 0
   m_Name: RB2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1643005179
 Transform:
   m_ObjectHideFlags: 0
@@ -15754,8 +16505,11 @@ MonoBehaviour:
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
   traps: []
-  hindrances: []
-  moonlight: 
+  localP: {x: 0, y: 0, z: 0}
+  floor: {fileID: 0}
+  moon: {fileID: 0}
+  moonOffset: {x: 0, y: 0}
+  moonSize: {x: 0, y: 0}
 --- !u!212 &1643005181
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15807,6 +16561,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1643005182
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643005178}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
 --- !u!1 &1672142095
 GameObject:
   m_ObjectHideFlags: 0
@@ -16146,13 +16926,14 @@ GameObject:
   - component: {fileID: 1703451050}
   - component: {fileID: 1703451052}
   - component: {fileID: 1703451051}
+  - component: {fileID: 1703451053}
   m_Layer: 0
   m_Name: BM2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1703451050
 Transform:
   m_ObjectHideFlags: 0
@@ -16182,8 +16963,11 @@ MonoBehaviour:
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
   traps: []
-  hindrances: []
-  moonlight: 
+  localP: {x: 0, y: 0, z: 0}
+  floor: {fileID: 0}
+  moon: {fileID: 0}
+  moonOffset: {x: 0, y: 0}
+  moonSize: {x: 0, y: 0}
 --- !u!212 &1703451052
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16235,6 +17019,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1703451053
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703451049}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
 --- !u!1 &1720917593
 GameObject:
   m_ObjectHideFlags: 0
@@ -16321,6 +17131,7 @@ GameObject:
   - component: {fileID: 1728440934}
   - component: {fileID: 1728440933}
   - component: {fileID: 1728440935}
+  - component: {fileID: 1728440936}
   m_Layer: 0
   m_Name: LB
   m_TagString: Untagged
@@ -16408,8 +17219,37 @@ MonoBehaviour:
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
   traps: []
-  hindrances: []
-  moonlight: 
+  localP: {x: 0, y: 0, z: 0}
+  floor: {fileID: 0}
+  moon: {fileID: 0}
+  moonOffset: {x: 0, y: 0}
+  moonSize: {x: 0, y: 0}
+--- !u!61 &1728440936
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728440932}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
 --- !u!1 &1731845148
 GameObject:
   m_ObjectHideFlags: 0
@@ -16421,6 +17261,7 @@ GameObject:
   - component: {fileID: 1731845150}
   - component: {fileID: 1731845149}
   - component: {fileID: 1731845151}
+  - component: {fileID: 1731845152}
   m_Layer: 0
   m_Name: BR
   m_TagString: Untagged
@@ -16508,8 +17349,37 @@ MonoBehaviour:
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
   traps: []
-  hindrances: []
-  moonlight: 
+  localP: {x: 0, y: 0, z: 0}
+  floor: {fileID: 0}
+  moon: {fileID: 0}
+  moonOffset: {x: 0, y: 0}
+  moonSize: {x: 0, y: 0}
+--- !u!61 &1731845152
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731845148}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
 --- !u!1 &1733406600
 GameObject:
   m_ObjectHideFlags: 0
@@ -16678,6 +17548,7 @@ GameObject:
   - component: {fileID: 1759004763}
   - component: {fileID: 1759004762}
   - component: {fileID: 1759004764}
+  - component: {fileID: 1759004765}
   m_Layer: 0
   m_Name: RB
   m_TagString: Untagged
@@ -16765,8 +17636,37 @@ MonoBehaviour:
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
   traps: []
-  hindrances: []
-  moonlight: 
+  localP: {x: 0, y: 0, z: 0}
+  floor: {fileID: 0}
+  moon: {fileID: 0}
+  moonOffset: {x: 0, y: 0}
+  moonSize: {x: 0, y: 0}
+--- !u!61 &1759004765
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759004761}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
 --- !u!1 &1763795263
 GameObject:
   m_ObjectHideFlags: 0
@@ -16799,48 +17699,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentRow: []
   currentCol: []
+  MoonPrefab: {fileID: 4477932839328265865, guid: 8255e617ffc9ef440a4828ce7871c318, type: 3}
   testRow1:
-  - {fileID: 1575319993230844888, guid: b27f8d3ea5f02534581c576d83830c09, type: 3}
-  - {fileID: 1575319993230844888, guid: 15aabaad22dca8446b9ebe5b5ad6be05, type: 3}
-  - {fileID: 1575319993230844888, guid: efc96ab1b7e0aed4faf44c6501caec26, type: 3}
-  - {fileID: 1575319993230844888, guid: 34f3b9db8caf2234f815607170ad4ec8, type: 3}
-  - {fileID: 1575319993230844888, guid: a5ab936343da57c44999c68eb94da153, type: 3}
-  - {fileID: 1575319993230844888, guid: 6d54ff8d8e0928847a10b571e7890b1f, type: 3}
+  - {fileID: 1575319993230844895, guid: b27f8d3ea5f02534581c576d83830c09, type: 3}
+  - {fileID: 1575319993230844895, guid: 15aabaad22dca8446b9ebe5b5ad6be05, type: 3}
+  - {fileID: 1575319993230844895, guid: efc96ab1b7e0aed4faf44c6501caec26, type: 3}
+  - {fileID: 1575319993230844895, guid: 34f3b9db8caf2234f815607170ad4ec8, type: 3}
+  - {fileID: 1575319993230844895, guid: a5ab936343da57c44999c68eb94da153, type: 3}
+  - {fileID: 1575319993230844895, guid: 6d54ff8d8e0928847a10b571e7890b1f, type: 3}
   testRow2:
-  - {fileID: 1575319993230844888, guid: 6dfd912e81e628941a566326683c3e7f, type: 3}
-  - {fileID: 1575319993230844888, guid: 06ce779a2f1e0a24cb21626900c8f514, type: 3}
-  - {fileID: 1575319993230844888, guid: 3bfc6e45585067b49be50bc637206e41, type: 3}
-  - {fileID: 1575319993230844888, guid: 2c1b79f47c5a0f34e86e7713c3534dcb, type: 3}
-  - {fileID: 1575319993230844888, guid: 3c76863a15c9b3745bb66dbbae3105d7, type: 3}
-  - {fileID: 1575319993230844888, guid: fcbe3e3bdd154ff418f568760f1b6e79, type: 3}
+  - {fileID: 1575319993230844895, guid: 6dfd912e81e628941a566326683c3e7f, type: 3}
+  - {fileID: 1575319993230844895, guid: 06ce779a2f1e0a24cb21626900c8f514, type: 3}
+  - {fileID: 1575319993230844895, guid: 3bfc6e45585067b49be50bc637206e41, type: 3}
+  - {fileID: 1575319993230844895, guid: 2c1b79f47c5a0f34e86e7713c3534dcb, type: 3}
+  - {fileID: 1575319993230844895, guid: 3c76863a15c9b3745bb66dbbae3105d7, type: 3}
+  - {fileID: 1575319993230844895, guid: fcbe3e3bdd154ff418f568760f1b6e79, type: 3}
   testRow3:
-  - {fileID: 1575319993230844888, guid: 505ffdf4cd969364fb95434052bec814, type: 3}
-  - {fileID: 1575319993230844888, guid: 750cb976795dc1640bfc7d1a75527163, type: 3}
-  - {fileID: 1575319993230844888, guid: 8ad42f2b806eeab4392db4fe34ca67cd, type: 3}
-  - {fileID: 1575319993230844888, guid: 93ea9153e86a29f4d82aaf195fec7b45, type: 3}
-  - {fileID: 1575319993230844888, guid: 265b7bcfbc096a7478214d9c5e1bd803, type: 3}
-  - {fileID: 1575319993230844888, guid: b6a8ef369c381674bb76162bb19aa495, type: 3}
+  - {fileID: 1575319993230844895, guid: 505ffdf4cd969364fb95434052bec814, type: 3}
+  - {fileID: 1575319993230844895, guid: 750cb976795dc1640bfc7d1a75527163, type: 3}
+  - {fileID: 1575319993230844895, guid: 8ad42f2b806eeab4392db4fe34ca67cd, type: 3}
+  - {fileID: 1575319993230844895, guid: 93ea9153e86a29f4d82aaf195fec7b45, type: 3}
+  - {fileID: 1575319993230844895, guid: b6a8ef369c381674bb76162bb19aa495, type: 3}
+  - {fileID: 1575319993230844895, guid: 265b7bcfbc096a7478214d9c5e1bd803, type: 3}
   testCol1:
-  - {fileID: 1575319993230844888, guid: b27f8d3ea5f02534581c576d83830c09, type: 3}
-  - {fileID: 1575319993230844888, guid: 15aabaad22dca8446b9ebe5b5ad6be05, type: 3}
-  - {fileID: 1575319993230844888, guid: a5ab936343da57c44999c68eb94da153, type: 3}
-  - {fileID: 1575319993230844888, guid: b6a8ef369c381674bb76162bb19aa495, type: 3}
-  - {fileID: 1575319993230844888, guid: b6a8ef369c381674bb76162bb19aa495, type: 3}
-  - {fileID: 1575319993230844888, guid: b6a8ef369c381674bb76162bb19aa495, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   testCol2:
-  - {fileID: 1575319993230844888, guid: 15aabaad22dca8446b9ebe5b5ad6be05, type: 3}
-  - {fileID: 1575319993230844888, guid: a5ab936343da57c44999c68eb94da153, type: 3}
-  - {fileID: 1575319993230844888, guid: 15aabaad22dca8446b9ebe5b5ad6be05, type: 3}
-  - {fileID: 1575319993230844888, guid: b6a8ef369c381674bb76162bb19aa495, type: 3}
-  - {fileID: 1575319993230844888, guid: b6a8ef369c381674bb76162bb19aa495, type: 3}
-  - {fileID: 1575319993230844888, guid: b6a8ef369c381674bb76162bb19aa495, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   testCol3:
-  - {fileID: 1575319993230844888, guid: a5ab936343da57c44999c68eb94da153, type: 3}
-  - {fileID: 1575319993230844888, guid: 15aabaad22dca8446b9ebe5b5ad6be05, type: 3}
-  - {fileID: 1575319993230844888, guid: 15aabaad22dca8446b9ebe5b5ad6be05, type: 3}
-  - {fileID: 1575319993230844888, guid: b6a8ef369c381674bb76162bb19aa495, type: 3}
-  - {fileID: 1575319993230844888, guid: b6a8ef369c381674bb76162bb19aa495, type: 3}
-  - {fileID: 1575319993230844888, guid: b6a8ef369c381674bb76162bb19aa495, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   gridPanelsRow0:
   - {fileID: 1308831645}
   - {fileID: 1997963834}
@@ -18474,10 +19375,13 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1294013437}
+  - {fileID: 254961172}
+  - {fileID: 759248322}
+  - {fileID: 948524890}
   - {fileID: 1972497354}
+  - {fileID: 2027316168}
   - {fileID: 786543386}
   - {fileID: 2044215719}
-  - {fileID: 2027316168}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 21.345}
@@ -18503,7 +19407,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1972497354
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18516,12 +19420,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1960720382}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 17.7, y: -30.312}
-  m_SizeDelta: {x: 920.8595, y: 986.6239}
+  m_AnchoredPosition: {x: 20.8, y: -30.312}
+  m_SizeDelta: {x: 934.8, y: 986.6239}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1972497355
 MonoBehaviour:
@@ -18606,6 +19510,7 @@ GameObject:
   - component: {fileID: 1997963835}
   - component: {fileID: 1997963836}
   - component: {fileID: 1997963837}
+  - component: {fileID: 1997963838}
   m_Layer: 0
   m_Name: 0
   m_TagString: Untagged
@@ -18693,8 +19598,37 @@ MonoBehaviour:
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 0
   traps: []
-  hindrances: []
-  moonlight: 
+  localP: {x: 0, y: 0, z: 0}
+  floor: {fileID: 0}
+  moon: {fileID: 0}
+  moonOffset: {x: 0, y: 0}
+  moonSize: {x: 0, y: 0}
+--- !u!61 &1997963838
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997963834}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
 --- !u!1 &2004223894
 GameObject:
   m_ObjectHideFlags: 0
@@ -19005,10 +19939,9 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 21.200006, y: 28.960003, z: 60}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1175380393}
+  m_Children: []
   m_Father: {fileID: 1960720382}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2027316169
 MonoBehaviour:
@@ -19137,7 +20070,7 @@ RectTransform:
   - {fileID: 1556270686}
   - {fileID: 1262816132}
   m_Father: {fileID: 1960720382}
-  m_RootOrder: 3
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -19230,6 +20163,7 @@ GameObject:
   - component: {fileID: 2068725616}
   - component: {fileID: 2068725615}
   - component: {fileID: 2068725617}
+  - component: {fileID: 2068725618}
   m_Layer: 0
   m_Name: RT
   m_TagString: Untagged
@@ -19317,8 +20251,37 @@ MonoBehaviour:
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
   traps: []
-  hindrances: []
-  moonlight: 
+  localP: {x: 0, y: 0, z: 0}
+  floor: {fileID: 0}
+  moon: {fileID: 0}
+  moonOffset: {x: 0, y: 0}
+  moonSize: {x: 0, y: 0}
+--- !u!61 &2068725618
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068725614}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
 --- !u!1 &2089776689
 GameObject:
   m_ObjectHideFlags: 0
