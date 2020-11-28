@@ -37,10 +37,12 @@ public class Gamemanager : MonoBehaviour
     }
 
     public void LoseGame()
-    { print("You Lose"); }
+    { UnityEngine.SceneManagement.SceneManager.LoadScene(3); }
 
     public void WinGame()
-    { print("You Win"); }
+    {  
+        UnityEngine.SceneManagement.SceneManager.LoadScene(2); 
+    }
 
     //Use to Switch Scenes
     public void LoadLevel(string SceneName)

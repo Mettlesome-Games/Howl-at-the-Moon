@@ -8,6 +8,8 @@ using Pathfinding;
 /// </summary>
 public class WerewolfAI : AI
 {
+    public Vector2 localPos;
+
     public WaveController masterCommander;
     public uint MonsterID, WaveID;
     private float defaultAttackSpeed;

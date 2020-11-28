@@ -38,6 +38,13 @@ public class GridCursor : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            Gamemanager.instance.PauseGame();
+            gridManager.SaveNPCLocalPos(gridManager.gridPanelsRow0, gridManager.testRow1);
+            gridManager.SaveNPCLocalPos(gridManager.gridPanelsRow1, gridManager.testRow2);
+            gridManager.SaveNPCLocalPos(gridManager.gridPanelsRow2, gridManager.testRow3);
+            gridManager.SaveNPCLocalPos(gridManager.gridPanelsCol0, gridManager.testCol1);
+            gridManager.SaveNPCLocalPos(gridManager.gridPanelsCol1, gridManager.testCol2);
+            gridManager.SaveNPCLocalPos(gridManager.gridPanelsCol2, gridManager.testCol3);
             firstPressPos = Input.mousePosition;//get the location of the initial click
             dragging = true;
             ped = new PointerEventData(ev);
@@ -101,18 +108,21 @@ public class GridCursor : MonoBehaviour
                         int[] i = GetDirection(gridManager.gridPanelsRow0, gridManager.originalPositionsRow0);
                         //MoveToCorrectPos(gridManager.gridPanelsRow0);
                         gridManager.UpdateGrid(i[0], true, 0, false);//(-1,0,1), true, 0, false
+                        gridManager.ResetNPCs(gridManager.gridPanelsRow0, gridManager.testRow1);
                     }
                     else if (gridManager.currentRow == gridManager.testRow2)
                     {
                         int[] i = GetDirection(gridManager.gridPanelsRow1, gridManager.originalPositionsRow1);
                         //MoveToCorrectPos(gridManager.gridPanelsRow1);
                         gridManager.UpdateGrid(i[0], true, 1, false);//(-1,0,1), true, 1, false
+                        gridManager.ResetNPCs(gridManager.gridPanelsRow1, gridManager.testRow2);
                     }
                     else if (gridManager.currentRow == gridManager.testRow3)
                     {
                         int[] i = GetDirection(gridManager.gridPanelsRow2, gridManager.originalPositionsRow2);
                         //MoveToCorrectPos(gridManager.gridPanelsRow2);
                         gridManager.UpdateGrid(i[0], true, 2, false);//(-1,0,1), true, 2, false
+                        gridManager.ResetNPCs(gridManager.gridPanelsRow2, gridManager.testRow3);
                     }
                 }
                 if (upDown)
@@ -122,23 +132,27 @@ public class GridCursor : MonoBehaviour
                         int[] i = GetDirection(gridManager.gridPanelsCol0, gridManager.originalPositionsCol0);
                         //MoveToCorrectPos(gridManager.gridPanelsCol0);
                         gridManager.UpdateGrid(i[1], false, 0, true);//(-1,0,1), false, 0, true
+                        gridManager.ResetNPCs(gridManager.gridPanelsCol0, gridManager.testCol1);
                     }
                     else if (gridManager.currentCol == gridManager.testCol2)
                     {
                         int[] i = GetDirection(gridManager.gridPanelsCol1, gridManager.originalPositionsCol1);
                         //MoveToCorrectPos(gridManager.gridPanelsCol1);
                         gridManager.UpdateGrid(i[1], false, 1, true);//(-1,0,1), false, 1, true
+                        gridManager.ResetNPCs(gridManager.gridPanelsCol1, gridManager.testCol2);
                     }
                     else if (gridManager.currentCol == gridManager.testCol3)
                     {
                         int[] i = GetDirection(gridManager.gridPanelsCol2, gridManager.originalPositionsCol2);
                         //MoveToCorrectPos(gridManager.gridPanelsCol2);
                         gridManager.UpdateGrid(i[1], false, 2, true);//(-1,0,1), false, 2, true
+                        gridManager.ResetNPCs(gridManager.gridPanelsCol2, gridManager.testCol3);
                     }
                 }
                 dragging = false;
                 leftRight = false;
                 upDown = false;
+                Gamemanager.instance.ResumeGame();
             }
         }
     }

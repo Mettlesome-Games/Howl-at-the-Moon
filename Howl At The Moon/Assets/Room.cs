@@ -17,12 +17,41 @@ public class Room : MonoBehaviour
     public GameObject moon;
     public Vector2 moonOffset;
     public Vector2 moonSize;
+    public List<GameObject> NPCs;
     // Start is called before the first frame update
     void Start()
     {
         GetComponent<SpriteRenderer>().sprite = roomSprite;
-        
+
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        {
+            if(collision.gameObject.GetComponent<WerewolfAI>().CurrentState != WerewolfAI.EWerewolfStates.Trapped)
+            {
+                collision.gameObject.transform.parent = this.transform;
+                NPCs.Add(collision.gameObject);
+            }
+            else if (collision.CompareTag("Servant"))
+            {
+                collision.gameObject.transform.parent = this.transform;
+                NPCs.Add(collision.gameObject);
+            }
+            //collision.gameObject.GetComponent<WerewolfAI>().newState = WerewolfAI.EWerewolfStates.Trapped;
+        }
+    }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy") || collision.CompareTag("Servant"))
+        {
+            if (NPCs.Contains(collision.gameObject))
+            {
+                NPCs.Remove(collision.gameObject);
+                print(collision.gameObject.name + "has left");
+            }
+        }
+    }
 }

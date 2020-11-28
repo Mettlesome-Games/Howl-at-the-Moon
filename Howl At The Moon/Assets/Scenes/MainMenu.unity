@@ -451,7 +451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -484,7 +484,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 96025362}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: d60e3e93bd291b84394b724ba7a09b86, type: 2}
   m_CullingMode: 0
@@ -3090,6 +3090,7 @@ GameObject:
   - component: {fileID: 749980562}
   - component: {fileID: 749980564}
   - component: {fileID: 749980563}
+  - component: {fileID: 749980565}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -3157,6 +3158,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5bf2206426686e498fff5c45fab6fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &749980565
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749980561}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ebd8bd0c93ac251499c2fcd0c74cfb83, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &781593749
 GameObject:
   m_ObjectHideFlags: 0

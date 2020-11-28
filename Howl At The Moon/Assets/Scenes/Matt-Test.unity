@@ -375,6 +375,7 @@ GameObject:
   - component: {fileID: 42253721}
   - component: {fileID: 42253722}
   - component: {fileID: 42253723}
+  - component: {fileID: 42253724}
   m_Layer: 0
   m_Name: RM
   m_TagString: Untagged
@@ -445,7 +446,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1763795265}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &42253721
 MonoBehaviour:
@@ -469,6 +470,7 @@ MonoBehaviour:
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
+  NPCs: []
 --- !u!61 &42253722
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -506,6 +508,32 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &42253724
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42253718}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -691,6 +719,7 @@ GameObject:
   - component: {fileID: 86235963}
   - component: {fileID: 86235964}
   - component: {fileID: 86235965}
+  - component: {fileID: 86235966}
   m_Layer: 0
   m_Name: 2
   m_TagString: Untagged
@@ -710,7 +739,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1763795265}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &86235962
 SpriteRenderer:
@@ -785,6 +814,7 @@ MonoBehaviour:
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
+  NPCs: []
 --- !u!61 &86235964
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -822,6 +852,32 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &86235966
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86235960}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1032,7 +1088,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1763795265}
-  m_RootOrder: 30
+  m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &105352454
 MonoBehaviour:
@@ -1056,6 +1112,7 @@ MonoBehaviour:
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
+  NPCs: []
 --- !u!212 &105352455
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2245,6 +2302,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 289800073}
   m_CullTransparentMesh: 0
+--- !u!1001 &300671437
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1997963835}
+    m_Modifications:
+    - target: {fileID: 749279066195315568, guid: 187f7155c1410384ea99049c5c800b17, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 749279066195315582, guid: 187f7155c1410384ea99049c5c800b17, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 749279066195315582, guid: 187f7155c1410384ea99049c5c800b17, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 749279066327360625, guid: 187f7155c1410384ea99049c5c800b17, type: 3}
+      propertyPath: m_Name
+      value: ManorLord
+      objectReference: {fileID: 0}
+    - target: {fileID: 749279066327360628, guid: 187f7155c1410384ea99049c5c800b17, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 749279066327360628, guid: 187f7155c1410384ea99049c5c800b17, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.209
+      objectReference: {fileID: 0}
+    - target: {fileID: 749279066327360628, guid: 187f7155c1410384ea99049c5c800b17, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.083
+      objectReference: {fileID: 0}
+    - target: {fileID: 749279066327360628, guid: 187f7155c1410384ea99049c5c800b17, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 749279066327360628, guid: 187f7155c1410384ea99049c5c800b17, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 749279066327360628, guid: 187f7155c1410384ea99049c5c800b17, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 749279066327360628, guid: 187f7155c1410384ea99049c5c800b17, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 749279066327360628, guid: 187f7155c1410384ea99049c5c800b17, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 749279066327360628, guid: 187f7155c1410384ea99049c5c800b17, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 749279066327360628, guid: 187f7155c1410384ea99049c5c800b17, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 749279066327360628, guid: 187f7155c1410384ea99049c5c800b17, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 187f7155c1410384ea99049c5c800b17, type: 3}
 --- !u!1 &305245207
 GameObject:
   m_ObjectHideFlags: 0
@@ -2296,6 +2422,7 @@ GameObject:
   - component: {fileID: 309510266}
   - component: {fileID: 309510267}
   - component: {fileID: 309510268}
+  - component: {fileID: 309510269}
   m_Layer: 0
   m_Name: 7
   m_TagString: Untagged
@@ -2315,7 +2442,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1763795265}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &309510265
 SpriteRenderer:
@@ -2390,6 +2517,7 @@ MonoBehaviour:
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
+  NPCs: []
 --- !u!61 &309510267
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2442,6 +2570,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
+--- !u!61 &309510269
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309510263}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
 --- !u!1 &310178686
 GameObject:
   m_ObjectHideFlags: 0
@@ -2455,6 +2609,7 @@ GameObject:
   - component: {fileID: 310178689}
   - component: {fileID: 310178690}
   - component: {fileID: 310178691}
+  - component: {fileID: 310178692}
   m_Layer: 0
   m_Name: LM
   m_TagString: Untagged
@@ -2525,7 +2680,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1763795265}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &310178689
 MonoBehaviour:
@@ -2549,6 +2704,7 @@ MonoBehaviour:
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
+  NPCs: []
 --- !u!61 &310178690
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2586,6 +2742,32 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &310178692
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310178686}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -3394,6 +3576,7 @@ GameObject:
   - component: {fileID: 379507591}
   - component: {fileID: 379507592}
   - component: {fileID: 379507593}
+  - component: {fileID: 379507594}
   m_Layer: 0
   m_Name: BM
   m_TagString: Untagged
@@ -3464,7 +3647,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1763795265}
-  m_RootOrder: 25
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &379507591
 MonoBehaviour:
@@ -3488,6 +3671,7 @@ MonoBehaviour:
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
+  NPCs: []
 --- !u!61 &379507592
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3540,6 +3724,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
+--- !u!61 &379507594
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379507588}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
 --- !u!1 &388660982
 GameObject:
   m_ObjectHideFlags: 0
@@ -3572,7 +3782,7 @@ Transform:
   - {fileID: 1247529580}
   - {fileID: 612430697}
   m_Father: {fileID: 1763795265}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &396845115
 GameObject:
@@ -3768,6 +3978,7 @@ GameObject:
   m_Component:
   - component: {fileID: 411369164}
   - component: {fileID: 411369165}
+  - component: {fileID: 411369166}
   m_Layer: 0
   m_Name: Pixel Art Brick Wall (3)
   m_TagString: Untagged
@@ -3840,6 +4051,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &411369166
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411369163}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.39366153, y: 0.11080837}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.4, y: 0.4}
+    newSize: {x: 0.4, y: 0.4}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.4058321, y: 0.55163264}
+  m_EdgeRadius: 0
 --- !u!1 &437303517
 GameObject:
   m_ObjectHideFlags: 0
@@ -4324,6 +4561,7 @@ GameObject:
   - component: {fileID: 479118451}
   - component: {fileID: 479118452}
   - component: {fileID: 479118453}
+  - component: {fileID: 479118454}
   m_Layer: 0
   m_Name: BL
   m_TagString: Untagged
@@ -4394,7 +4632,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1763795265}
-  m_RootOrder: 26
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &479118451
 MonoBehaviour:
@@ -4418,6 +4656,7 @@ MonoBehaviour:
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
+  NPCs: []
 --- !u!61 &479118452
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4455,6 +4694,32 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &479118454
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479118448}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -5012,6 +5277,7 @@ GameObject:
   - component: {fileID: 514413194}
   - component: {fileID: 514413195}
   - component: {fileID: 514413196}
+  - component: {fileID: 514413197}
   m_Layer: 0
   m_Name: 5
   m_TagString: Untagged
@@ -5031,7 +5297,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1763795265}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &514413193
 SpriteRenderer:
@@ -5106,6 +5372,7 @@ MonoBehaviour:
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
+  NPCs: []
 --- !u!61 &514413195
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5143,6 +5410,32 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &514413197
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514413191}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -5243,6 +5536,7 @@ GameObject:
   m_Component:
   - component: {fileID: 547193740}
   - component: {fileID: 547193741}
+  - component: {fileID: 547193742}
   m_Layer: 0
   m_Name: Pixel Art Brick Wall (3)
   m_TagString: Untagged
@@ -5315,6 +5609,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &547193742
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547193739}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.39949372, y: 0.08164826}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.4, y: 0.4}
+    newSize: {x: 0.4, y: 0.4}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.4058321, y: 0.5632965}
+  m_EdgeRadius: 0
 --- !u!1 &550340042
 GameObject:
   m_ObjectHideFlags: 0
@@ -5325,6 +5645,7 @@ GameObject:
   m_Component:
   - component: {fileID: 550340043}
   - component: {fileID: 550340044}
+  - component: {fileID: 550340045}
   m_Layer: 0
   m_Name: Pixel Art Brick Wall (3)
   m_TagString: Untagged
@@ -5397,6 +5718,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &550340045
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550340042}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.40469784, y: 0.08624712}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.4, y: 0.4}
+    newSize: {x: 0.4, y: 0.4}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.41326857, y: 0.5724942}
+  m_EdgeRadius: 0
 --- !u!1 &557523944
 GameObject:
   m_ObjectHideFlags: 0
@@ -5744,6 +6091,7 @@ GameObject:
   - component: {fileID: 599983709}
   - component: {fileID: 599983710}
   - component: {fileID: 599983711}
+  - component: {fileID: 599983712}
   m_Layer: 0
   m_Name: TM
   m_TagString: Untagged
@@ -5814,7 +6162,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1763795265}
-  m_RootOrder: 22
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &599983709
 MonoBehaviour:
@@ -5838,6 +6186,7 @@ MonoBehaviour:
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
+  NPCs: []
 --- !u!61 &599983710
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5875,6 +6224,32 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &599983712
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599983706}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -6094,6 +6469,7 @@ GameObject:
   - component: {fileID: 621342885}
   - component: {fileID: 621342886}
   - component: {fileID: 621342887}
+  - component: {fileID: 621342888}
   m_Layer: 0
   m_Name: 1
   m_TagString: Untagged
@@ -6113,7 +6489,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1763795265}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &621342884
 SpriteRenderer:
@@ -6188,6 +6564,7 @@ MonoBehaviour:
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
+  NPCs: []
 --- !u!61 &621342886
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6201,7 +6578,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.37023997}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -6212,7 +6589,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.8}
+  m_Size: {x: 0.8, y: 0.059520006}
   m_EdgeRadius: 0
 --- !u!61 &621342887
 BoxCollider2D:
@@ -6225,6 +6602,32 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.36043227}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.07913542}
+  m_EdgeRadius: 0
+--- !u!61 &621342888
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621342882}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -6401,6 +6804,7 @@ GameObject:
   - component: {fileID: 641344693}
   - component: {fileID: 641344694}
   - component: {fileID: 641344695}
+  - component: {fileID: 641344696}
   m_Layer: 0
   m_Name: 8
   m_TagString: Untagged
@@ -6420,7 +6824,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1763795265}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &641344692
 SpriteRenderer:
@@ -6495,6 +6899,7 @@ MonoBehaviour:
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
+  NPCs: []
 --- !u!61 &641344694
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6508,7 +6913,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.3629501}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -6519,7 +6924,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.8}
+  m_Size: {x: 0.8, y: 0.07409978}
   m_EdgeRadius: 0
 --- !u!61 &641344695
 BoxCollider2D:
@@ -6532,6 +6937,32 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.36536968}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.0692606}
+  m_EdgeRadius: 0
+--- !u!61 &641344696
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641344690}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -7214,7 +7645,7 @@ Transform:
   - {fileID: 1442489185}
   - {fileID: 1799115591}
   m_Father: {fileID: 1763795265}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &694173867
 GameObject:
@@ -8623,6 +9054,7 @@ GameObject:
   m_Component:
   - component: {fileID: 829075462}
   - component: {fileID: 829075463}
+  - component: {fileID: 829075464}
   m_Layer: 0
   m_Name: Pixel Art Brick Wall (3)
   m_TagString: Untagged
@@ -8695,6 +9127,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &829075464
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829075461}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.4050455, y: 0.09463683}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.4, y: 0.4}
+    newSize: {x: 0.4, y: 0.4}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.40757096, y: 0.58927363}
+  m_EdgeRadius: 0
 --- !u!1 &830731285
 GameObject:
   m_ObjectHideFlags: 0
@@ -9123,7 +9581,7 @@ Transform:
   - {fileID: 1127976199}
   - {fileID: 571295494}
   m_Father: {fileID: 1763795265}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &860728450
 GameObject:
@@ -11547,6 +12005,7 @@ GameObject:
   - component: {fileID: 1155201215}
   - component: {fileID: 1155201216}
   - component: {fileID: 1155201217}
+  - component: {fileID: 1155201218}
   m_Layer: 0
   m_Name: TR
   m_TagString: Untagged
@@ -11617,7 +12076,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1763795265}
-  m_RootOrder: 23
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1155201215
 MonoBehaviour:
@@ -11641,6 +12100,7 @@ MonoBehaviour:
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
+  NPCs: []
 --- !u!61 &1155201216
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11678,6 +12138,32 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &1155201218
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1155201212}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -12032,7 +12518,7 @@ Transform:
   - {fileID: 1984936089}
   - {fileID: 400453966}
   m_Father: {fileID: 1763795265}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1188933473
 GameObject:
@@ -12577,6 +13063,7 @@ GameObject:
   - component: {fileID: 1247115249}
   - component: {fileID: 1247115251}
   - component: {fileID: 1247115252}
+  - component: {fileID: 1247115253}
   m_Layer: 0
   m_Name: RM2
   m_TagString: Untagged
@@ -12596,7 +13083,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1763795265}
-  m_RootOrder: 28
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1247115249
 MonoBehaviour:
@@ -12620,6 +13107,7 @@ MonoBehaviour:
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
+  NPCs: []
 --- !u!212 &1247115250
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12708,6 +13196,32 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &1247115253
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247115247}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -13572,6 +14086,7 @@ GameObject:
   - component: {fileID: 1308831648}
   - component: {fileID: 1308831649}
   - component: {fileID: 1308831650}
+  - component: {fileID: 1308831651}
   m_Layer: 0
   m_Name: LT
   m_TagString: Untagged
@@ -13642,7 +14157,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1763795265}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1308831648
 MonoBehaviour:
@@ -13666,6 +14181,7 @@ MonoBehaviour:
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
+  NPCs: []
 --- !u!61 &1308831649
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13703,6 +14219,32 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &1308831651
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308831645}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -13970,6 +14512,7 @@ GameObject:
   - component: {fileID: 1331737847}
   - component: {fileID: 1331737848}
   - component: {fileID: 1331737849}
+  - component: {fileID: 1331737850}
   m_Layer: 0
   m_Name: 4
   m_TagString: Untagged
@@ -13989,7 +14532,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1763795265}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1331737846
 SpriteRenderer:
@@ -14064,6 +14607,7 @@ MonoBehaviour:
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
+  NPCs: []
 --- !u!61 &1331737848
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14101,6 +14645,32 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &1331737850
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331737844}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -14238,6 +14808,7 @@ GameObject:
   - component: {fileID: 1339500187}
   - component: {fileID: 1339500189}
   - component: {fileID: 1339500190}
+  - component: {fileID: 1339500191}
   m_Layer: 0
   m_Name: RT2
   m_TagString: Untagged
@@ -14257,7 +14828,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1763795265}
-  m_RootOrder: 27
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1339500187
 MonoBehaviour:
@@ -14281,6 +14852,7 @@ MonoBehaviour:
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
+  NPCs: []
 --- !u!212 &1339500188
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14369,6 +14941,32 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &1339500191
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339500185}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -14607,7 +15205,7 @@ Transform:
   - {fileID: 1859131795}
   - {fileID: 974060262}
   m_Father: {fileID: 1763795265}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1403425414
 GameObject:
@@ -14786,6 +15384,7 @@ GameObject:
   - component: {fileID: 1421154925}
   - component: {fileID: 1421154926}
   - component: {fileID: 1421154927}
+  - component: {fileID: 1421154928}
   m_Layer: 0
   m_Name: 6
   m_TagString: Untagged
@@ -14805,7 +15404,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1763795265}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1421154924
 SpriteRenderer:
@@ -14880,6 +15479,7 @@ MonoBehaviour:
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
+  NPCs: []
 --- !u!61 &1421154926
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14917,6 +15517,32 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &1421154928
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421154922}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -15072,7 +15698,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1763795265}
-  m_RootOrder: 32
+  m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1459823154
 MonoBehaviour:
@@ -15096,6 +15722,7 @@ MonoBehaviour:
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
+  NPCs: []
 --- !u!212 &1459823155
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15586,6 +16213,7 @@ GameObject:
   - component: {fileID: 1518548424}
   - component: {fileID: 1518548425}
   - component: {fileID: 1518548426}
+  - component: {fileID: 1518548427}
   m_Layer: 0
   m_Name: 3
   m_TagString: Untagged
@@ -15605,7 +16233,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1763795265}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1518548423
 SpriteRenderer:
@@ -15680,6 +16308,7 @@ MonoBehaviour:
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
+  NPCs: []
 --- !u!61 &1518548425
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15717,6 +16346,32 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &1518548427
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518548421}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -16442,6 +17097,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1583582002}
   - component: {fileID: 1583582003}
+  - component: {fileID: 1583582004}
   m_Layer: 0
   m_Name: Pixel Art Brick Wall (3)
   m_TagString: Untagged
@@ -16514,6 +17170,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1583582004
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583582001}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.40240955, y: 0.09622845}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.4, y: 0.4}
+    newSize: {x: 0.4, y: 0.4}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.38833606, y: 0.48748046}
+  m_EdgeRadius: 0
 --- !u!1 &1585739034
 GameObject:
   m_ObjectHideFlags: 0
@@ -16633,6 +17315,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1601389488}
   - component: {fileID: 1601389489}
+  - component: {fileID: 1601389490}
   m_Layer: 0
   m_Name: Pixel Art Brick Wall (3)
   m_TagString: Untagged
@@ -16705,6 +17388,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1601389490
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601389487}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.40240955, y: 0.09622845}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.4, y: 0.4}
+    newSize: {x: 0.4, y: 0.4}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.38833606, y: 0.48748046}
+  m_EdgeRadius: 0
 --- !u!1 &1612897550
 GameObject:
   m_ObjectHideFlags: 0
@@ -16868,6 +17577,7 @@ GameObject:
   - component: {fileID: 1629583086}
   - component: {fileID: 1629583087}
   - component: {fileID: 1629583088}
+  - component: {fileID: 1629583089}
   m_Layer: 0
   m_Name: TL
   m_TagString: Untagged
@@ -16938,7 +17648,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1763795265}
-  m_RootOrder: 21
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1629583086
 MonoBehaviour:
@@ -16962,6 +17672,7 @@ MonoBehaviour:
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
+  NPCs: []
 --- !u!61 &1629583087
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16999,6 +17710,32 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &1629583089
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629583083}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -17120,7 +17857,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1763795265}
-  m_RootOrder: 29
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1643005180
 MonoBehaviour:
@@ -17144,6 +17881,7 @@ MonoBehaviour:
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
+  NPCs: []
 --- !u!212 &1643005181
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17467,6 +18205,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &1695779426 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4953867885005208730, guid: 249d1fd02878e0d46860905c6e5536c4, type: 3}
+  m_PrefabInstance: {fileID: 1893084449}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1698591168
 GameObject:
   m_ObjectHideFlags: 0
@@ -17580,7 +18323,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1763795265}
-  m_RootOrder: 31
+  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1703451051
 MonoBehaviour:
@@ -17604,6 +18347,7 @@ MonoBehaviour:
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
+  NPCs: []
 --- !u!212 &1703451052
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17769,6 +18513,7 @@ GameObject:
   - component: {fileID: 1728440935}
   - component: {fileID: 1728440936}
   - component: {fileID: 1728440937}
+  - component: {fileID: 1728440938}
   m_Layer: 0
   m_Name: LB
   m_TagString: Untagged
@@ -17839,7 +18584,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1763795265}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1728440935
 MonoBehaviour:
@@ -17863,6 +18608,7 @@ MonoBehaviour:
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
+  NPCs: []
 --- !u!61 &1728440936
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17915,6 +18661,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
+--- !u!61 &1728440938
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728440932}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
 --- !u!1 &1731845148
 GameObject:
   m_ObjectHideFlags: 0
@@ -17928,6 +18700,7 @@ GameObject:
   - component: {fileID: 1731845151}
   - component: {fileID: 1731845152}
   - component: {fileID: 1731845153}
+  - component: {fileID: 1731845154}
   m_Layer: 0
   m_Name: BR
   m_TagString: Untagged
@@ -17998,7 +18771,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1763795265}
-  m_RootOrder: 24
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1731845151
 MonoBehaviour:
@@ -18022,6 +18795,7 @@ MonoBehaviour:
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
+  NPCs: []
 --- !u!61 &1731845152
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18059,6 +18833,32 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &1731845154
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731845148}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -18244,6 +19044,7 @@ GameObject:
   - component: {fileID: 1759004764}
   - component: {fileID: 1759004765}
   - component: {fileID: 1759004766}
+  - component: {fileID: 1759004767}
   m_Layer: 0
   m_Name: RB
   m_TagString: Untagged
@@ -18314,7 +19115,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1763795265}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1759004764
 MonoBehaviour:
@@ -18338,6 +19139,7 @@ MonoBehaviour:
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
+  NPCs: []
 --- !u!61 &1759004765
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18375,6 +19177,32 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &1759004767
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759004761}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -18524,6 +19352,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1695779426}
   - {fileID: 1170766185}
   - {fileID: 1397155586}
   - {fileID: 388660983}
@@ -18927,6 +19756,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &1809147653 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 749279066327360628, guid: 187f7155c1410384ea99049c5c800b17, type: 3}
+  m_PrefabInstance: {fileID: 300671437}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1816669150
 GameObject:
   m_ObjectHideFlags: 0
@@ -19266,7 +20100,7 @@ Transform:
   - {fileID: 362972269}
   - {fileID: 122352961}
   m_Father: {fileID: 1763795265}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1869412158
 GameObject:
@@ -19602,6 +20436,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1890744583}
   m_CullTransparentMesh: 0
+--- !u!1001 &1893084449
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1763795265}
+    m_Modifications:
+    - target: {fileID: 4953867884669714225, guid: 249d1fd02878e0d46860905c6e5536c4, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4953867885005208730, guid: 249d1fd02878e0d46860905c6e5536c4, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4953867885005208730, guid: 249d1fd02878e0d46860905c6e5536c4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4953867885005208730, guid: 249d1fd02878e0d46860905c6e5536c4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4953867885005208730, guid: 249d1fd02878e0d46860905c6e5536c4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 4953867885005208730, guid: 249d1fd02878e0d46860905c6e5536c4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4953867885005208730, guid: 249d1fd02878e0d46860905c6e5536c4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4953867885005208730, guid: 249d1fd02878e0d46860905c6e5536c4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4953867885005208730, guid: 249d1fd02878e0d46860905c6e5536c4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4953867885005208730, guid: 249d1fd02878e0d46860905c6e5536c4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4953867885005208730, guid: 249d1fd02878e0d46860905c6e5536c4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4953867885005208730, guid: 249d1fd02878e0d46860905c6e5536c4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4953867885005208730, guid: 249d1fd02878e0d46860905c6e5536c4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4953867885005208730, guid: 249d1fd02878e0d46860905c6e5536c4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4953867885005208735, guid: 249d1fd02878e0d46860905c6e5536c4, type: 3}
+      propertyPath: m_Name
+      value: Werewolf
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 249d1fd02878e0d46860905c6e5536c4, type: 3}
 --- !u!1 &1905905410
 GameObject:
   m_ObjectHideFlags: 0
@@ -20241,6 +21144,7 @@ GameObject:
   - component: {fileID: 1997963837}
   - component: {fileID: 1997963838}
   - component: {fileID: 1997963839}
+  - component: {fileID: 1997963840}
   m_Layer: 0
   m_Name: 0
   m_TagString: Untagged
@@ -20258,9 +21162,10 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.8, y: 1.75, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1809147653}
   m_Father: {fileID: 1763795265}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1997963836
 SpriteRenderer:
@@ -20335,6 +21240,7 @@ MonoBehaviour:
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
+  NPCs: []
 --- !u!61 &1997963838
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20348,7 +21254,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.2721036}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -20359,7 +21265,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.8}
+  m_Size: {x: 0.8, y: 0.25579274}
   m_EdgeRadius: 0
 --- !u!61 &1997963839
 BoxCollider2D:
@@ -20372,6 +21278,32 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.30854595}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.18290806}
+  m_EdgeRadius: 0
+--- !u!61 &1997963840
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997963834}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -20923,6 +21855,7 @@ GameObject:
   - component: {fileID: 2068725617}
   - component: {fileID: 2068725618}
   - component: {fileID: 2068725619}
+  - component: {fileID: 2068725620}
   m_Layer: 0
   m_Name: RT
   m_TagString: Untagged
@@ -20993,7 +21926,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1763795265}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2068725617
 MonoBehaviour:
@@ -21017,6 +21950,7 @@ MonoBehaviour:
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
+  NPCs: []
 --- !u!61 &2068725618
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -21054,6 +21988,32 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &2068725620
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068725614}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

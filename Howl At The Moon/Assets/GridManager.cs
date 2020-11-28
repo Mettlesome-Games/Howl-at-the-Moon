@@ -91,13 +91,14 @@ public class GridManager : MonoBehaviour
         SetUpMoonlight(testRow1, gridPanelsRow0);
         SetUpMoonlight(testRow2, gridPanelsRow1);
         SetUpMoonlight(testRow3, gridPanelsRow2);
+        DrawRooms();
     }
 
     // Update is called once per frame
     void Update()
     {
         //DrawColors();
-        DrawRooms(); //draw the rooms continually(maybe should only call once something changes...) --will test
+        //DrawRooms(); //draw the rooms continually(maybe should only call once something changes...) --will test
     }
 
     //shifts up for cols or left for rows
@@ -333,7 +334,7 @@ public class GridManager : MonoBehaviour
                     tile.GetComponent<Room>().traps[j].transform.localPosition = tile.GetComponent<Room>().localP[j];
                     j++;
                 }
-                if(rowSource[rowSource.Length - 1].GetComponent<Room>().moon != null)
+                if (rowSource[rowSource.Length - 1].GetComponent<Room>().moon != null)
                 {
                     tile.GetComponent<Room>().moon = rowSource[rowSource.Length - 1].GetComponent<Room>().moon;
                     tile.GetComponent<Room>().moon.transform.parent = tile.transform;
@@ -366,6 +367,7 @@ public class GridManager : MonoBehaviour
                     tile.GetComponent<Room>().traps[j].transform.localPosition = tile.GetComponent<Room>().localP[j];
                     j++;
                 }
+                
                 if (rowSource[i - 1].GetComponent<Room>().moon != null)
                 {
                     tile.GetComponent<Room>().moon = rowSource[i - 1].GetComponent<Room>().moon;
@@ -393,6 +395,59 @@ public class GridManager : MonoBehaviour
         foreach (GameObject pan in rowCol)
         {
             pan.transform.position = originalRowCol[i];
+            i++;
+        }
+    }
+
+    public void SaveNPCLocalPos(List<GameObject> panelRow, GameObject[] rowSource)
+    {
+        int i = 0;
+        foreach (GameObject tile in panelRow)
+        {
+            if(i == 0)
+            {
+                foreach (GameObject NPC in tile.GetComponent<Room>().NPCs)
+                {
+                    NPC.GetComponent<WerewolfAI>().localPos = NPC.transform.localPosition;
+                }
+                rowSource[rowSource.Length - 1].GetComponent<Room>().NPCs = tile.GetComponent<Room>().NPCs;
+            }
+            else
+            {
+                foreach (GameObject NPC in tile.GetComponent<Room>().NPCs)
+                {
+                    NPC.GetComponent<WerewolfAI>().localPos = NPC.transform.localPosition;
+                }
+                rowSource[i - 1].GetComponent<Room>().NPCs = tile.GetComponent<Room>().NPCs;
+            }
+            i++;
+        }
+    }
+
+    public void ResetNPCs(List<GameObject> panelRow, GameObject[] rowSource)
+    {
+        int i = 0;
+        foreach (GameObject tile in panelRow)
+        {
+            if (i == 0)
+            {
+                tile.GetComponent<Room>().NPCs = rowSource[rowSource.Length - 1].GetComponent<Room>().NPCs;
+                int j = 0;
+                foreach (GameObject NPC in rowSource[rowSource.Length - 1].GetComponent<Room>().NPCs)
+                {
+                    NPC.transform.parent = tile.transform;
+                    NPC.transform.localPosition = NPC.GetComponent<WerewolfAI>().localPos;
+                }
+            }
+            else
+            {
+                tile.GetComponent<Room>().NPCs = rowSource[i - 1].GetComponent<Room>().NPCs;
+                foreach (GameObject NPC in tile.GetComponent<Room>().NPCs)
+                {
+                    NPC.transform.parent = tile.transform;
+                    NPC.transform.localPosition = NPC.GetComponent<WerewolfAI>().localPos;
+                }
+            }
             i++;
         }
     }
@@ -607,5 +662,6 @@ public class GridManager : MonoBehaviour
         SecondGroupMatching(updown);
         currentCol = null;
         currentRow = null;
+        DrawRooms();
     }
 }

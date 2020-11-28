@@ -9,7 +9,7 @@ public class FoodTrap : MonoBehaviour
     private Animator wolfbaneAnimator;
     private void Awake()
     {
-        wolfbaneAnimator = this.transform.Find("WolfsbaneSprite").GetComponent<Animator>();
+        //wolfbaneAnimator = this.transform.Find("WolfsbaneSprite").GetComponent<Animator>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -17,9 +17,9 @@ public class FoodTrap : MonoBehaviour
         if (collision.CompareTag("Servant"))
         {
             isfoodPoisoned = true;
-            collision.transform.gameObject.GetComponent<ServantAI>().canMakeWolfsbane = true;
+            collision.gameObject.GetComponent<ServantAI>().canMakeWolfsbane = true;
             wolfbaneAnimator.SetBool("Poisoned", true);
-            this.GetComponent<Collider2D>().enabled = false;
+            this.GetComponent<Collider2D>().enabled = true;
         }
 
         /*
@@ -27,9 +27,13 @@ public class FoodTrap : MonoBehaviour
             isfoodPoisoned = true;
         }
         
-        if (collision.CompareTag("Enemy") && isfoodPoisoned) {
+        if (collision.CompareTag("Enemy") && isfoodPoisoned) { //this works and keeps the wolf trapped and follows room
             print("Werewolf knockout!!!");
-            GetComponent<WerewolfAI>().newState = WerewolfAI.EWerewolfStates.Trapped;
+            collision.gameObject.transform.parent = this.transform;
+            collision.gameObject.GetComponent<WerewolfAI>().newState = WerewolfAI.EWerewolfStates.Trapped;
+            collision.gameObject.transform.Rotate(0, 0, 90);
+            this.transform.parent.GetComponent<Room>().NPCs.Remove(collision.gameObject);
+            //collision.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             this.GetComponent<Collider2D>().enabled = false;
         }*/
     }

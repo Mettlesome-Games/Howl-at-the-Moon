@@ -173,7 +173,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -5003570119334798942, guid: 394378fff5ca9404bbe6ea8bebc1a0d2, type: 3}
   m_Color: {r: 0.91769695, g: 0.9254902, b: 0.08235295, a: 1}
   m_FlipX: 1
@@ -359,6 +359,7 @@ MonoBehaviour:
   currentTarget: 0
   reachedEndOfPath: 0
   canMakeWolfsbane: 0
+  wolfsbaneDamage: 0
   wolfsbaneSpeedDefault: 0
   wolfsbaneMakeTimer: 0
   hasWolfsbane: 0
