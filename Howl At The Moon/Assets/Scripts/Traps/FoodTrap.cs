@@ -9,14 +9,22 @@ public class FoodTrap : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
+        if (collision.CompareTag("Servant"))
+        {
+            collision.transform.gameObject.GetComponent<ServantAI>().canMakeWolfsbane = true;
+            this.GetComponent<Collider2D>().enabled = false;
+        }
+
+        /*
         if (collision.CompareTag("Servant") && !isfoodPoisoned) {
             isfoodPoisoned = true;
         }
-
+        
         if (collision.CompareTag("Enemy") && isfoodPoisoned) {
             print("Werewolf knockout!!!");
             GetComponent<WerewolfAI>().newState = WerewolfAI.EWerewolfStates.Trapped;
             this.GetComponent<Collider2D>().enabled = false;
-        }
+        }*/
     }
 }

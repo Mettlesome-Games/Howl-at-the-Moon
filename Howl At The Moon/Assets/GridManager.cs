@@ -17,6 +17,7 @@ public class GridManager : MonoBehaviour
     [HideInInspector] public GameObject[] currentCol;
 
     public GameObject MoonPrefab;
+    public GameObject[] TrapPrefabs;//0-Chandler, 1-Food, 2-Net, 3-TrapDoor
     //testing adding in rooms to replace colors(map will need a new way to represent things)
     public GameObject[] testRow1 = new GameObject[6];
     public GameObject[] testRow2 = new GameObject[6];
@@ -69,26 +70,23 @@ public class GridManager : MonoBehaviour
         //SetUpTraps(testCol1, gridPanelsCol0);
         //SetUpTraps(testCol2, gridPanelsCol1);
         //SetUpTraps(testCol3, gridPanelsCol2);
-        //gridPanelsRow0[1].GetComponent<Room>().traps = new GameObject[testRow1[0].GetComponent<Room>().traps.Length];
-        //gridPanelsRow0[1].GetComponent<Room>().traps[0] = Instantiate<GameObject>(testRow1[0].GetComponent<Room>().traps[0]);
-        //testRow1[0].GetComponent<Room>().traps = gridPanelsRow0[1].GetComponent<Room>().traps;
-        //gridPanelsRow0[1].GetComponent<Room>().traps[0].transform.parent = gridPanelsRow0[1].transform;
-        //gridPanelsRow0[1].GetComponent<Room>().traps[0].transform.position = gridPanelsRow0[1].GetComponent<Room>().traps[0].transform.parent.transform.position + new Vector3(0,.35f,0);
         
         //set up this one separate, because when you setup the whole column it creates duplicate of any trap already created in the rows. 
         //There is actually still one square that hasn't had traps set up (below 7 or BM) but that's fine. Just don't put traps there 
         int i = 0;
-        gridPanelsCol1[0].GetComponent<Room>().traps = new GameObject[testCol2[testCol2.Length-1].GetComponent<Room>().traps.Length];
-        foreach(GameObject trap in testCol2[testCol2.Length - 1].GetComponent<Room>().traps)
+        gridPanelsCol1[0].GetComponent<Room>().traps = new GameObject[testCol2[testCol2.Length-1].GetComponent<Room>().trapIDs.Length];
+        testCol2[testCol2.Length - 1].GetComponent<Room>().traps = new GameObject[testCol2[testCol2.Length - 1].GetComponent<Room>().trapIDs.Length];
+        foreach (int trap in testCol2[testCol2.Length - 1].GetComponent<Room>().trapIDs)
         {
-            gridPanelsCol1[0].GetComponent<Room>().traps[i] = Instantiate<GameObject>(trap);
+            gridPanelsCol1[0].GetComponent<Room>().traps[i] = Instantiate<GameObject>(TrapPrefabs[trap]);
             gridPanelsCol1[0].GetComponent<Room>().traps[i].transform.parent = gridPanelsCol1[0].transform;
-            gridPanelsCol1[0].GetComponent<Room>().traps[i].transform.position = gridPanelsCol1[0].transform.position;// GetComponent<Room>().traps[i].transform.parent.transform.position;
-            gridPanelsCol1[0].GetComponent<Room>().traps[i].transform.localScale = trap.transform.localScale;
+            gridPanelsCol1[0].GetComponent<Room>().traps[i].transform.position = gridPanelsCol1[0].transform.position;
+            gridPanelsCol1[0].GetComponent<Room>().traps[i].transform.localPosition = testCol2[testCol2.Length - 1].GetComponent<Room>().localP[i];
+            gridPanelsCol1[0].GetComponent<Room>().traps[i].transform.localScale = TrapPrefabs[trap].transform.localScale;
             i++;
         }
         testCol2[testCol2.Length - 1].GetComponent<Room>().traps = gridPanelsCol1[0].GetComponent<Room>().traps;
-
+        
         //set up the moonlight colliders
         SetUpMoonlight(testRow1, gridPanelsRow0);
         SetUpMoonlight(testRow2, gridPanelsRow1);
@@ -323,15 +321,16 @@ public class GridManager : MonoBehaviour
                 tile.GetComponent<SpriteRenderer>().sprite = rowSource[rowSource.Length - 1].GetComponent<Room>().roomSprite;
                 tile.GetComponent<Room>().traps = rowSource[rowSource.Length - 1].GetComponent<Room>().traps;
                 tile.GetComponent<Room>().localP = rowSource[rowSource.Length - 1].GetComponent<Room>().localP;
-                tile.GetComponent<BoxCollider2D>().offset = rowSource[rowSource.Length - 1].GetComponent<Room>().floor.offset;
-                tile.GetComponent<BoxCollider2D>().size = rowSource[rowSource.Length - 1].GetComponent<Room>().floor.size;
-                //tile.GetComponent<Room>().traps[0].transform.parent = tile.transform;
+                tile.GetComponent<Room>().floor.offset = rowSource[rowSource.Length - 1].GetComponent<Room>().floor.offset;
+                tile.GetComponent<Room>().floor.size = rowSource[rowSource.Length - 1].GetComponent<Room>().floor.size;
+                tile.GetComponent<Room>().floor2.offset = rowSource[rowSource.Length - 1].GetComponent<Room>().floor2.offset;
+                tile.GetComponent<Room>().floor2.size = rowSource[rowSource.Length - 1].GetComponent<Room>().floor2.size;
                 int j = 0;
                 foreach(GameObject trap in tile.GetComponent<Room>().traps)
                 {
                     tile.GetComponent<Room>().traps[j].transform.parent = tile.transform;
                     tile.GetComponent<Room>().traps[j].transform.position = tile.GetComponent<Room>().traps[j].transform.parent.transform.position;
-                    tile.GetComponent<Room>().traps[j].transform.localPosition = tile.GetComponent<Room>().localP;
+                    tile.GetComponent<Room>().traps[j].transform.localPosition = tile.GetComponent<Room>().localP[j];
                     j++;
                 }
                 if(rowSource[rowSource.Length - 1].GetComponent<Room>().moon != null)
@@ -355,14 +354,16 @@ public class GridManager : MonoBehaviour
                 tile.GetComponent<SpriteRenderer>().sprite = rowSource[i - 1].GetComponent<Room>().roomSprite;
                 tile.GetComponent<Room>().traps = rowSource[i - 1].GetComponent<Room>().traps;
                 tile.GetComponent<Room>().localP = rowSource[i - 1].GetComponent<Room>().localP;
-                tile.GetComponent<BoxCollider2D>().offset = rowSource[i - 1].GetComponent<Room>().floor.offset;
-                tile.GetComponent<BoxCollider2D>().size = rowSource[i - 1].GetComponent<Room>().floor.size;
+                tile.GetComponent<Room>().floor.offset = rowSource[i - 1].GetComponent<Room>().floor.offset;
+                tile.GetComponent<Room>().floor.size = rowSource[i - 1].GetComponent<Room>().floor.size;
+                tile.GetComponent<Room>().floor2.offset = rowSource[i - 1].GetComponent<Room>().floor2.offset;
+                tile.GetComponent<Room>().floor2.size = rowSource[i - 1].GetComponent<Room>().floor2.size;
                 int j = 0;
                 foreach (GameObject trap in tile.GetComponent<Room>().traps)
                 {
                     tile.GetComponent<Room>().traps[j].transform.parent = tile.transform;
-                    tile.GetComponent<Room>().traps[j].transform.position = tile.GetComponent<Room>().traps[j].transform.parent.transform.position;
-                    tile.GetComponent<Room>().traps[j].transform.localPosition = tile.GetComponent<Room>().localP;
+                    tile.GetComponent<Room>().traps[j].transform.position = trap.transform.parent.transform.position;
+                    tile.GetComponent<Room>().traps[j].transform.localPosition = tile.GetComponent<Room>().localP[j];
                     j++;
                 }
                 if (rowSource[i - 1].GetComponent<Room>().moon != null)
@@ -381,7 +382,6 @@ public class GridManager : MonoBehaviour
                     tile.GetComponent<Room>().moonSize = Vector2.zero;
                 }
             }
-            //tile.GetComponent<Room>().traps = rowSource[i - 1].traps;
             i++;
         }
     }
@@ -413,37 +413,35 @@ public class GridManager : MonoBehaviour
         {
             if (i == 0)
             {
-                tile.GetComponent<Room>().traps = new GameObject[rowSource[rowSource.Length - 1].GetComponent<Room>().traps.Length];
+                tile.GetComponent<Room>().traps = new GameObject[rowSource[rowSource.Length - 1].GetComponent<Room>().trapIDs.Length];
+                rowSource[rowSource.Length - 1].GetComponent<Room>().traps = new GameObject[rowSource[rowSource.Length - 1].GetComponent<Room>().trapIDs.Length];
                 int j = 0;
-                foreach (GameObject trap in rowSource[rowSource.Length - 1].GetComponent<Room>().traps)
+                foreach (int trap in rowSource[rowSource.Length - 1].GetComponent<Room>().trapIDs)
                 {
-                    tile.GetComponent<Room>().traps[j] = Instantiate(trap);
+                    tile.GetComponent<Room>().traps[j] = Instantiate(TrapPrefabs[trap]);
                     tile.GetComponent<Room>().traps[j].transform.parent = tile.transform;
-                    tile.GetComponent<Room>().traps[j].transform.position = tile.GetComponent<Room>().traps[j].transform.parent.transform.position;
-                    tile.GetComponent<Room>().traps[j].transform.localPosition = rowSource[rowSource.Length - 1].GetComponent<Room>().localP;
-                    tile.GetComponent<Room>().localP = tile.GetComponent<Room>().traps[j].transform.localPosition;
-                    tile.GetComponent<Room>().traps[j].transform.localScale = trap.transform.localScale;
+                    tile.GetComponent<Room>().traps[j].transform.position = tile.transform.position;
+                    tile.GetComponent<Room>().traps[j].transform.localPosition = rowSource[rowSource.Length - 1].GetComponent<Room>().localP[j];
+                    tile.GetComponent<Room>().traps[j].transform.localScale = TrapPrefabs[trap].transform.localScale;
                     j++;
                 }
                 rowSource[rowSource.Length - 1].GetComponent<Room>().traps = tile.GetComponent<Room>().traps;
-                //rowSource[rowSource.Length - 1].GetComponent<Room>().localP = tile.GetComponent<Room>().localP;
             }
             else
             {
-                tile.GetComponent<Room>().traps = new GameObject[rowSource[i-1].GetComponent<Room>().traps.Length];
+                tile.GetComponent<Room>().traps = new GameObject[rowSource[i-1].GetComponent<Room>().trapIDs.Length];
+                rowSource[i - 1].GetComponent<Room>().traps = new GameObject[rowSource[i - 1].GetComponent<Room>().trapIDs.Length];
                 int j = 0;
-                foreach(GameObject trap in rowSource[i-1].GetComponent<Room>().traps)
+                foreach(int trap in rowSource[i-1].GetComponent<Room>().trapIDs)
                 {
-                    tile.GetComponent<Room>().traps[j] = Instantiate(trap);
+                    tile.GetComponent<Room>().traps[j] = Instantiate(TrapPrefabs[trap]);
                     tile.GetComponent<Room>().traps[j].transform.parent = tile.transform;
-                    tile.GetComponent<Room>().traps[j].transform.position = tile.GetComponent<Room>().traps[j].transform.parent.transform.position;
-                    tile.GetComponent<Room>().traps[j].transform.localPosition = rowSource[rowSource.Length - 1].GetComponent<Room>().localP;
-                    tile.GetComponent<Room>().localP = tile.GetComponent<Room>().traps[j].transform.localPosition;
-                    tile.GetComponent<Room>().traps[j].transform.localScale = trap.transform.localScale;
+                    tile.GetComponent<Room>().traps[j].transform.position = tile.transform.position;
+                    tile.GetComponent<Room>().traps[j].transform.localPosition = rowSource[i - 1].GetComponent<Room>().localP[j];
+                    tile.GetComponent<Room>().traps[j].transform.localScale = TrapPrefabs[trap].transform.localScale;
                     j++;
                 }
                 rowSource[i-1].GetComponent<Room>().traps = tile.GetComponent<Room>().traps;
-                //rowSource[i - 1].GetComponent<Room>().localP = tile.GetComponent<Room>().localP;
             }
             i++;
         }
@@ -493,17 +491,17 @@ public class GridManager : MonoBehaviour
                 {
                     case 0:
                         testRow1 = ShiftUpLeft(testRow1);
-                        currentRow = testRow1;
+                        currentRow = null;
                         ResetPanels(gridPanelsRow0, originalPositionsRow0);
                         break;
                     case 1:
                         testRow2 = ShiftUpLeft(testRow2);
-                        currentRow = testRow2;
+                        currentRow = null;
                         ResetPanels(gridPanelsRow1, originalPositionsRow1);
                         break;
                     case 2:
                         testRow3 = ShiftUpLeft(testRow3);
-                        currentRow = testRow3;
+                        currentRow = null;
                         ResetPanels(gridPanelsRow2, originalPositionsRow2);
                         break;
                 }
@@ -514,17 +512,17 @@ public class GridManager : MonoBehaviour
                 {
                     case 0:
                         testRow1 = ShiftDownRight(testRow1);
-                        currentRow = testRow1;
+                        currentRow = null;
                         ResetPanels(gridPanelsRow0, originalPositionsRow0);
                         break;
                     case 1:
                         testRow2 = ShiftDownRight(testRow2);
-                        currentRow = testRow2;
+                        currentRow = null;
                         ResetPanels(gridPanelsRow1, originalPositionsRow1);
                         break;
                     case 2:
                         testRow3 = ShiftDownRight(testRow3);
-                        currentRow = testRow3;
+                        currentRow = null;
                         ResetPanels(gridPanelsRow2, originalPositionsRow2);
                         break;
                 }
@@ -553,17 +551,17 @@ public class GridManager : MonoBehaviour
                 {
                     case 0:
                         testCol1 = ShiftUpLeft(testCol1);
-                        currentCol = testCol1;
+                        currentCol = null;
                         ResetPanels(gridPanelsCol0, originalPositionsCol0);
                         break;
                     case 1:
                         testCol2 = ShiftUpLeft(testCol2);
-                        currentCol = testCol2;
+                        currentCol = null;
                         ResetPanels(gridPanelsCol1, originalPositionsCol1);
                         break;
                     case 2:
                         testCol3 = ShiftUpLeft(testCol3);
-                        currentCol = testCol3;
+                        currentCol = null;
                         ResetPanels(gridPanelsCol2, originalPositionsCol2);
                         break;
                 }
@@ -574,17 +572,17 @@ public class GridManager : MonoBehaviour
                 {
                     case 0:
                         testCol1 = ShiftDownRight(testCol1);
-                        currentCol = testCol1;
+                        currentCol = null;
                         ResetPanels(gridPanelsCol0, originalPositionsCol0);
                         break;
                     case 1:
                         testCol2 = ShiftDownRight(testCol2);
-                        currentCol = testCol2;
+                        currentCol = null;
                         ResetPanels(gridPanelsCol1, originalPositionsCol1);
                         break;
                     case 2:
                         testCol3 = ShiftDownRight(testCol3);
-                        currentCol = testCol3;
+                        currentCol = null;
                         ResetPanels(gridPanelsCol2, originalPositionsCol2);
                         break;
                 }
@@ -607,5 +605,7 @@ public class GridManager : MonoBehaviour
         }
         UpdateMainNine(updown);
         SecondGroupMatching(updown);
+        currentCol = null;
+        currentRow = null;
     }
 }

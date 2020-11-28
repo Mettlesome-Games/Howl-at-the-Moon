@@ -92,8 +92,9 @@ MonoBehaviour:
   roomSprite: {fileID: 21300000, guid: 1e23761ec8df3894bb02c54303318a08, type: 3}
   canSlide: 1
   traps: []
-  localP: {x: 0, y: 0, z: 0}
+  localP: []
   floor: {fileID: 74181520816833242}
+  floor2: {fileID: 74181520816833242}
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}

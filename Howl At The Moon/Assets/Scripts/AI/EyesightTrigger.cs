@@ -9,18 +9,23 @@ public class EyesightTrigger : MonoBehaviour
 {
     private GameObject AIParent;
 
-    void Awake()
+    private void Awake()
     {
         AIParent = this.transform.parent.gameObject; 
         
     }
-    void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         ServantAI servant = AIParent.GetComponent<ServantAI>();
         WerewolfAI werewolf = AIParent.GetComponent<WerewolfAI>();
 
         if (collision.CompareTag("Servant") && werewolf != null)
         { 
+            werewolf.newState = WerewolfAI.EWerewolfStates.Chasing;
+            werewolf.singleTarget = collision.gameObject.transform;
+        }
+        else if (collision.CompareTag("ManorLord") && werewolf != null)
+        {
             werewolf.newState = WerewolfAI.EWerewolfStates.Chasing;
             werewolf.singleTarget = collision.gameObject.transform;
         }
@@ -31,20 +36,15 @@ public class EyesightTrigger : MonoBehaviour
                 servant.newState = ServantAI.EServantStates.PresentingWolfsbane;
                 servant.singleTarget = collision.gameObject.transform;
             }
-            else 
+            else if (servant.CurrentState != ServantAI.EServantStates.CreatingWolfsbane || servant.CurrentState != ServantAI.EServantStates.FoundFoodbowl)
             {
                 servant.newState = ServantAI.EServantStates.Running;
             }
         }
         else if (collision.CompareTag("Food Bowl") && servant != null)
         {
-            if (servant.canMakeWolfsbane)
-            {
-                servant.newState = ServantAI.EServantStates.CreatingWolfsbane;
-                servant.singleTarget = collision.gameObject.transform;
-            }
-          
-            
+            servant.newState = ServantAI.EServantStates.FoundFoodbowl;
+            servant.singleTarget = collision.gameObject.transform;
         }
     }
 

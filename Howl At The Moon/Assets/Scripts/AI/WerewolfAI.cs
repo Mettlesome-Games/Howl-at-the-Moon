@@ -30,13 +30,18 @@ public class WerewolfAI : AI
 
     // Distracted was a planned feature to have additional environmental distractions for werewolves but we ran out of time
     public enum EWerewolfStates { Normal = 0, Chasing = 1, Distracted = 2, Trapped = 3, Cursed = 4};
-    [SerializeField]
     private EWerewolfStates currentState = EWerewolfStates.Normal;
     public EWerewolfStates previousStates;
 
-    public EWerewolfStates PreviousStates
+    public EWerewolfStates CurrentState
     {
-        get; private set; 
+        get
+        {
+            return currentState;
+        }
+        private set
+        {
+        }
     }
     public EWerewolfStates newState;
 
@@ -120,7 +125,7 @@ public class WerewolfAI : AI
         newState = currentState;
         if (currentState == EWerewolfStates.Normal)
         {
-            if (PreviousStates != EWerewolfStates.Cursed)
+            if (previousStates != EWerewolfStates.Cursed)
             {
                 walkSpeed = defaultWalkSpeed;
                 attackSpeed = defaultAttackSpeed;
@@ -129,7 +134,7 @@ public class WerewolfAI : AI
         }
         else if (currentState == EWerewolfStates.Chasing)
         {
-            if (PreviousStates != EWerewolfStates.Cursed)
+            if (previousStates != EWerewolfStates.Cursed)
                 walkSpeed = chaseWalkSpeed;
         }
         else if (currentState == EWerewolfStates.Distracted)
@@ -152,10 +157,9 @@ public class WerewolfAI : AI
 
             movementEnabled = false;
             attackEnabled = false;
-
+            myAnimator.SetFloat("Speed", 0);
             rb.gravityScale = 0f;
             myCollider.enabled = false;
-            masterCommander.TickKilledEnemies();
         }
         else if (currentState == EWerewolfStates.Cursed)
         {
@@ -192,18 +196,34 @@ public class WerewolfAI : AI
         if (singleTarget != null)
         {   if (canSwingAttack)
             {
-                canSwingAttack = false;
                 if (singleTarget.CompareTag("Servant"))
                 {
+                    canSwingAttack = false;
                     singleTarget.GetComponent<ServantAI>().TakeDamage(attackDmg);
                     myAnimator.SetBool("Attack", true);
+                    InvokeAttackCountdown();
                 }
-
-                InvokeAttackCountdown();
+                else if (singleTarget.CompareTag("ManorLord"))
+                {
+                    canSwingAttack = false;
+                    singleTarget.GetComponent<ManorLordAI>().TakeDamage(attackDmg);
+                    myAnimator.SetBool("Attack", true);
+                    InvokeAttackCountdown();
+                }
             }
         }
     }
-
+    protected override void OnDeath()
+    {
+        if (CurrentState == EWerewolfStates.Trapped)
+        {
+            masterCommander.TickKilledEnemies();
+        }
+        else
+        {
+            base.OnDeath();
+        }
+    }
     private void Update()
     {
         if (singleTarget == null && currentState == EWerewolfStates.Chasing)
@@ -222,10 +242,10 @@ public class WerewolfAI : AI
             if (singleTarget != null)
             {
                 float distance = Vector2.Distance(transform.position, singleTarget.position);
-                Debug.LogFormat("<color=#04b592> Distance: {0} </color>", distance );
+                //Debug.LogFormat("<color=#04b592> Distance: {0} </color>", distance );
                 if (currentState == EWerewolfStates.Chasing || currentState == EWerewolfStates.Cursed)
-                    if (distance <= 2f)
-                        Action();
+                    if (distance <= 1f)
+                        CheckAction();
             }
         }
         if (attackTimerActive)

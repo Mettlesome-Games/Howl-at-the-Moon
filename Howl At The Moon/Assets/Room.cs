@@ -7,11 +7,13 @@ public class Room : MonoBehaviour
 {
     public Sprite roomSprite;
     public bool canSlide;
+    public int[] trapIDs;
     public GameObject[] traps;
-    public Vector3 localP;
+    public Vector3[] localP;
     //public string[] hindrances;
     //spublic int[] moonlight;
     public BoxCollider2D floor;
+    public BoxCollider2D floor2;
     public GameObject moon;
     public Vector2 moonOffset;
     public Vector2 moonSize;
@@ -22,14 +24,5 @@ public class Room : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
-    public void SetUpTraps()
-    {
-        
-    }
 }

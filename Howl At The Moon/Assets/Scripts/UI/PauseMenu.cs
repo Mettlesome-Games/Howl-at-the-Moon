@@ -5,7 +5,8 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField]GameObject uiPauseMenu, pauseGroup, optionsMenu;
-
+    [Header("Grid stuff:")]
+    [SerializeField] GameObject mainGrid;
 
     private void Update()
     {
@@ -27,6 +28,7 @@ public class PauseMenu : MonoBehaviour
         uiPauseMenu.SetActive(false);
         pauseGroup.SetActive(true);
         optionsMenu.SetActive(false);
+        mainGrid.SetActive(true);
         Gamemanager.instance.ResumeGame();
     }
     public void Pause() 
@@ -34,6 +36,7 @@ public class PauseMenu : MonoBehaviour
         uiPauseMenu.SetActive(true);
         pauseGroup.SetActive(true);
         optionsMenu.SetActive(false);
+        mainGrid.SetActive(false);
         Gamemanager.instance.PauseGame();
     }
 

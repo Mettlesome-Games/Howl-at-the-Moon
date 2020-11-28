@@ -374,6 +374,7 @@ GameObject:
   - component: {fileID: 42253719}
   - component: {fileID: 42253721}
   - component: {fileID: 42253722}
+  - component: {fileID: 42253723}
   m_Layer: 0
   m_Name: RM
   m_TagString: Untagged
@@ -460,13 +461,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
+  trapIDs: 
   traps: []
-  localP: {x: 0, y: 0, z: 0}
-  floor: {fileID: 0}
+  localP: []
+  floor: {fileID: 42253722}
+  floor2: {fileID: 42253723}
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
 --- !u!61 &42253722
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42253718}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &42253723
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -661,6 +690,7 @@ GameObject:
   - component: {fileID: 86235962}
   - component: {fileID: 86235963}
   - component: {fileID: 86235964}
+  - component: {fileID: 86235965}
   m_Layer: 0
   m_Name: 2
   m_TagString: Untagged
@@ -747,13 +777,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
+  trapIDs: 
   traps: []
-  localP: {x: 0, y: 0, z: 0}
-  floor: {fileID: 0}
+  localP: []
+  floor: {fileID: 86235964}
+  floor2: {fileID: 86235965}
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
 --- !u!61 &86235964
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86235960}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &86235965
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -990,9 +1048,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
+  trapIDs: 
   traps: []
-  localP: {x: 0, y: 0, z: 0}
+  localP: []
   floor: {fileID: 0}
+  floor2: {fileID: 0}
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
@@ -2235,6 +2295,7 @@ GameObject:
   - component: {fileID: 309510265}
   - component: {fileID: 309510266}
   - component: {fileID: 309510267}
+  - component: {fileID: 309510268}
   m_Layer: 0
   m_Name: 7
   m_TagString: Untagged
@@ -2321,13 +2382,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
+  trapIDs: 
   traps: []
-  localP: {x: 0, y: 0, z: 0}
-  floor: {fileID: 0}
+  localP: []
+  floor: {fileID: 309510267}
+  floor2: {fileID: 309510268}
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
 --- !u!61 &309510267
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309510263}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &309510268
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2365,6 +2454,7 @@ GameObject:
   - component: {fileID: 310178687}
   - component: {fileID: 310178689}
   - component: {fileID: 310178690}
+  - component: {fileID: 310178691}
   m_Layer: 0
   m_Name: LM
   m_TagString: Untagged
@@ -2451,13 +2541,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
+  trapIDs: 
   traps: []
-  localP: {x: 0, y: 0, z: 0}
-  floor: {fileID: 0}
+  localP: []
+  floor: {fileID: 310178690}
+  floor2: {fileID: 310178691}
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
 --- !u!61 &310178690
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310178686}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &310178691
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2988,6 +3106,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 346142509}
   m_CullTransparentMesh: 0
+--- !u!224 &357230582 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 281926713138808835, guid: fda719303bf63ac449f2387fe73f0650, type: 3}
+  m_PrefabInstance: {fileID: 626475927}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &358242441
 GameObject:
   m_ObjectHideFlags: 0
@@ -3270,6 +3393,7 @@ GameObject:
   - component: {fileID: 379507589}
   - component: {fileID: 379507591}
   - component: {fileID: 379507592}
+  - component: {fileID: 379507593}
   m_Layer: 0
   m_Name: BM
   m_TagString: Untagged
@@ -3356,13 +3480,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
+  trapIDs: 
   traps: []
-  localP: {x: 0, y: 0, z: 0}
-  floor: {fileID: 0}
+  localP: []
+  floor: {fileID: 379507592}
+  floor2: {fileID: 379507593}
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
 --- !u!61 &379507592
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379507588}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &379507593
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4171,6 +4323,7 @@ GameObject:
   - component: {fileID: 479118449}
   - component: {fileID: 479118451}
   - component: {fileID: 479118452}
+  - component: {fileID: 479118453}
   m_Layer: 0
   m_Name: BL
   m_TagString: Untagged
@@ -4257,13 +4410,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
+  trapIDs: 
   traps: []
-  localP: {x: 0, y: 0, z: 0}
-  floor: {fileID: 0}
+  localP: []
+  floor: {fileID: 479118452}
+  floor2: {fileID: 479118453}
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
 --- !u!61 &479118452
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479118448}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &479118453
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4830,6 +5011,7 @@ GameObject:
   - component: {fileID: 514413193}
   - component: {fileID: 514413194}
   - component: {fileID: 514413195}
+  - component: {fileID: 514413196}
   m_Layer: 0
   m_Name: 5
   m_TagString: Untagged
@@ -4916,13 +5098,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
+  trapIDs: 
   traps: []
-  localP: {x: 0, y: 0, z: 0}
-  floor: {fileID: 0}
+  localP: []
+  floor: {fileID: 514413195}
+  floor2: {fileID: 514413196}
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
 --- !u!61 &514413195
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514413191}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &514413196
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5533,6 +5743,7 @@ GameObject:
   - component: {fileID: 599983707}
   - component: {fileID: 599983709}
   - component: {fileID: 599983710}
+  - component: {fileID: 599983711}
   m_Layer: 0
   m_Name: TM
   m_TagString: Untagged
@@ -5619,13 +5830,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
+  trapIDs: 
   traps: []
-  localP: {x: 0, y: 0, z: 0}
-  floor: {fileID: 0}
+  localP: []
+  floor: {fileID: 599983710}
+  floor2: {fileID: 599983711}
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
 --- !u!61 &599983710
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599983706}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &599983711
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5854,6 +6093,7 @@ GameObject:
   - component: {fileID: 621342884}
   - component: {fileID: 621342885}
   - component: {fileID: 621342886}
+  - component: {fileID: 621342887}
   m_Layer: 0
   m_Name: 1
   m_TagString: Untagged
@@ -5940,9 +6180,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
+  trapIDs: 
   traps: []
-  localP: {x: 0, y: 0, z: 0}
-  floor: {fileID: 0}
+  localP: []
+  floor: {fileID: 621342886}
+  floor2: {fileID: 621342887}
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
@@ -5972,6 +6214,133 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
+--- !u!61 &621342887
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621342882}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!1001 &626475927
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1960720382}
+    m_Modifications:
+    - target: {fileID: 281926713138808832, guid: fda719303bf63ac449f2387fe73f0650, type: 3}
+      propertyPath: m_Name
+      value: PauseMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 281926713138808834, guid: fda719303bf63ac449f2387fe73f0650, type: 3}
+      propertyPath: mainGrid
+      value: 
+      objectReference: {fileID: 786543385}
+    - target: {fileID: 281926713138808835, guid: fda719303bf63ac449f2387fe73f0650, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 281926713138808835, guid: fda719303bf63ac449f2387fe73f0650, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 281926713138808835, guid: fda719303bf63ac449f2387fe73f0650, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 281926713138808835, guid: fda719303bf63ac449f2387fe73f0650, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 281926713138808835, guid: fda719303bf63ac449f2387fe73f0650, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 281926713138808835, guid: fda719303bf63ac449f2387fe73f0650, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 281926713138808835, guid: fda719303bf63ac449f2387fe73f0650, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 281926713138808835, guid: fda719303bf63ac449f2387fe73f0650, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 281926713138808835, guid: fda719303bf63ac449f2387fe73f0650, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 281926713138808835, guid: fda719303bf63ac449f2387fe73f0650, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 281926713138808835, guid: fda719303bf63ac449f2387fe73f0650, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 281926713138808835, guid: fda719303bf63ac449f2387fe73f0650, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 281926713138808835, guid: fda719303bf63ac449f2387fe73f0650, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 281926713138808835, guid: fda719303bf63ac449f2387fe73f0650, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 281926713138808835, guid: fda719303bf63ac449f2387fe73f0650, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 281926713138808835, guid: fda719303bf63ac449f2387fe73f0650, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 281926713138808835, guid: fda719303bf63ac449f2387fe73f0650, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 281926713138808835, guid: fda719303bf63ac449f2387fe73f0650, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 281926713138808835, guid: fda719303bf63ac449f2387fe73f0650, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 281926713138808835, guid: fda719303bf63ac449f2387fe73f0650, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 281926713138808835, guid: fda719303bf63ac449f2387fe73f0650, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fda719303bf63ac449f2387fe73f0650, type: 3}
 --- !u!1 &630289421
 GameObject:
   m_ObjectHideFlags: 0
@@ -6031,6 +6400,7 @@ GameObject:
   - component: {fileID: 641344692}
   - component: {fileID: 641344693}
   - component: {fileID: 641344694}
+  - component: {fileID: 641344695}
   m_Layer: 0
   m_Name: 8
   m_TagString: Untagged
@@ -6117,13 +6487,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
+  trapIDs: 
   traps: []
-  localP: {x: 0, y: 0, z: 0}
-  floor: {fileID: 0}
+  localP: []
+  floor: {fileID: 641344694}
+  floor2: {fileID: 641344695}
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
 --- !u!61 &641344694
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641344690}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &641344695
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11148,6 +11546,7 @@ GameObject:
   - component: {fileID: 1155201213}
   - component: {fileID: 1155201215}
   - component: {fileID: 1155201216}
+  - component: {fileID: 1155201217}
   m_Layer: 0
   m_Name: TR
   m_TagString: Untagged
@@ -11234,13 +11633,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
+  trapIDs: 
   traps: []
-  localP: {x: 0, y: 0, z: 0}
-  floor: {fileID: 0}
+  localP: []
+  floor: {fileID: 1155201216}
+  floor2: {fileID: 1155201217}
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
 --- !u!61 &1155201216
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1155201212}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &1155201217
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12149,6 +12576,7 @@ GameObject:
   - component: {fileID: 1247115250}
   - component: {fileID: 1247115249}
   - component: {fileID: 1247115251}
+  - component: {fileID: 1247115252}
   m_Layer: 0
   m_Name: RM2
   m_TagString: Untagged
@@ -12184,9 +12612,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
+  trapIDs: 
   traps: []
-  localP: {x: 0, y: 0, z: 0}
-  floor: {fileID: 0}
+  localP: []
+  floor: {fileID: 1247115251}
+  floor2: {fileID: 1247115252}
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
@@ -12242,6 +12672,32 @@ SpriteRenderer:
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &1247115251
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247115247}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &1247115252
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -13115,6 +13571,7 @@ GameObject:
   - component: {fileID: 1308831646}
   - component: {fileID: 1308831648}
   - component: {fileID: 1308831649}
+  - component: {fileID: 1308831650}
   m_Layer: 0
   m_Name: LT
   m_TagString: Untagged
@@ -13201,13 +13658,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
+  trapIDs: 
   traps: []
-  localP: {x: 0, y: 0, z: 0}
-  floor: {fileID: 0}
+  localP: []
+  floor: {fileID: 1308831649}
+  floor2: {fileID: 1308831650}
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
 --- !u!61 &1308831649
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308831645}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &1308831650
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -13484,6 +13969,7 @@ GameObject:
   - component: {fileID: 1331737846}
   - component: {fileID: 1331737847}
   - component: {fileID: 1331737848}
+  - component: {fileID: 1331737849}
   m_Layer: 0
   m_Name: 4
   m_TagString: Untagged
@@ -13570,13 +14056,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
+  trapIDs: 
   traps: []
-  localP: {x: 0, y: 0, z: 0}
-  floor: {fileID: 0}
+  localP: []
+  floor: {fileID: 1331737848}
+  floor2: {fileID: 1331737849}
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
 --- !u!61 &1331737848
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331737844}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &1331737849
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -13723,6 +14237,7 @@ GameObject:
   - component: {fileID: 1339500188}
   - component: {fileID: 1339500187}
   - component: {fileID: 1339500189}
+  - component: {fileID: 1339500190}
   m_Layer: 0
   m_Name: RT2
   m_TagString: Untagged
@@ -13758,9 +14273,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
+  trapIDs: 
   traps: []
-  localP: {x: 0, y: 0, z: 0}
+  localP: []
   floor: {fileID: 0}
+  floor2: {fileID: 0}
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
@@ -13816,6 +14333,32 @@ SpriteRenderer:
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &1339500189
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339500185}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &1339500190
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14242,6 +14785,7 @@ GameObject:
   - component: {fileID: 1421154924}
   - component: {fileID: 1421154925}
   - component: {fileID: 1421154926}
+  - component: {fileID: 1421154927}
   m_Layer: 0
   m_Name: 6
   m_TagString: Untagged
@@ -14328,13 +14872,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
+  trapIDs: 
   traps: []
-  localP: {x: 0, y: 0, z: 0}
-  floor: {fileID: 0}
+  localP: []
+  floor: {fileID: 1421154926}
+  floor2: {fileID: 1421154927}
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
 --- !u!61 &1421154926
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421154922}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &1421154927
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14516,9 +15088,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
+  trapIDs: 
   traps: []
-  localP: {x: 0, y: 0, z: 0}
+  localP: []
   floor: {fileID: 0}
+  floor2: {fileID: 0}
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
@@ -15011,6 +15585,7 @@ GameObject:
   - component: {fileID: 1518548423}
   - component: {fileID: 1518548424}
   - component: {fileID: 1518548425}
+  - component: {fileID: 1518548426}
   m_Layer: 0
   m_Name: 3
   m_TagString: Untagged
@@ -15097,13 +15672,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
+  trapIDs: 
   traps: []
-  localP: {x: 0, y: 0, z: 0}
-  floor: {fileID: 0}
+  localP: []
+  floor: {fileID: 1518548425}
+  floor2: {fileID: 1518548426}
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
 --- !u!61 &1518548425
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518548421}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &1518548426
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -16264,6 +16867,7 @@ GameObject:
   - component: {fileID: 1629583084}
   - component: {fileID: 1629583086}
   - component: {fileID: 1629583087}
+  - component: {fileID: 1629583088}
   m_Layer: 0
   m_Name: TL
   m_TagString: Untagged
@@ -16350,13 +16954,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
+  trapIDs: 
   traps: []
-  localP: {x: 0, y: 0, z: 0}
-  floor: {fileID: 0}
+  localP: []
+  floor: {fileID: 1629583087}
+  floor2: {fileID: 1629583088}
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
 --- !u!61 &1629583087
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629583083}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &1629583088
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -16504,9 +17136,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
+  trapIDs: 
   traps: []
-  localP: {x: 0, y: 0, z: 0}
+  localP: []
   floor: {fileID: 0}
+  floor2: {fileID: 0}
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
@@ -16962,9 +17596,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
+  trapIDs: 
   traps: []
-  localP: {x: 0, y: 0, z: 0}
+  localP: []
   floor: {fileID: 0}
+  floor2: {fileID: 0}
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
@@ -17132,6 +17768,7 @@ GameObject:
   - component: {fileID: 1728440933}
   - component: {fileID: 1728440935}
   - component: {fileID: 1728440936}
+  - component: {fileID: 1728440937}
   m_Layer: 0
   m_Name: LB
   m_TagString: Untagged
@@ -17218,13 +17855,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
+  trapIDs: 
   traps: []
-  localP: {x: 0, y: 0, z: 0}
-  floor: {fileID: 0}
+  localP: []
+  floor: {fileID: 1728440936}
+  floor2: {fileID: 1728440937}
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
 --- !u!61 &1728440936
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728440932}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &1728440937
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -17262,6 +17927,7 @@ GameObject:
   - component: {fileID: 1731845149}
   - component: {fileID: 1731845151}
   - component: {fileID: 1731845152}
+  - component: {fileID: 1731845153}
   m_Layer: 0
   m_Name: BR
   m_TagString: Untagged
@@ -17348,13 +18014,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
+  trapIDs: 
   traps: []
-  localP: {x: 0, y: 0, z: 0}
-  floor: {fileID: 0}
+  localP: []
+  floor: {fileID: 1731845152}
+  floor2: {fileID: 1731845153}
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
 --- !u!61 &1731845152
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731845148}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &1731845153
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -17549,6 +18243,7 @@ GameObject:
   - component: {fileID: 1759004762}
   - component: {fileID: 1759004764}
   - component: {fileID: 1759004765}
+  - component: {fileID: 1759004766}
   m_Layer: 0
   m_Name: RB
   m_TagString: Untagged
@@ -17635,13 +18330,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
+  trapIDs: 
   traps: []
-  localP: {x: 0, y: 0, z: 0}
-  floor: {fileID: 0}
+  localP: []
+  floor: {fileID: 1759004765}
+  floor2: {fileID: 1759004766}
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
 --- !u!61 &1759004765
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759004761}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &1759004766
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -17700,12 +18423,17 @@ MonoBehaviour:
   currentRow: []
   currentCol: []
   MoonPrefab: {fileID: 4477932839328265865, guid: 8255e617ffc9ef440a4828ce7871c318, type: 3}
+  TrapPrefabs:
+  - {fileID: 6337857226908868031, guid: 7816d1e6467a8524ea531da0a983b87a, type: 3}
+  - {fileID: 3666410207314996583, guid: 8c6eb9b3845de1042b9d3f8836ce08b9, type: 3}
+  - {fileID: 1346187029017803220, guid: b2e17b6989219764f88cbcc21a34a088, type: 3}
+  - {fileID: 3551387543055743247, guid: 155e1ec4cf03f524b8ca885bc42ef38d, type: 3}
   testRow1:
   - {fileID: 1575319993230844895, guid: b27f8d3ea5f02534581c576d83830c09, type: 3}
   - {fileID: 1575319993230844895, guid: 15aabaad22dca8446b9ebe5b5ad6be05, type: 3}
   - {fileID: 1575319993230844895, guid: efc96ab1b7e0aed4faf44c6501caec26, type: 3}
   - {fileID: 1575319993230844895, guid: 34f3b9db8caf2234f815607170ad4ec8, type: 3}
-  - {fileID: 1575319993230844895, guid: a5ab936343da57c44999c68eb94da153, type: 3}
+  - {fileID: 1575319993230844895, guid: b6a8ef369c381674bb76162bb19aa495, type: 3}
   - {fileID: 1575319993230844895, guid: 6d54ff8d8e0928847a10b571e7890b1f, type: 3}
   testRow2:
   - {fileID: 1575319993230844895, guid: 6dfd912e81e628941a566326683c3e7f, type: 3}
@@ -17719,7 +18447,7 @@ MonoBehaviour:
   - {fileID: 1575319993230844895, guid: 750cb976795dc1640bfc7d1a75527163, type: 3}
   - {fileID: 1575319993230844895, guid: 8ad42f2b806eeab4392db4fe34ca67cd, type: 3}
   - {fileID: 1575319993230844895, guid: 93ea9153e86a29f4d82aaf195fec7b45, type: 3}
-  - {fileID: 1575319993230844895, guid: b6a8ef369c381674bb76162bb19aa495, type: 3}
+  - {fileID: 1575319993230844895, guid: a5ab936343da57c44999c68eb94da153, type: 3}
   - {fileID: 1575319993230844895, guid: 265b7bcfbc096a7478214d9c5e1bd803, type: 3}
   testCol1:
   - {fileID: 0}
@@ -19359,7 +20087,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -19382,6 +20110,7 @@ RectTransform:
   - {fileID: 2027316168}
   - {fileID: 786543386}
   - {fileID: 2044215719}
+  - {fileID: 357230582}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 21.345}
@@ -19511,6 +20240,7 @@ GameObject:
   - component: {fileID: 1997963836}
   - component: {fileID: 1997963837}
   - component: {fileID: 1997963838}
+  - component: {fileID: 1997963839}
   m_Layer: 0
   m_Name: 0
   m_TagString: Untagged
@@ -19597,13 +20327,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 0
+  trapIDs: 
   traps: []
-  localP: {x: 0, y: 0, z: 0}
-  floor: {fileID: 0}
+  localP: []
+  floor: {fileID: 1997963838}
+  floor2: {fileID: 1997963839}
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
 --- !u!61 &1997963838
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997963834}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &1997963839
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20164,6 +20922,7 @@ GameObject:
   - component: {fileID: 2068725615}
   - component: {fileID: 2068725617}
   - component: {fileID: 2068725618}
+  - component: {fileID: 2068725619}
   m_Layer: 0
   m_Name: RT
   m_TagString: Untagged
@@ -20250,13 +21009,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomSprite: {fileID: 21300000, guid: 537a076883e1f3f448fd9a555f093ccd, type: 3}
   canSlide: 1
+  trapIDs: 
   traps: []
-  localP: {x: 0, y: 0, z: 0}
-  floor: {fileID: 0}
+  localP: []
+  floor: {fileID: 2068725618}
+  floor2: {fileID: 2068725619}
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
 --- !u!61 &2068725618
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068725614}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 8.6, y: 7.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!61 &2068725619
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

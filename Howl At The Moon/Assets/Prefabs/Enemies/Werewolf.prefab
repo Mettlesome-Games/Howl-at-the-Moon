@@ -143,8 +143,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4953867885005208735}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.426, y: -2.479, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children:
   - {fileID: 4953867885197177579}
   - {fileID: 4953867884669714231}
@@ -266,7 +266,6 @@ MonoBehaviour:
   cursedAttackSpeed: 0
   attackTimerActive: 0
   canSwingAttack: 1
-  currentState: 0
   previousStates: 0
   newState: 0
   redEyesWalking: {fileID: 7400000, guid: 4879527bea34c0147977f72f3e30622b, type: 2}
@@ -298,7 +297,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4953867885197177576}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.14, y: 0.7, z: 0}
+  m_LocalPosition: {x: 86.62, y: -0.34, z: 0}
   m_LocalScale: {x: 2.2, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4953867885005208730}
@@ -317,7 +316,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.1056838, y: -0.62223244}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -328,7 +327,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.7113676, y: 2.9676456}
+  m_Size: {x: 78.20924, y: 2.5890832}
   m_EdgeRadius: 0
 --- !u!114 &4953867885197177573
 MonoBehaviour:

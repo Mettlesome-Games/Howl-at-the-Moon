@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using Pathfinding;
 /// <summary>
@@ -66,12 +67,22 @@ abstract public class AI : MonoBehaviour
 
     protected Animator myAnimator;
 
+    /// <summary>
+    ///  The event delegate to subscribe to when to kill the AI
+    /// </summary>
+    private delegate void DeathEvent();
+    private static event DeathEvent OnDeathEvent;
+
     public void TakeDamage(float value)
     {
+
         if (hp - value <= 0.0f)
             hp = 0f;
         else
             hp = hp - value;
+
+        if (hp <= 0f)
+            OnDeathEvent?.Invoke();
     }
 
     public void HealDamage(float value)
@@ -97,6 +108,9 @@ abstract public class AI : MonoBehaviour
             foreach (Transform pChild in patrolWaypointsParent)
                 patrolWaypoints.Add(pChild);*/
         }
+
+        hpMax = 1f;
+        hp = hpMax;
 
         defaultCharacterLocalscaleX = characterGFX.localScale.x;
         reversedCharacterLocalscaleX = -1f * characterGFX.localScale.x;
@@ -131,7 +145,7 @@ abstract public class AI : MonoBehaviour
         }
     }
    
-    protected void Action()
+    protected void CheckAction()
     {
         if (attackEnabled)
             PerformAction();
@@ -225,6 +239,10 @@ abstract public class AI : MonoBehaviour
 
     private void Awake()
     {
+        MethodBase AwakeMethod = MethodBase.GetCurrentMethod();
+        Debug.Log("<color=#4f7d00>Subscribing to OnDeath at function call: " + AwakeMethod.Name + " at script " + this.GetType().Name + " on the GameObject " + this.gameObject.name + "</color>", this);
+        AI.OnDeathEvent += OnDeath;
+
         SetDefaultValues();
 
         seeker = GetComponent<Seeker>();
@@ -248,7 +266,10 @@ abstract public class AI : MonoBehaviour
         }
 
     }
-
+    protected virtual void OnDeath()
+    {
+        Destroy(this.gameObject, 0.5f);
+    }
     private void OnPathComplete(Path p)
     {
         if (!p.error)
@@ -262,4 +283,15 @@ abstract public class AI : MonoBehaviour
     {
         Movement();
     }
+
+    /// <summary>
+    /// Whenever this object is destroyed unsubscribe the death event function which should only occur once per game object
+    /// </summary>
+    void OnDestroy()
+    {
+        MethodBase OnDestroyMethod = MethodBase.GetCurrentMethod();
+        Debug.Log("<color=#910a00>Unsubscribing to OnDeath at function call: " + OnDestroyMethod.Name + " at script " + this.GetType().Name + " on the GameObject " + this.gameObject.name + "</color>", this);
+        AI.OnDeathEvent -= OnDeath;
+    }
 }
+

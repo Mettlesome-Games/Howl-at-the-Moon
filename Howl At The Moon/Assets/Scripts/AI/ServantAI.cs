@@ -11,39 +11,74 @@ public class ServantAI : AI
 {
 
     public bool canMakeWolfsbane = false;
-    
+
+    public float wolfsbaneDamage;
     public float wolfsbaneSpeedDefault;
     public float wolfsbaneMakeTimer;
     public bool hasWolfsbane = false;
     public bool wolfsbaneTimerActive = false;
-    public enum EServantStates {Normal = 0, Running = 1, CreatingWolfsbane = 2, PresentingWolfsbane = 3, Dead = 4 };
+    private float defaultNextWaypointDistance;
+    private float wolfsbaneDamageDefault;
+
+    public enum EServantStates { Normal = 0, Running = 1, FoundFoodbowl = 2, CreatingWolfsbane = 3, PresentingWolfsbane = 4 };
     private EServantStates currentState = EServantStates.Normal;
+    public EServantStates previousState;
     public EServantStates newState;
+
+    public EServantStates CurrentState 
+    {
+        get
+        {
+            return currentState;
+        }
+        private set 
+        { 
+        }
+    }
+    public Transform foodbowlPlacementSpot;
 
     protected override void SetDefaultValues()
     {
         base.SetDefaultValues();
         AIType = EAISelection.Servant;
-        newState = currentState;
-        currentWaypointMode = EAIWaypointMode.Patrol;
         
+        previousState = currentState;
+        newState = currentState;
+
+        currentWaypointMode = EAIWaypointMode.Patrol;
+
         movementEnabled = true;
         attackEnabled = true;
 
-        hpMax = 1f;
-        hp = hpMax;
+        if (wolfsbaneDamage <= 0f)
+        {
+            wolfsbaneDamageDefault = 1f;
+            wolfsbaneDamage = wolfsbaneDamageDefault;
+        }
+        else
+            wolfsbaneDamageDefault = wolfsbaneDamage;
 
         if (wolfsbaneSpeedDefault <= 0f)            
-            wolfsbaneSpeedDefault = 1.5f;
+            wolfsbaneSpeedDefault = 0f;
 
         targets = patrolWaypoints;
+        if (nextWaypointDistance <= 0f)
+        {
+            defaultNextWaypointDistance = 3f;
+            nextWaypointDistance = defaultNextWaypointDistance;
+        }
+        else
+        {
+            defaultNextWaypointDistance = nextWaypointDistance;
+        }
     }
 
     void UpdateState()
     {
+        previousState = currentState;
         currentState = newState;
         newState = currentState;
-        
+
         if (currentState == EServantStates.Normal)
         {
             walkSpeed = defaultWalkSpeed;
@@ -55,17 +90,27 @@ public class ServantAI : AI
 
             currentTarget = 0;
             currentWaypoint = 0;
+            nextWaypointDistance = defaultNextWaypointDistance;
             UpdateNavigation();
         }
         else if (currentState == EServantStates.Running)
         {
-            targets = levelWaypoints;
             currentWaypointMode = EAIWaypointMode.OneWay;
+            singleTarget = levelWaypoints[levelWaypoints.Count-1];
             currentTarget = 0;
             currentWaypoint = 0;
+            nextWaypointDistance = defaultNextWaypointDistance;
             UpdateNavigation();
 
             myAnimator.SetBool("Running", true);
+        }
+        else if (currentState == EServantStates.FoundFoodbowl)
+        {
+            currentWaypointMode = EAIWaypointMode.OneWay;
+            currentTarget = 0;
+            currentWaypoint = 0;
+            nextWaypointDistance = .1f;
+            UpdateNavigation();
         }
         else if (currentState == EServantStates.CreatingWolfsbane)
         {
@@ -75,13 +120,8 @@ public class ServantAI : AI
         {
             walkSpeed = defaultWalkSpeed;
             currentWaypointMode = EAIWaypointMode.OneWay;
+        }
 
-        
-        }
-        else if (currentState == EServantStates.Dead)
-        {
-            Destroy(this.gameObject);
-        }
 
     }
     protected void InvokeWolfsbaneCountdown()
@@ -90,6 +130,7 @@ public class ServantAI : AI
         {
             wolfsbaneTimerActive = true;
             wolfsbaneMakeTimer = wolfsbaneSpeedDefault;
+            newState = EServantStates.CreatingWolfsbane;
         }
     }
     private void TickCountdowns()
@@ -103,6 +144,15 @@ public class ServantAI : AI
                 hasWolfsbane = true;
                 canMakeWolfsbane = false;
                 newState = EServantStates.Normal;
+                if (singleTarget.CompareTag("Food Bowl"))
+                {
+                    if (!canMakeWolfsbane)
+                    {
+                        singleTarget.parent = foodbowlPlacementSpot;
+                        foodbowlPlacementSpot.transform.GetChild(0).localPosition = new Vector3(0, 0, 0);
+                        singleTarget = null;
+                    }
+                }
             }
         }
     }
@@ -116,9 +166,11 @@ public class ServantAI : AI
                 if (singleTarget.CompareTag("Enemy"))
                 {
                     singleTarget.gameObject.GetComponent<WerewolfAI>().newState = WerewolfAI.EWerewolfStates.Trapped;
+                    singleTarget.gameObject.GetComponent<WerewolfAI>().TakeDamage(wolfsbaneDamage);
                     singleTarget = null;
                     newState = EServantStates.Running;
                     myAnimator.SetBool("Presenting Wolfsbane", false);
+                    Destroy(foodbowlPlacementSpot.transform.gameObject);
                 }
             }
         }
@@ -126,12 +178,15 @@ public class ServantAI : AI
     }
     private void Update()
     {
-        if (HP <= 0.0f)
-            newState = EServantStates.Dead;
+        if (currentState == EServantStates.FoundFoodbowl && canMakeWolfsbane)
+        {
+            InvokeWolfsbaneCountdown();
+        }
         if (hasWolfsbane)
         {
             myAnimator.SetBool("Running", false);
             myAnimator.SetBool("Presenting Wolfsbane", true);
+           
         }
         if (newState != currentState)
             UpdateState();
@@ -141,8 +196,8 @@ public class ServantAI : AI
             if (singleTarget != null)
             {
                 float distance = Vector2.Distance(transform.position, singleTarget.position);
-                if (currentState == EServantStates.PresentingWolfsbane && distance <= 3f)
-                    Action();
+                if (currentState == EServantStates.PresentingWolfsbane && distance <= 1.5f)
+                    CheckAction();
             }
         }
             
