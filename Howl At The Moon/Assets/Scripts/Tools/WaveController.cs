@@ -14,7 +14,7 @@ public class WaveController : MonoBehaviour
 {
     private enum EWaveSystemVersion { AfterDuration = 0, AfterLastEnemyInWave = 1, EnemyIntervalDelay = 2, AfterLastEnemyInWaveWithDelay = 4};
     [SerializeField]
-    [Tooltip("4 different spawn variations explained by their names")]
+    [Tooltip("AfterDuration = Wave spawns all at once after specified duration\nAfterLastEnemyInWave = Wave spawns all at once after last enemy is killed in the wave\nEnemyIntervalDelay = Enemies spawn one at a time after each other in their wave\nAfterLastEnemyInWaveWithDelay =  Enemies spawn one at a time after each other in their wave and the next wave starts once the current wave is dead")]
     private EWaveSystemVersion SpawnSystemToggle;
 
     public uint EnemiesDead { get; private set; }
