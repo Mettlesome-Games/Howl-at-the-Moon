@@ -195,11 +195,11 @@ public class WaveController : MonoBehaviour
                 WaveOrganizer = new GameObject();
                 WaveOrganizer.name = "Wave ( " + CurrentWaveID + " )";
                 WaveOrganizer.transform.parent = WaveOrganizerContainer.transform;
+                EnemiesDeadInWave = 0;
 
                 if (SpawnSystemToggle != EWaveSystemVersion.AfterLastEnemyInWaveWithDelay)
                 {
                     CurrentSpawnedEnemies = 0;
-                    EnemiesDeadInWave = 0;
                 }
             }
         }
