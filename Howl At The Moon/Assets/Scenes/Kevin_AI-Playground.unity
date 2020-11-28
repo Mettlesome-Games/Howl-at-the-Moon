@@ -1080,37 +1080,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5207549250200444946, guid: 72bad443e468a1e4fa2e0c1923666107, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5207549250200444946, guid: 72bad443e468a1e4fa2e0c1923666107, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5207549250200444946, guid: 72bad443e468a1e4fa2e0c1923666107, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5207549251125723526, guid: 72bad443e468a1e4fa2e0c1923666107, type: 3}
-      propertyPath: m_Size.x
-      value: 0.43850744
-      objectReference: {fileID: 0}
-    - target: {fileID: 5207549251125723526, guid: 72bad443e468a1e4fa2e0c1923666107, type: 3}
-      propertyPath: m_Size.y
-      value: 0.33725423
-      objectReference: {fileID: 0}
-    - target: {fileID: 5207549251125723526, guid: 72bad443e468a1e4fa2e0c1923666107, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.01380682
-      objectReference: {fileID: 0}
-    - target: {fileID: 5207549251125723526, guid: 72bad443e468a1e4fa2e0c1923666107, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.009204775
-      objectReference: {fileID: 0}
-    - target: {fileID: 5207549251125723526, guid: 72bad443e468a1e4fa2e0c1923666107, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
+    - target: {fileID: 1850222446, guid: 72bad443e468a1e4fa2e0c1923666107, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5207549251125723528, guid: 72bad443e468a1e4fa2e0c1923666107, type: 3}
       propertyPath: m_RootOrder

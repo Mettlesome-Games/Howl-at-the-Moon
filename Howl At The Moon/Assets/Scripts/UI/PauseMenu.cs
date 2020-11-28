@@ -40,7 +40,11 @@ public class PauseMenu : MonoBehaviour
         Gamemanager.instance.PauseGame();
     }
 
-    public void LoadMenu() { UnityEngine.SceneManagement.SceneManager.LoadScene(0); }
+    public void LoadMenu() 
+    {
+        Gamemanager.instance.ResumeGame();
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0); 
+    }
 
     public void QuitGame() { Application.Quit(); }
 
