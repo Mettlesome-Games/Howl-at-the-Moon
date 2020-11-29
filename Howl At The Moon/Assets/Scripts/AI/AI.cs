@@ -318,6 +318,10 @@ abstract public class AI : MonoBehaviour
             }
 
         }
+
+        currentTarget = 0;
+        currentWaypoint = 0;
+        UpdateNavigation();
     }
 
     protected virtual void UpdateNavigation()
