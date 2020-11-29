@@ -76,8 +76,8 @@ abstract public class AI : MonoBehaviour
     /// <summary>
     ///  The event delegate to subscribe to when an AI moves vertically with a room
     /// </summary>
-    public delegate void VerticalRoomMoveEvent();
-    public static event VerticalRoomMoveEvent OnVerticalRoomMoveEvent;
+    /*public delegate void VerticalRoomMoveEvent();
+    public static event VerticalRoomMoveEvent OnVerticalRoomMoveEvent;*/
 
     public void TakeDamage(float value)
     {
@@ -248,7 +248,7 @@ abstract public class AI : MonoBehaviour
         MethodBase AwakeMethod = MethodBase.GetCurrentMethod();
         Debug.Log("<color=#4f7d00>Subscribing to OnDeath and UpdateToNearestTarget at function call: " + AwakeMethod.Name + " at script " + this.GetType().Name + " on the GameObject " + this.gameObject.name + "</color>", this);
         AI.OnDeathEvent += OnDeath;
-        AI.OnVerticalRoomMoveEvent += UpdateToNearestTarget;
+        GridManager.OnVerticalRoomMoveEvent += UpdateToNearestTarget;
 
         SetDefaultValues();
 
@@ -367,7 +367,7 @@ abstract public class AI : MonoBehaviour
         MethodBase OnDestroyMethod = MethodBase.GetCurrentMethod();
         Debug.Log("<color=#910a00>Unsubscribing to OnDeath and UpdateToNearestTarget at function call: " + OnDestroyMethod.Name + " at script " + this.GetType().Name + " on the GameObject " + this.gameObject.name + "</color>", this);
         AI.OnDeathEvent -= OnDeath;
-        AI.OnVerticalRoomMoveEvent -= UpdateToNearestTarget;
+        GridManager.OnVerticalRoomMoveEvent -= UpdateToNearestTarget;
     }
 }
 

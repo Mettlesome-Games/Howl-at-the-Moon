@@ -25,7 +25,7 @@ public class TrapDoor : MonoBehaviour
             StartCoroutine("HangTimer");
         }
     }
-
+   
     private IEnumerator HangTimer() { 
         yield return new WaitForSeconds(3);
         // After three seconds reset to original position.
