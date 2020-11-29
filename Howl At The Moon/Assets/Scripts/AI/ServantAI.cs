@@ -107,9 +107,9 @@ public class ServantAI : AI
         else if (currentState == EServantStates.Running)
         {
             currentWaypointMode = EAIWaypointMode.OneWay;
-            singleTarget = levelWaypoints[levelWaypoints.Count-1];
             currentTarget = 0;
             currentWaypoint = 0;
+            targets = levelWaypoints;
             nextWaypointDistance = defaultNextWaypointDistance;
             UpdateNavigation();
 
@@ -173,9 +173,10 @@ public class ServantAI : AI
         {
             if (hasWolfsbane)
             {
-                hasWolfsbane = false;
                 if (singleTarget.CompareTag("Enemy") && currentState == EServantStates.PresentingWolfsbane)
                 {
+                    hasWolfsbane = false;
+                    
                     singleTarget.gameObject.GetComponent<WerewolfAI>().TakeDamage(wolfsbaneDamage);
                     singleTarget = null;
                     newState = EServantStates.Running;

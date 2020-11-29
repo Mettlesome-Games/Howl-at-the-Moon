@@ -142,10 +142,6 @@ public class WerewolfAI : AI
                 attackSpeed = defaultAttackSpeed;
             }
             singleTarget = null;
-            currentTarget = 0;
-            currentWaypoint = 0;
-            UpdateNavigation();
-
         }
         else if (currentState == EWerewolfStates.Chasing)
         {
@@ -183,9 +179,6 @@ public class WerewolfAI : AI
             myAnimatorOverrideController["werewolf_idle"] = redEyesIdle;
             myAnimatorOverrideController["werewolf_walking"] = redEyesWalking;
             myAnimatorOverrideController["werewolf_attack"] = redEyesAttack;
-            currentTarget = 0;
-            currentWaypoint = 0;
-            UpdateNavigation();
         }
     }
     protected void InvokeAttackCountdown()
@@ -219,6 +212,7 @@ public class WerewolfAI : AI
                     canSwingAttack = false;
                     singleTarget.GetComponent<ServantAI>().TakeDamage(attackDmg);
                     myAnimator.SetBool("Attack", true);
+                
                     InvokeAttackCountdown();
                 }
                 else if (singleTarget.CompareTag("ManorLord"))
@@ -226,6 +220,7 @@ public class WerewolfAI : AI
                     canSwingAttack = false;
                     singleTarget.GetComponent<ManorLordAI>().TakeDamage(attackDmg);
                     myAnimator.SetBool("Attack", true);
+                
                     InvokeAttackCountdown();
                 }
             }

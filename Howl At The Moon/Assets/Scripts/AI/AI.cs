@@ -186,7 +186,7 @@ abstract public class AI : MonoBehaviour
                 }
             }
             else if (currentWaypointMode == EAIWaypointMode.Patrol)
-            {
+            { 
                 if (currentTarget < targets.Count - 1 && !reachedEndOfPatrol)
                 {
                     currentTarget++;
@@ -198,6 +198,7 @@ abstract public class AI : MonoBehaviour
                     if (currentTarget == 0)
                         reachedEndOfPatrol = false;
                 }
+               
             }
         }
     }
