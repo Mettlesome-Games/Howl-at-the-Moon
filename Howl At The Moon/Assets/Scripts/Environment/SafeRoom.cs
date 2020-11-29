@@ -12,6 +12,7 @@ public class SafeRoom : MonoBehaviour
     {
         if (collision.CompareTag("Enemy") && !bWasUsed)
         {
+            print("Lord attack!");
             StartCoroutine(TimerLose());
             bWasUsed = true;
         }

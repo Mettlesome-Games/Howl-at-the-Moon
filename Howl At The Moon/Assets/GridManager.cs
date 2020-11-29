@@ -406,13 +406,21 @@ public class GridManager : MonoBehaviour
     public void SaveNPCLocalPos(List<GameObject> panelRow, GameObject[] rowSource)
     {
         int i = 0;
+        List<GameObject> movedNpcs = new List<GameObject>();
         foreach (GameObject tile in panelRow)
         {
             if(i == 0)
             {
                 foreach (GameObject NPC in tile.GetComponent<Room>().NPCs)
                 {
-                    NPC.GetComponent<WerewolfAI>().localPos = NPC.transform.localPosition;
+                    if (NPC != null)
+                    {
+                        NPC.GetComponent<WerewolfAI>().localPos = NPC.transform.localPosition;
+                    }
+                    else
+                    {
+                        movedNpcs.Add(NPC);
+                    }
                 }
                 rowSource[rowSource.Length - 1].GetComponent<Room>().NPCs = tile.GetComponent<Room>().NPCs;
                 //print(rowSource[rowSource.Length - 1].name + "has " + rowSource[rowSource.Length - 1].GetComponent<Room>().NPCs.Count + "werewolves");
@@ -421,10 +429,30 @@ public class GridManager : MonoBehaviour
             {
                 foreach (GameObject NPC in tile.GetComponent<Room>().NPCs)
                 {
-                    NPC.GetComponent<WerewolfAI>().localPos = NPC.transform.localPosition;
+                    if(NPC != null)
+                    {
+                        NPC.GetComponent<WerewolfAI>().localPos = NPC.transform.localPosition;
+                    }
+                    else
+                    {
+                        movedNpcs.Add(NPC);
+                    }
                 }
                 rowSource[i - 1].GetComponent<Room>().NPCs = tile.GetComponent<Room>().NPCs;
                 //print(rowSource[i - 1].name + "has " + rowSource[i - 1].GetComponent<Room>().NPCs.Count + "werewolves");
+            }
+            //remove all null npcs
+            foreach (GameObject NPC in movedNpcs)
+            {
+                if (NPC != null)
+                {
+                    NPC.GetComponent<WerewolfAI>().localPos = NPC.transform.localPosition;
+                }
+                else
+                {
+                    tile.GetComponent<Room>().NPCs.Remove(NPC);
+                    rowSource[i - 1].GetComponent<Room>().NPCs.Remove(NPC);
+                }
             }
             i++;
         }
@@ -439,11 +467,13 @@ public class GridManager : MonoBehaviour
             if (i == 0)
             {
                 tile.GetComponent<Room>().NPCs = rowSource[rowSource.Length - 1].GetComponent<Room>().NPCs;
-                int j = 0;
+                //int j = 0;
+                List<GameObject> movedNPCs = new List<GameObject>();
                 foreach (GameObject NPC in rowSource[rowSource.Length - 1].GetComponent<Room>().NPCs)
                 {
                     NPC.transform.parent = tile.transform;
                     NPC.transform.localPosition = NPC.GetComponent<WerewolfAI>().localPos;
+                    movedNPCs.Add(NPC);
                 }
             }
             else

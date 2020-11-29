@@ -11,10 +11,10 @@ public class Net : MonoBehaviour
             WerewolfAI ai = collision.gameObject.GetComponent<WerewolfAI>();
             if (ai != null)
             {
+                //this.transform.parent.GetComponent<Room>().NPCs.Remove(collision.gameObject);
+                collision.gameObject.transform.parent.GetComponent<Room>().NPCs.Remove(collision.gameObject);
                 ai.TakeDamage(ai.HP);
             }
-            this.transform.parent.GetComponent<Room>().NPCs.Remove(collision.gameObject);
-            collision.gameObject.transform.parent.GetComponent<Room>().NPCs.Remove(collision.gameObject);
         }
     }
 }
