@@ -9,7 +9,7 @@ public class FoodTrap : MonoBehaviour
     private Animator wolfbaneAnimator;
     private void Awake()
     {
-        //wolfbaneAnimator = this.transform.Find("WolfsbaneSprite").GetComponent<Animator>();
+        wolfbaneAnimator = this.transform.Find("WolfsbaneSprite").GetComponent<Animator>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

@@ -73,6 +73,12 @@ abstract public class AI : MonoBehaviour
     private delegate void DeathEvent();
     private static event DeathEvent OnDeathEvent;
 
+    /// <summary>
+    ///  The event delegate to subscribe to when an AI moves vertically with a room
+    /// </summary>
+    public delegate void VerticalRoomMoveEvent();
+    public static event VerticalRoomMoveEvent OnVerticalRoomMoveEvent;
+
     public void TakeDamage(float value)
     {
 
@@ -240,8 +246,9 @@ abstract public class AI : MonoBehaviour
     private void Awake()
     {
         MethodBase AwakeMethod = MethodBase.GetCurrentMethod();
-        Debug.Log("<color=#4f7d00>Subscribing to OnDeath at function call: " + AwakeMethod.Name + " at script " + this.GetType().Name + " on the GameObject " + this.gameObject.name + "</color>", this);
+        Debug.Log("<color=#4f7d00>Subscribing to OnDeath and UpdateToNearestTarget at function call: " + AwakeMethod.Name + " at script " + this.GetType().Name + " on the GameObject " + this.gameObject.name + "</color>", this);
         AI.OnDeathEvent += OnDeath;
+        AI.OnVerticalRoomMoveEvent += UpdateToNearestTarget;
 
         SetDefaultValues();
 
@@ -251,8 +258,72 @@ abstract public class AI : MonoBehaviour
         InvokeRepeating("UpdateNavigation", 0f, .5f); 
     }
 
-    protected void UpdateNavigation()
+    protected void UpdateToNearestTarget()
     {
+        int i = 0, targetIndex = -1;
+        float shortestDistance = Mathf.Infinity;
+        float currentDistance = Mathf.Abs(this.transform.position.x - targets[currentTarget].position.x);
+        Transform candidate = new GameObject().transform; 
+        if (currentDistance < shortestDistance)
+        {
+            targetIndex = currentTarget;
+            shortestDistance = currentDistance;
+        }
+
+        if (currentWaypointMode == EAIWaypointMode.OneWay)
+        {
+         
+            foreach (Transform target in targets)
+            {
+                currentDistance = Mathf.Abs(this.transform.position.x - target.position.x);
+
+                if (currentDistance < shortestDistance)
+                {
+                    targetIndex = i;
+                    shortestDistance = currentDistance;
+                }
+                i++;
+
+            }
+            currentTarget = targetIndex;
+        }
+        else if (currentWaypointMode == EAIWaypointMode.Patrol)
+        {
+            GameObject[] possiblePatrolWaypoints = GameObject.FindGameObjectsWithTag("Patrol Waypoints");
+            foreach (GameObject patrolWaypointsArr in possiblePatrolWaypoints)
+            {
+                Transform patrolWaypointsParent = patrolWaypointsArr.transform;
+                i = 0;
+                 foreach (Transform pChild in patrolWaypointsParent)
+                {
+                    currentDistance = Mathf.Abs(this.transform.position.x - pChild.position.x);
+                    
+                    if (currentDistance < shortestDistance)
+                    {
+                        targetIndex = i;
+                        shortestDistance = currentDistance;
+                        candidate = patrolWaypointsParent;
+                    }
+                    i++;
+                }
+            }
+            if (targetIndex != -1)
+            {
+                patrolWaypoints.Clear();
+                foreach (Transform cChild in candidate)
+                {
+                    patrolWaypoints.Add(cChild);
+                }
+                currentTarget = targetIndex;
+            }
+
+        }
+    }
+
+    protected virtual void UpdateNavigation()
+    {
+        MethodBase UpdateNavigationMethod = MethodBase.GetCurrentMethod();
+
         if (seeker.IsDone())
         {
             if (singleTarget != null)
@@ -261,7 +332,7 @@ abstract public class AI : MonoBehaviour
             }
             else if (targets.Count != 0)
             {
-                seeker.StartPath(rb.position, targets[currentTarget].position, OnPathComplete);
+              seeker.StartPath(rb.position, targets[currentTarget].position, OnPathComplete);
             }
         }
 
@@ -270,7 +341,7 @@ abstract public class AI : MonoBehaviour
     {
         Destroy(this.gameObject, 0.5f);
     }
-    private void OnPathComplete(Path p)
+    protected void OnPathComplete(Path p)
     {
         if (!p.error)
         {
@@ -290,8 +361,9 @@ abstract public class AI : MonoBehaviour
     void OnDestroy()
     {
         MethodBase OnDestroyMethod = MethodBase.GetCurrentMethod();
-        Debug.Log("<color=#910a00>Unsubscribing to OnDeath at function call: " + OnDestroyMethod.Name + " at script " + this.GetType().Name + " on the GameObject " + this.gameObject.name + "</color>", this);
+        Debug.Log("<color=#910a00>Unsubscribing to OnDeath and UpdateToNearestTarget at function call: " + OnDestroyMethod.Name + " at script " + this.GetType().Name + " on the GameObject " + this.gameObject.name + "</color>", this);
         AI.OnDeathEvent -= OnDeath;
+        AI.OnVerticalRoomMoveEvent -= UpdateToNearestTarget;
     }
 }
 

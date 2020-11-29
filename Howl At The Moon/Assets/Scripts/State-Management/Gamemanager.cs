@@ -37,7 +37,9 @@ public class Gamemanager : MonoBehaviour
     }
 
     public void LoseGame()
-    { UnityEngine.SceneManagement.SceneManager.LoadScene(3); }
+    { 
+        UnityEngine.SceneManagement.SceneManager.LoadScene(3); 
+    }
 
     public void WinGame()
     {  

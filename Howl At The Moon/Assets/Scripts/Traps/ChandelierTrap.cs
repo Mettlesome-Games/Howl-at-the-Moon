@@ -13,7 +13,12 @@ public class ChandelierTrap : MonoBehaviour
         if (collision.CompareTag("Enemy") && !bWasUsed) {
             print("Smash");
             Chandelier.WakeUp();
-            GetComponent<WerewolfAI>().newState = WerewolfAI.EWerewolfStates.Trapped;
+            WerewolfAI ai = collision.gameObject.GetComponent<WerewolfAI>();
+            if (ai != null) 
+            { 
+                collision.gameObject.GetComponent<WerewolfAI>().newState = WerewolfAI.EWerewolfStates.Trapped;
+                collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+            }
             bWasUsed = true;
         }
     }

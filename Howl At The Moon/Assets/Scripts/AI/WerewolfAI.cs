@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using Pathfinding;
 /// <summary>
@@ -217,7 +218,7 @@ public class WerewolfAI : AI
     }
     protected override void OnDeath()
     {
-        if (CurrentState == EWerewolfStates.Trapped)
+        if (newState == EWerewolfStates.Trapped)
         {
             masterCommander.TickKilledEnemies();
         }

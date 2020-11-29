@@ -15,7 +15,13 @@ public class TrapDoor : MonoBehaviour
         {
             connectedPlatform.gravityScale = 1;
             GetComponent<Collider2D>().enabled = false;
-           // GetComponent<WerewolfAI>().newState = WerewolfAI.EWerewolfStates.Trapped;
+            connectedPlatform.GetComponent<HingeJoint2D>().useLimits = false; 
+            WerewolfAI ai = collision.gameObject.GetComponent<WerewolfAI>();
+            if (ai != null)
+            {
+                collision.gameObject.GetComponent<WerewolfAI>().newState = WerewolfAI.EWerewolfStates.Trapped;
+                collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+            }
             StartCoroutine("HangTimer");
         }
     }
