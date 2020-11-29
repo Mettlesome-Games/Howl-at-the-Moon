@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3551387543055743247}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.45, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.47, z: 0}
+  m_LocalScale: {x: 0.4, y: 0.35, z: 1}
   m_Children:
   - {fileID: 3551387543354790297}
   - {fileID: 3551387543196344470}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 3551387543196344469}
   - component: {fileID: 3551387543196344458}
   - component: {fileID: 3551387543196344459}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Connected platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0019873083, y: 0.006005261}
+  m_Offset: {x: -0.14139888, y: 0.006005261}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -203,7 +203,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.77398497, y: 0.07483169}
+  m_Size: {x: 0.495161, y: 0.07483169}
   m_EdgeRadius: 0
 --- !u!233 &3551387543196344459
 HingeJoint2D:
@@ -342,7 +342,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3551387543354790290}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -368,7 +368,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3551387543354790290}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0

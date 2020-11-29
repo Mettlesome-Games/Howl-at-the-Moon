@@ -10,7 +10,11 @@ public class GridManager : MonoBehaviour
     private const float TILE_OFFSET = 0.5f;
     private const float GRID_HEIGHT = 3f;
     private const float GRID_WIDTH = 3f;
-    
+    /// <summary>
+    ///  The event delegate to subscribe to when an AI moves vertically with a room
+    /// </summary>
+    public delegate void VerticalRoomMoveEvent();
+    public static event VerticalRoomMoveEvent OnVerticalRoomMoveEvent;
 
     //keep track of the current row and col so we know which ones to slide
     [HideInInspector] public GameObject[] currentRow;
@@ -91,14 +95,14 @@ public class GridManager : MonoBehaviour
         SetUpMoonlight(testRow1, gridPanelsRow0);
         SetUpMoonlight(testRow2, gridPanelsRow1);
         SetUpMoonlight(testRow3, gridPanelsRow2);
-        DrawRooms();
+        //DrawRooms();
     }
 
     // Update is called once per frame
     void Update()
     {
         //DrawColors();
-        //DrawRooms(); //draw the rooms continually(maybe should only call once something changes...) --will test
+        DrawRooms(); //draw the rooms continually(maybe should only call once something changes...) --will test
     }
 
     //shifts up for cols or left for rows
@@ -620,6 +624,7 @@ public class GridManager : MonoBehaviour
                         ResetPanels(gridPanelsCol2, originalPositionsCol2);
                         break;
                 }
+                OnVerticalRoomMoveEvent?.Invoke();
             }
             else if (upLeft == 1)//moving down
             {
@@ -662,6 +667,7 @@ public class GridManager : MonoBehaviour
         SecondGroupMatching(updown);
         currentCol = null;
         currentRow = null;
-        DrawRooms();
+        //DrawRooms();
+        AstarPath.active.Scan();
     }
 }

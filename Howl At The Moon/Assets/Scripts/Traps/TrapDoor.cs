@@ -19,7 +19,7 @@ public class TrapDoor : MonoBehaviour
             WerewolfAI ai = collision.gameObject.GetComponent<WerewolfAI>();
             if (ai != null)
             {
-                collision.gameObject.GetComponent<WerewolfAI>().newState = WerewolfAI.EWerewolfStates.Trapped;
+                //collision.gameObject.GetComponent<WerewolfAI>().newState = WerewolfAI.EWerewolfStates.Trapped;
                 collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
             }
             StartCoroutine("HangTimer");
@@ -30,5 +30,6 @@ public class TrapDoor : MonoBehaviour
         yield return new WaitForSeconds(3);
         // After three seconds reset to original position.
         connectedPlatform.GetComponent<HingeJoint2D>().useLimits = true;
+        GetComponent<Collider2D>().enabled = true;
     }
 }

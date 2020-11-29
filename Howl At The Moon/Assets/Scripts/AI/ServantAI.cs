@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using Pathfinding;
 
@@ -36,6 +37,16 @@ public class ServantAI : AI
         }
     }
     public Transform foodbowlPlacementSpot;
+
+
+    protected override void Awake()
+    {
+        MethodBase AwakeMethod = MethodBase.GetCurrentMethod();
+        /*Debug.Log("<color=#4f7d00>Subscribing to OnDeath at function call: " + AwakeMethod.Name + " at script " + this.GetType().Name + " on the GameObject " + this.gameObject.name + "</color>", this);
+        ServantAI.OnDeathEvent += OnDeath;*/
+        base.Awake();
+    }
+
 
     protected override void SetDefaultValues()
     {
@@ -163,9 +174,8 @@ public class ServantAI : AI
             if (hasWolfsbane)
             {
                 hasWolfsbane = false;
-                if (singleTarget.CompareTag("Enemy"))
+                if (singleTarget.CompareTag("Enemy") && currentState == EServantStates.PresentingWolfsbane)
                 {
-                    singleTarget.gameObject.GetComponent<WerewolfAI>().newState = WerewolfAI.EWerewolfStates.Trapped;
                     singleTarget.gameObject.GetComponent<WerewolfAI>().TakeDamage(wolfsbaneDamage);
                     singleTarget = null;
                     newState = EServantStates.Running;
@@ -203,6 +213,13 @@ public class ServantAI : AI
             
         if (wolfsbaneTimerActive)
             TickCountdowns(); 
+    }
+    protected override void OnDestroy()
+    {
+        MethodBase OnDestroyMethod = MethodBase.GetCurrentMethod();
+        /*Debug.Log("<color=#910a00>Unsubscribing to OnDeath at function call: " + OnDestroyMethod.Name + " at script " + this.GetType().Name + " on the GameObject " + this.gameObject.name + "</color>", this);
+        ServantAI.OnDeathEvent -= OnDeath;*/
+        base.OnDestroy();
     }
 
 }

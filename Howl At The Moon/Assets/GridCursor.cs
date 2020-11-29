@@ -148,6 +148,7 @@ public class GridCursor : MonoBehaviour
                         gridManager.UpdateGrid(i[1], false, 2, true);//(-1,0,1), false, 2, true
                         gridManager.ResetNPCs(gridManager.gridPanelsCol2, gridManager.testCol3);
                     }
+                    
                 }
                 dragging = false;
                 leftRight = false;

@@ -52,6 +52,14 @@ public class WerewolfAI : AI
 
     protected AnimatorOverrideController myAnimatorOverrideController;
 
+    protected override void Awake()
+    {
+        MethodBase AwakeMethod = MethodBase.GetCurrentMethod();
+        /*Debug.Log("<color=#4f7d00>Subscribing to OnDeath at function call: " + AwakeMethod.Name + " at script " + this.GetType().Name + " on the GameObject " + this.gameObject.name + "</color>", this);
+        WerewolfAI.OnDeathEvent += OnDeath;*/
+        base.Awake();
+    }
+
     protected override void SetDefaultValues()
     {
         base.SetDefaultValues();
@@ -216,16 +224,25 @@ public class WerewolfAI : AI
             }
         }
     }
-    protected override void OnDeath()
+    protected override bool ReachedEndOfPath()
     {
-        if (newState == EWerewolfStates.Trapped)
+        if (currentWaypoint >= path.vectorPath.Count)
         {
-            masterCommander.TickKilledEnemies();
+            UpdateCurrentTarget();
+            if (previousStates != EWerewolfStates.Chasing || currentState == EWerewolfStates.Chasing || currentState == EWerewolfStates.Normal || currentState == EWerewolfStates.Cursed)
+                reachedEndOfPath = true;
+           return reachedEndOfPath;
         }
         else
         {
-            base.OnDeath();
+            reachedEndOfPath = false;
+            return reachedEndOfPath;
         }
+    }
+    protected override void OnDeath()
+    {
+        masterCommander.TickKilledEnemies();
+        base.OnDeath();
     }
     private void Update()
     {
@@ -253,6 +270,14 @@ public class WerewolfAI : AI
         }
         if (attackTimerActive)
             TickCountdowns();
+    }
+
+    protected override void OnDestroy()
+    {
+        MethodBase OnDestroyMethod = MethodBase.GetCurrentMethod();
+        /*Debug.Log("<color=#910a00>Unsubscribing to OnDeath at function call: " + OnDestroyMethod.Name + " at script " + this.GetType().Name + " on the GameObject " + this.gameObject.name + "</color>", this);
+        WerewolfAI.OnDeathEvent -= OnDeath;*/
+        base.OnDestroy();
     }
 
 }

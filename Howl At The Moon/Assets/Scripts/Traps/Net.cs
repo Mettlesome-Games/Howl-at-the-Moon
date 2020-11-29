@@ -9,7 +9,10 @@ public class Net : MonoBehaviour
         if (collision.CompareTag("Enemy")) { 
             collision.gameObject.transform.parent = this.transform;
             WerewolfAI ai = collision.gameObject.GetComponent<WerewolfAI>();
-            if (ai != null) { collision.gameObject.GetComponent<WerewolfAI>().newState = WerewolfAI.EWerewolfStates.Trapped; }
+            if (ai != null)
+            {
+                ai.TakeDamage(ai.HP);
+            }
             this.transform.parent.GetComponent<Room>().NPCs.Remove(collision.gameObject);
         }
     }

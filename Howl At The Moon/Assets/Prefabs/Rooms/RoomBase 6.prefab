@@ -102,6 +102,7 @@ MonoBehaviour:
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0, y: 0}
+  NPCs: []
 --- !u!61 &7522174472985881267
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -126,7 +127,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.08}
+  m_Size: {x: 1, y: 0.08}
   m_EdgeRadius: 0
 --- !u!1001 &4536964913453353386
 PrefabInstance:

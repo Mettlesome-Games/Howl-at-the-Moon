@@ -70,16 +70,29 @@ abstract public class AI : MonoBehaviour
     /// <summary>
     ///  The event delegate to subscribe to when to kill the AI
     /// </summary>
-    private delegate void DeathEvent();
-    private static event DeathEvent OnDeathEvent;
+    protected delegate void DeathEvent();
+    protected static event DeathEvent OnDeathEvent;
 
     /// <summary>
     ///  The event delegate to subscribe to when an AI moves vertically with a room
     /// </summary>
     /*public delegate void VerticalRoomMoveEvent();
     public static event VerticalRoomMoveEvent OnVerticalRoomMoveEvent;*/
+    protected virtual void Awake()
+    {
+        MethodBase AwakeMethod = MethodBase.GetCurrentMethod();
+        Debug.Log("<color=#4f7d00>Subscribing to UpdateToNearestTarget at function call: " + AwakeMethod.Name + " at script " + this.GetType().Name + " on the GameObject " + this.gameObject.name + "</color>", this);
+        GridManager.OnVerticalRoomMoveEvent += UpdateToNearestTarget;
 
-    public void TakeDamage(float value)
+        SetDefaultValues();
+
+        seeker = GetComponent<Seeker>();
+        rb = GetComponent<Rigidbody2D>();
+
+        InvokeRepeating("UpdateNavigation", 0f, .5f);
+    }
+
+    public virtual void TakeDamage(float value)
     {
 
         if (hp - value <= 0.0f)
@@ -88,7 +101,10 @@ abstract public class AI : MonoBehaviour
             hp = hp - value;
 
         if (hp <= 0f)
-            OnDeathEvent?.Invoke();
+        {
+            //OnDeathEvent?.Invoke();
+            OnDeath();
+        }
     }
 
     public void HealDamage(float value)
@@ -158,35 +174,39 @@ abstract public class AI : MonoBehaviour
     }
     protected abstract void PerformAction();
 
+    protected void UpdateCurrentTarget()
+    {
+        if (singleTarget == null)
+        {
+            if (currentWaypointMode == EAIWaypointMode.OneWay)
+            {
+                if (currentTarget < targets.Count - 1)
+                {
+                    currentTarget++;
+                }
+            }
+            else if (currentWaypointMode == EAIWaypointMode.Patrol)
+            {
+                if (currentTarget < targets.Count - 1 && !reachedEndOfPatrol)
+                {
+                    currentTarget++;
+                }
+                else
+                {
+                    reachedEndOfPatrol = true;
+                    currentTarget--;
+                    if (currentTarget == 0)
+                        reachedEndOfPatrol = false;
+                }
+            }
+        }
+    }
+
     protected virtual bool ReachedEndOfPath()
     {
         if (currentWaypoint >= path.vectorPath.Count)
         {
-            if (singleTarget == null)
-            {
-                if (currentWaypointMode == EAIWaypointMode.OneWay)
-                {
-                    if (currentTarget < targets.Count - 1)
-                    {
-                        currentTarget++;
-                    }
-                }
-                else if (currentWaypointMode == EAIWaypointMode.Patrol)
-                {
-                    if (currentTarget < targets.Count - 1 && !reachedEndOfPatrol)
-                    {
-                        currentTarget++;
-                    }
-                    else
-                    {
-                        reachedEndOfPatrol = true;
-                        currentTarget--;
-                        if (currentTarget == 0)
-                            reachedEndOfPatrol = false;
-                        
-                    }
-                }
-            }
+            UpdateCurrentTarget();
             reachedEndOfPath = true;
             return reachedEndOfPath;
         }
@@ -236,27 +256,14 @@ abstract public class AI : MonoBehaviour
 
             if (distance < nextWaypointDistance)
             {
-                currentWaypoint++;
+                if (currentWaypoint < path.vectorPath.Count - 1)
+                    currentWaypoint++;
             }
             //Debug.LogFormat("<color=#01751a> Force: {0} </color>", force.x);
             SwitchGFXDirection(force);
         }
     }
 
-    private void Awake()
-    {
-        MethodBase AwakeMethod = MethodBase.GetCurrentMethod();
-        Debug.Log("<color=#4f7d00>Subscribing to OnDeath and UpdateToNearestTarget at function call: " + AwakeMethod.Name + " at script " + this.GetType().Name + " on the GameObject " + this.gameObject.name + "</color>", this);
-        AI.OnDeathEvent += OnDeath;
-        GridManager.OnVerticalRoomMoveEvent += UpdateToNearestTarget;
-
-        SetDefaultValues();
-
-        seeker = GetComponent<Seeker>();
-        rb = GetComponent<Rigidbody2D>();
- 
-        InvokeRepeating("UpdateNavigation", 0f, .5f); 
-    }
 
     protected void UpdateToNearestTarget()
     {
@@ -341,6 +348,13 @@ abstract public class AI : MonoBehaviour
         }
 
     }
+
+    public void MoveToNextNavigation()
+    {
+        UpdateCurrentTarget();
+        currentWaypoint = 0;
+        UpdateNavigation();
+    }
     protected virtual void OnDeath()
     {
         Destroy(this.gameObject, 0.5f);
@@ -362,11 +376,10 @@ abstract public class AI : MonoBehaviour
     /// <summary>
     /// Whenever this object is destroyed unsubscribe the death event function which should only occur once per game object
     /// </summary>
-    void OnDestroy()
+    protected virtual void OnDestroy()
     {
         MethodBase OnDestroyMethod = MethodBase.GetCurrentMethod();
-        Debug.Log("<color=#910a00>Unsubscribing to OnDeath and UpdateToNearestTarget at function call: " + OnDestroyMethod.Name + " at script " + this.GetType().Name + " on the GameObject " + this.gameObject.name + "</color>", this);
-        AI.OnDeathEvent -= OnDeath;
+        Debug.Log("<color=#910a00>Unsubscribing to UpdateToNearestTarget at function call: " + OnDestroyMethod.Name + " at script " + this.GetType().Name + " on the GameObject " + this.gameObject.name + "</color>", this);
         GridManager.OnVerticalRoomMoveEvent -= UpdateToNearestTarget;
     }
 }

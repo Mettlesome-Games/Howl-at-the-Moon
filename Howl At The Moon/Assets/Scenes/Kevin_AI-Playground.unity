@@ -712,11 +712,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 450578889902534681, guid: 619e2ecb22202994f8a7327af4114769, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.655
+      value: 2.74
       objectReference: {fileID: 0}
     - target: {fileID: 450578889902534681, guid: 619e2ecb22202994f8a7327af4114769, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.983
+      value: -2.81
       objectReference: {fileID: 0}
     - target: {fileID: 450578889902534681, guid: 619e2ecb22202994f8a7327af4114769, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1254,6 +1254,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5822059855887906613, guid: 1e869dc412230af41ba6365758a00dda, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 5822059855887906613, guid: 1e869dc412230af41ba6365758a00dda, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 5822059856013045425, guid: 1e869dc412230af41ba6365758a00dda, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 5822059856013045425, guid: 1e869dc412230af41ba6365758a00dda, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5822059856925604978, guid: 1e869dc412230af41ba6365758a00dda, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5939295589508697973, guid: 1e869dc412230af41ba6365758a00dda, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e869dc412230af41ba6365758a00dda, type: 3}
 --- !u!1001 &6128824497978368388
@@ -1266,6 +1290,10 @@ PrefabInstance:
     - target: {fileID: 6128824498133492747, guid: 05afd3e009646a44ea006fab704d6e61, type: 3}
       propertyPath: m_Name
       value: Endzone
+      objectReference: {fileID: 0}
+    - target: {fileID: 6128824498133492747, guid: 05afd3e009646a44ea006fab704d6e61, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6128824498133492756, guid: 05afd3e009646a44ea006fab704d6e61, type: 3}
       propertyPath: m_RootOrder
@@ -1320,14 +1348,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8701904525473894495, guid: 1ba4c1118b2351241a8162c193fc5f76, type: 3}
-      propertyPath: m_Size.y
-      value: 1.1828213
-      objectReference: {fileID: 0}
-    - target: {fileID: 8701904525473894495, guid: 1ba4c1118b2351241a8162c193fc5f76, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.09141113
-      objectReference: {fileID: 0}
     - target: {fileID: 8701904526302871886, guid: 1ba4c1118b2351241a8162c193fc5f76, type: 3}
       propertyPath: m_Name
       value: Stairs

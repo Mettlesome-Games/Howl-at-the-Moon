@@ -47,7 +47,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -1}
+  m_Offset: {x: 0, y: -1.4375542}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -58,7 +58,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 2.5}
+  m_Size: {x: 0.05, y: 1.6248915}
   m_EdgeRadius: 0
 --- !u!114 &6337857226908868030
 MonoBehaviour:
@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 6337857227915448878}
   - component: {fileID: 6337857227915448879}
   - component: {fileID: 6337857227915448876}
+  - component: {fileID: 1919857847}
   m_Layer: 0
   m_Name: Chandelier
   m_TagString: Untagged
@@ -256,3 +257,17 @@ Rigidbody2D:
   m_SleepingMode: 2
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1919857847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6337857227915448877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aebe06d77bb44af4db916ca2c5bca06f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crashSFX: {fileID: 8300000, guid: 55cfe0b6852eb454599d4dc3892fa12c, type: 3}
+  m_Channel: {fileID: -6876267601498933641, guid: e0a4dc306a4291f44a4d867c38ff63df, type: 2}

@@ -94,7 +94,8 @@ MonoBehaviour:
   roomSprite: {fileID: 21300000, guid: a87ebd9eadc3cdf4880793401e4e55a3, type: 3}
   canSlide: 1
   trapIDs: 02000000
-  traps: []
+  traps:
+  - {fileID: 0}
   localP:
   - {x: 0, y: 0.2, z: 0}
   floor: {fileID: -3697478054230281479}
@@ -102,6 +103,7 @@ MonoBehaviour:
   moon: {fileID: 0}
   moonOffset: {x: 0, y: 0}
   moonSize: {x: 0.25, y: 0.25}
+  NPCs: []
 --- !u!61 &-3697478054230281479
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -126,7 +128,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.08}
+  m_Size: {x: 1, y: 0.08}
   m_EdgeRadius: 0
 --- !u!1001 &3060475989313203219
 PrefabInstance:

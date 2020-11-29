@@ -95,14 +95,16 @@ MonoBehaviour:
   roomSprite: {fileID: 21300000, guid: 37c4489b2063f4a45a2a66fa5eca9c7f, type: 3}
   canSlide: 1
   trapIDs: 03000000
-  traps: []
+  traps:
+  - {fileID: 0}
   localP:
-  - {x: 0, y: -0.45, z: 0}
+  - {x: 0, y: -0.47, z: 0}
   floor: {fileID: 6568106363819223200}
   floor2: {fileID: 5108849116541966894}
   moon: {fileID: 0}
   moonOffset: {x: -0.03, y: -0.06}
   moonSize: {x: 0.12, y: 0.1}
+  NPCs: []
 --- !u!61 &6568106363819223200
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -116,7 +118,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.26, y: -0.35}
+  m_Offset: {x: -0.30291748, y: -0.35}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -127,7 +129,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.28, y: 0.08}
+  m_Size: {x: 0.35705566, y: 0.08}
   m_EdgeRadius: 0
 --- !u!61 &5108849116541966894
 BoxCollider2D:
@@ -142,7 +144,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.26, y: -0.35}
+  m_Offset: {x: 0.28668213, y: -0.35}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -153,7 +155,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.28, y: 0.08}
+  m_Size: {x: 0.32043457, y: 0.08}
   m_EdgeRadius: 0
 --- !u!1001 &351814104987841217
 PrefabInstance:
