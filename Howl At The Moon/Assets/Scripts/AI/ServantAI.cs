@@ -97,12 +97,12 @@ public class ServantAI : AI
 
             currentWaypointMode = EAIWaypointMode.Patrol;
             
-            myAnimator.SetBool("Running", false);
-
             currentTarget = 0;
             currentWaypoint = 0;
             nextWaypointDistance = defaultNextWaypointDistance;
             UpdateNavigation();
+
+            myAnimator.SetBool("Running", false);
         }
         else if (currentState == EServantStates.Running)
         {
@@ -122,6 +122,9 @@ public class ServantAI : AI
             currentWaypoint = 0;
             nextWaypointDistance = .1f;
             UpdateNavigation();
+
+            myAnimator.SetBool("Running", false);
+
         }
         else if (currentState == EServantStates.CreatingWolfsbane)
         {

@@ -183,6 +183,8 @@ abstract public class AI : MonoBehaviour
                 if (currentTarget < targets.Count - 1)
                 {
                     currentTarget++;
+                    currentWaypoint = 0;
+                    UpdateNavigation();
                 }
             }
             else if (currentWaypointMode == EAIWaypointMode.Patrol)
@@ -190,11 +192,16 @@ abstract public class AI : MonoBehaviour
                 if (currentTarget < targets.Count - 1 && !reachedEndOfPatrol)
                 {
                     currentTarget++;
+                    currentWaypoint = 0;
+                    UpdateNavigation();
                 }
                 else
                 {
                     reachedEndOfPatrol = true;
                     currentTarget--;
+                    currentWaypoint = 0;
+                    UpdateNavigation();
+
                     if (currentTarget == 0)
                         reachedEndOfPatrol = false;
                 }
@@ -208,15 +215,14 @@ abstract public class AI : MonoBehaviour
         //Debug.LogFormat("CurrentWaypoint {0}, path.vectorPath.Count {1} what is this object {2}", currentWaypoint, path.vectorPath.Count, this.gameObject.name);
         if (currentWaypoint >= path.vectorPath.Count)
         {
-            UpdateCurrentTarget();
             reachedEndOfPath = true;
-            return reachedEndOfPath;
         }
         else
         {
             reachedEndOfPath = false;
-            return reachedEndOfPath;
         }
+        return reachedEndOfPath;
+
     }
 
 
@@ -246,10 +252,14 @@ abstract public class AI : MonoBehaviour
             }
 
             if (ReachedEndOfPath())
+            {
+                UpdateCurrentTarget();
                 return;
+            }
 
             Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
             Vector2 force = direction * walkSpeed * Time.deltaTime;
+            force.y = 0f;
             rb.AddForce(force);
 
             myAnimator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
@@ -327,7 +337,6 @@ abstract public class AI : MonoBehaviour
 
         }
 
-        currentTarget = 0;
         currentWaypoint = 0;
         UpdateNavigation();
     }
