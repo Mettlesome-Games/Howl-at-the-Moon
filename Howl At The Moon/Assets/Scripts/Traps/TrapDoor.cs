@@ -27,9 +27,10 @@ public class TrapDoor : MonoBehaviour
     }
    
     private IEnumerator HangTimer() { 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
         // After three seconds reset to original position.
         connectedPlatform.GetComponent<HingeJoint2D>().useLimits = true;
         GetComponent<Collider2D>().enabled = true;
+        AstarPath.active.Scan();
     }
 }

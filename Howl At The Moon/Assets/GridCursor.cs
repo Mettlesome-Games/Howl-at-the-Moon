@@ -154,6 +154,7 @@ public class GridCursor : MonoBehaviour
                 leftRight = false;
                 upDown = false;
                 Gamemanager.instance.ResumeGame();
+                AstarPath.active.Scan();
             }
         }
     }

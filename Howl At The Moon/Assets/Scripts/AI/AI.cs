@@ -81,8 +81,8 @@ abstract public class AI : MonoBehaviour
     protected virtual void Awake()
     {
         MethodBase AwakeMethod = MethodBase.GetCurrentMethod();
-        Debug.Log("<color=#4f7d00>Subscribing to UpdateToNearestTarget at function call: " + AwakeMethod.Name + " at script " + this.GetType().Name + " on the GameObject " + this.gameObject.name + "</color>", this);
-        GridManager.OnVerticalRoomMoveEvent += UpdateToNearestTarget;
+        /*Debug.Log("<color=#4f7d00>Subscribing to UpdateToNearestTarget at function call: " + AwakeMethod.Name + " at script " + this.GetType().Name + " on the GameObject " + this.gameObject.name + "</color>", this);
+        GridManager.OnVerticalRoomMoveEvent += UpdateToNearestTarget;*/
 
         SetDefaultValues();
 
@@ -273,7 +273,7 @@ abstract public class AI : MonoBehaviour
     }
 
 
-    protected void UpdateToNearestTarget()
+    public void UpdateToNearestTarget()
     {
         int i = 0, targetIndex = -1;
         float shortestDistance = Mathf.Infinity;
@@ -424,8 +424,8 @@ abstract public class AI : MonoBehaviour
     protected virtual void OnDestroy()
     {
         MethodBase OnDestroyMethod = MethodBase.GetCurrentMethod();
-        Debug.Log("<color=#910a00>Unsubscribing to UpdateToNearestTarget at function call: " + OnDestroyMethod.Name + " at script " + this.GetType().Name + " on the GameObject " + this.gameObject.name + "</color>", this);
-        GridManager.OnVerticalRoomMoveEvent -= UpdateToNearestTarget;
+        /*Debug.Log("<color=#910a00>Unsubscribing to UpdateToNearestTarget at function call: " + OnDestroyMethod.Name + " at script " + this.GetType().Name + " on the GameObject " + this.gameObject.name + "</color>", this);
+        GridManager.OnVerticalRoomMoveEvent -= UpdateToNearestTarget;*/
     }
 }
 

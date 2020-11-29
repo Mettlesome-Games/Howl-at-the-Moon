@@ -23,7 +23,7 @@ public class ChandelierSmash : MonoBehaviour
             WerewolfAI ai = collision.gameObject.GetComponent<WerewolfAI>();
             if (ai != null)
             {
-                this.transform.parent.transform.parent.GetComponent<Room>().NPCs.Remove(collision.gameObject);
+                //this.transform.parent.transform.parent.GetComponent<Room>().NPCs.Remove(collision.gameObject);
                 collision.gameObject.transform.parent.GetComponent<Room>().NPCs.Remove(collision.gameObject);
                 ai.TakeDamage(ai.HP); 
             }

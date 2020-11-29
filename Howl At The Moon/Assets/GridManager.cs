@@ -444,14 +444,10 @@ public class GridManager : MonoBehaviour
             //remove all null npcs
             foreach (GameObject NPC in movedNpcs)
             {
-                if (NPC != null)
-                {
-                    NPC.GetComponent<WerewolfAI>().localPos = NPC.transform.localPosition;
-                }
-                else
+                if (NPC == null)
                 {
                     tile.GetComponent<Room>().NPCs.Remove(NPC);
-                    rowSource[i - 1].GetComponent<Room>().NPCs.Remove(NPC);
+                    //rowSource[i - 1].GetComponent<Room>().NPCs.Remove(NPC);
                 }
             }
             i++;
@@ -679,6 +675,7 @@ public class GridManager : MonoBehaviour
                         ResetPanels(gridPanelsCol2, originalPositionsCol2);
                         break;
                 }
+                OnVerticalRoomMoveEvent?.Invoke();
             }
             else if (upLeft == 0)
             {
@@ -701,6 +698,5 @@ public class GridManager : MonoBehaviour
         currentCol = null;
         currentRow = null;
         //DrawRooms();
-        AstarPath.active.Scan();
     }
 }

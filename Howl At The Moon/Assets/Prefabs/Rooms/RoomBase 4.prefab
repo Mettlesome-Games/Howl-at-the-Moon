@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1e36b5b706546a5458b852b6b39f2d18, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 69e20da6962402a4a85a5aaf055bd827, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -90,11 +90,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31ea8fc25f9e04f4890723f12826671b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomSprite: {fileID: 21300000, guid: 1e36b5b706546a5458b852b6b39f2d18, type: 3}
+  roomSprite: {fileID: 21300000, guid: 69e20da6962402a4a85a5aaf055bd827, type: 3}
   canSlide: 1
-  trapIDs: 
+  trapIDs: 00000000
   traps: []
-  localP: []
+  localP:
+  - {x: 0, y: 0.3, z: 0}
   floor: {fileID: -9118594699259404065}
   floor2: {fileID: -9118594699259404065}
   moon: {fileID: 0}
