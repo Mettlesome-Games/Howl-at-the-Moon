@@ -278,7 +278,7 @@ abstract public class AI : MonoBehaviour
         int i = 0, targetIndex = -1;
         float shortestDistance = Mathf.Infinity;
         float currentDistance = Vector2.Distance(rb.position, targets[currentTarget].position);
-        Transform candidate = new GameObject().transform; 
+        Transform candidate = null; 
         if (currentDistance < shortestDistance)
         {
             targetIndex = currentTarget;
