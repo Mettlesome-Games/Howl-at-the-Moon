@@ -98,20 +98,17 @@ public class ServantAI : AI
             currentWaypointMode = EAIWaypointMode.Patrol;
             
             currentTarget = 0;
-            currentWaypoint = 0;
             nextWaypointDistance = defaultNextWaypointDistance;
-            UpdateNavigation();
+            revalulatePathing = true;
 
             myAnimator.SetBool("Running", false);
         }
         else if (currentState == EServantStates.Running)
         {
             currentWaypointMode = EAIWaypointMode.OneWay;
-            currentTarget = 0;
-            currentWaypoint = 0;
             targets = levelWaypoints;
             nextWaypointDistance = defaultNextWaypointDistance;
-            UpdateNavigation();
+            revalulatePathing = true;
 
             myAnimator.SetBool("Running", true);
         }
@@ -119,9 +116,9 @@ public class ServantAI : AI
         {
             currentWaypointMode = EAIWaypointMode.OneWay;
             currentTarget = 0;
-            currentWaypoint = 0;
             nextWaypointDistance = .1f;
-            UpdateNavigation();
+            
+            revalulatePathing = true;
 
             myAnimator.SetBool("Running", false);
 

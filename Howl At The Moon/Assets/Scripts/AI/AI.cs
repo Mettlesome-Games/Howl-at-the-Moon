@@ -23,7 +23,7 @@ abstract public class AI : MonoBehaviour
     public enum EAISelection {Werewolf = 0, Servant = 1} 
     public EAISelection AIType;
 
-
+    public bool revalulatePathing = false;
     public enum EAIWaypointMode {OneWay = 0, Patrol = 1}
     public EAIWaypointMode currentWaypointMode = EAIWaypointMode.OneWay;
     public float walkSpeed;
@@ -183,8 +183,7 @@ abstract public class AI : MonoBehaviour
                 if (currentTarget < targets.Count - 1)
                 {
                     currentTarget++;
-                    currentWaypoint = 0;
-                    UpdateNavigation();
+                    revalulatePathing = true;
                 }
             }
             else if (currentWaypointMode == EAIWaypointMode.Patrol)
@@ -192,15 +191,14 @@ abstract public class AI : MonoBehaviour
                 if (currentTarget < targets.Count - 1 && !reachedEndOfPatrol)
                 {
                     currentTarget++;
-                    currentWaypoint = 0;
-                    UpdateNavigation();
+                    revalulatePathing = true;
                 }
                 else
                 {
                     reachedEndOfPatrol = true;
                     currentTarget--;
-                    currentWaypoint = 0;
-                    UpdateNavigation();
+
+                    revalulatePathing = true;
 
                     if (currentTarget == 0)
                         reachedEndOfPatrol = false;
@@ -222,7 +220,6 @@ abstract public class AI : MonoBehaviour
             reachedEndOfPath = false;
         }
         return reachedEndOfPath;
-
     }
 
 
@@ -280,7 +277,7 @@ abstract public class AI : MonoBehaviour
     {
         int i = 0, targetIndex = -1;
         float shortestDistance = Mathf.Infinity;
-        float currentDistance = Mathf.Abs(this.transform.position.x - targets[currentTarget].position.x);
+        float currentDistance = Vector2.Distance(rb.position, targets[currentTarget].position);
         Transform candidate = new GameObject().transform; 
         if (currentDistance < shortestDistance)
         {
@@ -293,8 +290,8 @@ abstract public class AI : MonoBehaviour
          
             foreach (Transform target in targets)
             {
-                currentDistance = Mathf.Abs(this.transform.position.x - target.position.x);
-
+                currentDistance = Vector2.Distance(rb.position, target.position);
+                
                 if (currentDistance < shortestDistance)
                 {
                     targetIndex = i;
@@ -314,8 +311,8 @@ abstract public class AI : MonoBehaviour
                 i = 0;
                 foreach (Transform pChild in patrolWaypointsParent)
                 {
-                    currentDistance = Mathf.Abs(this.transform.position.x - pChild.position.x);
-                    
+                    currentDistance = Vector2.Distance(rb.position, pChild.position);
+                   
                     if (currentDistance < shortestDistance)
                     {
                         targetIndex = i;
@@ -336,11 +333,43 @@ abstract public class AI : MonoBehaviour
             }
 
         }
+        revalulatePathing = true;
 
-        currentWaypoint = 0;
-        UpdateNavigation();
     }
 
+    private void EvaluateDistanceOfCurrentWaypoint ()
+    {
+        int waypointIndex = 0, targetIndex = -1;
+        waypointIndex = currentWaypoint;
+
+        if (currentWaypoint <= path.vectorPath.Count)
+        {
+            waypointIndex--;
+        }
+
+        float shortestDistance = Mathf.Infinity;
+        float currentDistance = Vector2.Distance(rb.position, path.vectorPath[waypointIndex]);
+
+        if (currentDistance < shortestDistance)
+        {
+            targetIndex = currentWaypoint;
+            shortestDistance = currentDistance;
+        }
+        waypointIndex = 0;
+        foreach (Vector3 waypoint in path.vectorPath)
+        {
+            currentDistance = Vector2.Distance(rb.position, waypoint);
+
+            if (currentDistance < shortestDistance)
+            {
+                targetIndex = waypointIndex;
+                shortestDistance = currentDistance;
+            }
+            waypointIndex++;
+
+        }
+        currentWaypoint = targetIndex;
+    }
     protected virtual void UpdateNavigation()
     {
         MethodBase UpdateNavigationMethod = MethodBase.GetCurrentMethod();
@@ -353,7 +382,14 @@ abstract public class AI : MonoBehaviour
             }
             else if (targets.Count != 0)
             {
-              seeker.StartPath(rb.position, targets[currentTarget].position, OnPathComplete);
+                if (revalulatePathing)
+                {
+                    //Debug.LogFormat("<color=#7e00a1> Before:EvaluateDistanceOfCurrentWaypoint() CurrentWaypoint: {0}, VectorPath.Count: {1} </color>", currentWaypoint, path.vectorPath.Count);
+                    EvaluateDistanceOfCurrentWaypoint();
+                    //Debug.LogFormat("<color=#f5aa42> After:EvaluateDistanceOfCurrentWaypoint() CurrentWaypoint: {0}, VectorPath.Count: {1} </color>", currentWaypoint, path.vectorPath.Count);
+                    revalulatePathing = false;
+                }    
+                seeker.StartPath(rb.position, targets[currentTarget].position, OnPathComplete);
             }
         }
 
@@ -362,8 +398,7 @@ abstract public class AI : MonoBehaviour
     public void MoveToNextNavigation()
     {
         UpdateCurrentTarget();
-        currentWaypoint = 0;
-        UpdateNavigation();
+        revalulatePathing = true;
     }
     protected virtual void OnDeath()
     {
