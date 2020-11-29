@@ -50,7 +50,7 @@ public class Room : MonoBehaviour
             if (NPCs.Contains(collision.gameObject))
             {
                 NPCs.Remove(collision.gameObject);
-                print(collision.gameObject.name + "has left");
+                //print(collision.gameObject.name + "has left");
             }
         }
     }

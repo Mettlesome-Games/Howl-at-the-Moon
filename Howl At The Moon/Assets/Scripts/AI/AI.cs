@@ -202,8 +202,9 @@ abstract public class AI : MonoBehaviour
         }
     }
 
-    protected virtual bool ReachedEndOfPath()
+    protected bool ReachedEndOfPath()
     {
+        //Debug.LogFormat("CurrentWaypoint {0}, path.vectorPath.Count {1} what is this object {2}", currentWaypoint, path.vectorPath.Count, this.gameObject.name);
         if (currentWaypoint >= path.vectorPath.Count)
         {
             UpdateCurrentTarget();
@@ -251,13 +252,12 @@ abstract public class AI : MonoBehaviour
             rb.AddForce(force);
 
             myAnimator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
-
+            
             float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
 
             if (distance < nextWaypointDistance)
             {
-                if (currentWaypoint < path.vectorPath.Count - 1)
-                    currentWaypoint++;
+                currentWaypoint++;
             }
             //Debug.LogFormat("<color=#01751a> Force: {0} </color>", force.x);
             SwitchGFXDirection(force);
@@ -301,7 +301,7 @@ abstract public class AI : MonoBehaviour
             {
                 Transform patrolWaypointsParent = patrolWaypointsArr.transform;
                 i = 0;
-                 foreach (Transform pChild in patrolWaypointsParent)
+                foreach (Transform pChild in patrolWaypointsParent)
                 {
                     currentDistance = Mathf.Abs(this.transform.position.x - pChild.position.x);
                     

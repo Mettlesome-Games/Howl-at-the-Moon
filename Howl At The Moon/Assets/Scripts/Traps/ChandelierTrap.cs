@@ -7,17 +7,23 @@ public class ChandelierTrap : MonoBehaviour
     public Rigidbody2D Chandelier;
     [SerializeField] private bool bWasUsed = false;
 
+    private void Start()
+    {
+        Chandelier.simulated = false;
+    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //TODO: check if the werewolf is on fire and the trap has not been used.
         if (collision.CompareTag("Enemy") && !bWasUsed) {
-            print("Smash");
+            print(collision.name + "");
+            Chandelier.simulated = true;
             Chandelier.WakeUp();
             WerewolfAI ai = collision.gameObject.GetComponent<WerewolfAI>();
             if (ai != null) 
             { 
-                collision.gameObject.GetComponent<WerewolfAI>().newState = WerewolfAI.EWerewolfStates.Trapped;
+                //collision.gameObject.GetComponent<WerewolfAI>().newState = WerewolfAI.EWerewolfStates.;
                 collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
             }
             bWasUsed = true;

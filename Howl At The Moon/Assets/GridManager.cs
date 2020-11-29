@@ -415,6 +415,7 @@ public class GridManager : MonoBehaviour
                     NPC.GetComponent<WerewolfAI>().localPos = NPC.transform.localPosition;
                 }
                 rowSource[rowSource.Length - 1].GetComponent<Room>().NPCs = tile.GetComponent<Room>().NPCs;
+                //print(rowSource[rowSource.Length - 1].name + "has " + rowSource[rowSource.Length - 1].GetComponent<Room>().NPCs.Count + "werewolves");
             }
             else
             {
@@ -423,9 +424,11 @@ public class GridManager : MonoBehaviour
                     NPC.GetComponent<WerewolfAI>().localPos = NPC.transform.localPosition;
                 }
                 rowSource[i - 1].GetComponent<Room>().NPCs = tile.GetComponent<Room>().NPCs;
+                //print(rowSource[i - 1].name + "has " + rowSource[i - 1].GetComponent<Room>().NPCs.Count + "werewolves");
             }
             i++;
         }
+        //print("-------------------------------------");
     }
 
     public void ResetNPCs(List<GameObject> panelRow, GameObject[] rowSource)

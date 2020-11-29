@@ -142,6 +142,10 @@ public class WerewolfAI : AI
                 attackSpeed = defaultAttackSpeed;
             }
             singleTarget = null;
+            currentTarget = 0;
+            currentWaypoint = 0;
+            UpdateNavigation();
+
         }
         else if (currentState == EWerewolfStates.Chasing)
         {
@@ -179,6 +183,9 @@ public class WerewolfAI : AI
             myAnimatorOverrideController["werewolf_idle"] = redEyesIdle;
             myAnimatorOverrideController["werewolf_walking"] = redEyesWalking;
             myAnimatorOverrideController["werewolf_attack"] = redEyesAttack;
+            currentTarget = 0;
+            currentWaypoint = 0;
+            UpdateNavigation();
         }
     }
     protected void InvokeAttackCountdown()
@@ -222,21 +229,6 @@ public class WerewolfAI : AI
                     InvokeAttackCountdown();
                 }
             }
-        }
-    }
-    protected override bool ReachedEndOfPath()
-    {
-        if (currentWaypoint >= path.vectorPath.Count)
-        {
-            UpdateCurrentTarget();
-            if (previousStates != EWerewolfStates.Chasing || currentState == EWerewolfStates.Chasing || currentState == EWerewolfStates.Normal || currentState == EWerewolfStates.Cursed)
-                reachedEndOfPath = true;
-           return reachedEndOfPath;
-        }
-        else
-        {
-            reachedEndOfPath = false;
-            return reachedEndOfPath;
         }
     }
     protected override void OnDeath()

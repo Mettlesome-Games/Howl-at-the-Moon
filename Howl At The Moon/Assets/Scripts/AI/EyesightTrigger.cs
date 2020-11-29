@@ -51,12 +51,12 @@ public class EyesightTrigger : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         WerewolfAI werewolf = AIParent.GetComponent<WerewolfAI>();
-
+        /*
         if (collision.CompareTag("Servant") && werewolf != null)
         {
             werewolf.newState = WerewolfAI.EWerewolfStates.Chasing;
             werewolf.singleTarget = collision.gameObject.transform;
-        }
+        }*/
     }
 
 }
