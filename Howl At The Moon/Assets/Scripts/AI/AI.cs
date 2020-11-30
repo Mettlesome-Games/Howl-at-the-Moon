@@ -382,7 +382,7 @@ abstract public class AI : MonoBehaviour
     }
     protected virtual void OnDeath()
     {
-        Destroy(this.gameObject, 0.5f);
+        Destroy(this.gameObject);
     }
     protected void OnPathComplete(Path p)
     {
