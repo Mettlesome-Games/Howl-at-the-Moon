@@ -23,8 +23,8 @@ public class FoodTrap : MonoBehaviour
             wolfbaneAnimator.SetBool("Poisoned", true);
             this.GetComponent<Collider2D>().enabled = true;
             Array.Clear(this.transform.parent.GetComponent<Room>().traps, 0, 1);
-            this.transform.parent = collision.gameObject.transform.Find("FoodBowlPlacement");
-            this.transform.position = collision.gameObject.transform.Find("FoodBowlPlacement").position;
+            this.transform.parent = collision.gameObject.transform.Find("ServantGFX").Find("FoodBowlPlacement");
+            this.transform.position = collision.gameObject.transform.Find("ServantGFX").Find("FoodBowlPlacement").position;
         }
 
         
