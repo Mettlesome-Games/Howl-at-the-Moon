@@ -276,14 +276,8 @@ abstract public class AI : MonoBehaviour
     public void UpdateToNearestTarget()
     {
         int i = 0, targetIndex = -1;
-        float shortestDistance = Mathf.Infinity;
-        float currentDistance = Vector2.Distance(rb.position, targets[currentTarget].position);
+        float shortestDistance = Mathf.Infinity, currentDistance = 0f;
         Transform candidate = null; 
-        if (currentDistance < shortestDistance)
-        {
-            targetIndex = currentTarget;
-            shortestDistance = currentDistance;
-        }
 
         if (currentWaypointMode == EAIWaypointMode.OneWay)
         {
@@ -340,22 +334,8 @@ abstract public class AI : MonoBehaviour
     private void EvaluateDistanceOfCurrentWaypoint ()
     {
         int waypointIndex = 0, targetIndex = -1;
-        waypointIndex = currentWaypoint;
-
-        if (currentWaypoint <= path.vectorPath.Count)
-        {
-            waypointIndex--;
-        }
-
-        float shortestDistance = Mathf.Infinity;
-        float currentDistance = Vector2.Distance(rb.position, path.vectorPath[waypointIndex]);
-
-        if (currentDistance < shortestDistance)
-        {
-            targetIndex = currentWaypoint;
-            shortestDistance = currentDistance;
-        }
-        waypointIndex = 0;
+        float shortestDistance = Mathf.Infinity, currentDistance = 0f; 
+        
         foreach (Vector3 waypoint in path.vectorPath)
         {
             currentDistance = Vector2.Distance(rb.position, waypoint);
