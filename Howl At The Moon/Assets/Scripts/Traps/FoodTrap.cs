@@ -18,7 +18,8 @@ public class FoodTrap : MonoBehaviour
         if (collision.CompareTag("Servant") && !isfoodPoisoned)
         {
             isfoodPoisoned = true;
-            collision.gameObject.GetComponent<ServantAI>().canMakeWolfsbane = true;
+            collision.gameObject.GetComponent<ServantAI>().canMakeWolfsbane = false;
+            collision.gameObject.GetComponent<ServantAI>().hasWolfsbane = true;
             wolfbaneAnimator.SetBool("Poisoned", true);
             this.GetComponent<Collider2D>().enabled = true;
             Array.Clear(this.transform.parent.GetComponent<Room>().traps, 0, 1);

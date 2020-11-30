@@ -44,8 +44,11 @@ public class EyesightTrigger : MonoBehaviour
         }
         else if (collision.CompareTag("Food Bowl") && servant != null)
         {
-            servant.newState = ServantAI.EServantStates.FoundFoodbowl;
-            servant.singleTarget = collision.gameObject.transform;
+            if (servant.canMakeWolfsbane)
+            {
+                servant.newState = ServantAI.EServantStates.FoundFoodbowl;
+                servant.singleTarget = collision.gameObject.transform;
+            }
         }
     }
 

@@ -12,13 +12,12 @@ public class ServantAI : AI
 {
     public Vector2 localPos;
 
-    public bool canMakeWolfsbane = false;
+    public bool canMakeWolfsbane = true;
 
     public float wolfsbaneDamage;
     public float wolfsbaneSpeedDefault;
     public float wolfsbaneMakeTimer;
     public bool hasWolfsbane = false;
-    public bool wolfsbaneTimerActive = false;
     private float wolfsbaneDamageDefault;
 
     public enum EServantStates { Normal = 0, Running = 1, FoundFoodbowl = 2, CreatingWolfsbane = 3, PresentingWolfsbane = 4 };
@@ -52,6 +51,7 @@ public class ServantAI : AI
 
         movementEnabled = true;
         attackEnabled = true;
+        canMakeWolfsbane = true;
 
         if (wolfsbaneDamage <= 0f)
         {
@@ -107,39 +107,7 @@ public class ServantAI : AI
 
 
     }
-    protected void InvokeWolfsbaneCountdown()
-    {
-        if (!wolfsbaneTimerActive && canMakeWolfsbane)
-        {
-            wolfsbaneTimerActive = true;
-            wolfsbaneMakeTimer = wolfsbaneSpeedDefault;
-            newState = EServantStates.CreatingWolfsbane;
-        }
-    }
-    private void TickCountdowns()
-    {
-        if (wolfsbaneTimerActive)
-        {
-            wolfsbaneMakeTimer -= Time.deltaTime;
-            if (wolfsbaneMakeTimer <= 0f)
-            {
-                wolfsbaneTimerActive = false;
-                hasWolfsbane = true;
-                canMakeWolfsbane = false;
-                newState = EServantStates.Normal;
-                if (singleTarget.CompareTag("Food Bowl"))
-                {
-                    if (!canMakeWolfsbane)
-                    {
-                        singleTarget.parent = foodbowlPlacementSpot;
-                        foodbowlPlacementSpot.transform.GetChild(0).localPosition = new Vector3(0, 0, 0);
-                        singleTarget = levelTarget;
-                    }
-                }
-            }
-        }
-    }
-    protected override void PerformAction()
+      protected override void PerformAction()
     {
         if (singleTarget != null)
         {
@@ -161,10 +129,6 @@ public class ServantAI : AI
     }
     private void Update()
     {
-        if (currentState == EServantStates.FoundFoodbowl && canMakeWolfsbane)
-        {
-            InvokeWolfsbaneCountdown();
-        }
         if (hasWolfsbane)
         {
             myAnimator.SetBool("Running", false);
@@ -185,7 +149,5 @@ public class ServantAI : AI
             }
         }
             
-        if (wolfsbaneTimerActive)
-            TickCountdowns(); 
-    }
+     }
 }
