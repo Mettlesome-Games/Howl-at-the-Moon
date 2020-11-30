@@ -153,7 +153,7 @@ public class ServantAI : AI
                     singleTarget = levelTarget;
                     newState = EServantStates.Running;
                     myAnimator.SetBool("Presenting Wolfsbane", false);
-                    Destroy(foodbowlPlacementSpot.transform.gameObject);
+                    Destroy(foodbowlPlacementSpot.transform.GetChild(0).gameObject);
                 }
             }
         }
