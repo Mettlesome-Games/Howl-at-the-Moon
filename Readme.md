@@ -11,7 +11,7 @@
 
 ---
 ### Cover
-[Howl at the Moon](Howl At The Moon/Assets/Art/Sprites/Howl-at-the-Moon_Cover.gif)
+[Howl at the Moon](Howl&#32;At&#32;The&#32;Moon/Assets/Art/Sprites/Howl-at-the-Moon_Cover.gif)
 ---
 ### About
 
