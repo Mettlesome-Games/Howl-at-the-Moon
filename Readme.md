@@ -1,11 +1,9 @@
 # **Welcome to the Howl at the Moon GitHub Repository**
 
-# Thank You! - Code.Play.Repeat (Kevin)
-
 # **Unity Version 2020.1.12f1**
 
 ---
-# ***Disclaimer this github contains all the source code but is missing assets that have copyright and/or are not shareable. It would be best to use the itch.io page to play the game***
+### ***Disclaimer this github contains all the source code but is missing assets that have copyright and/or are not shareable. It would be best to use the itch.io page to play the game***
 
 ## Itch.io page *(this contains a workable version of the game) currently unpublished*
 
@@ -20,7 +18,7 @@ to you to rearrange the rooms and use the various traps that lay within to prote
 
 ---
 ### Game Jam 
-* This is a game created for the 2020 Game Off Game Jam by Itch.io and GitHub hosted by Lee Reilly *
+*This is a game created for the 2020 Game Off Game Jam by Itch.io and GitHub hosted by Lee Reilly*
 [Game Off Game Jam 2020](https://itch.io/jam/game-off-2020)
 
 ---
