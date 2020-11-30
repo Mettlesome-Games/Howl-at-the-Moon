@@ -124,7 +124,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4953867885005208730}
-  - component: {fileID: 4953867885005208731}
   - component: {fileID: 6258266458026906789}
   - component: {fileID: 4953867885005208729}
   - component: {fileID: 4953867885005208734}
@@ -151,34 +150,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4953867885005208731
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4953867885005208735}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      serializedVersion: 2
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
 --- !u!61 &6258266458026906789
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -240,22 +211,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   singleTarget: {fileID: 0}
   targets: []
-  patrolWaypoints: []
-  levelWaypoints: []
-  CurrentWaypointEditingMode: 0
-  AIType: 0
-  revalulatePathing: 0
-  currentWaypointMode: 0
+  levelTarget: {fileID: 0}
+  defaultWalkSpeed: 0
   walkSpeed: 400
-  nextWaypointDistance: 2
-  climbing: 0
+  defaultMaxTargetDistance: 0
+  maxTargetDistance: 0
+  defaultAttackDistance: 0
+  attackDistance: 0
+  AIType: 0
+  currentWaypointMode: 0
   movementEnabled: 1
   attackEnabled: 1
   characterGFX: {fileID: 4953867884669714231}
   characterEyesight: {fileID: 4953867885197177579}
-  currentWaypoint: 0
   currentTarget: 0
-  reachedEndOfPath: 0
+  reachedEndOfPatrol: 0
   localPos: {x: 0, y: 0}
   masterCommander: {fileID: 0}
   MonsterID: 0
@@ -273,6 +243,8 @@ MonoBehaviour:
   redEyesWalking: {fileID: 7400000, guid: 4879527bea34c0147977f72f3e30622b, type: 2}
   redEyesIdle: {fileID: 7400000, guid: 3bc338277e1ee0448a8a83e00cdc4d6a, type: 2}
   redEyesAttack: {fileID: 7400000, guid: 5d2545eb64553484cbcd9ad86216b615, type: 2}
+  werewolfRoar: {fileID: 8300000, guid: cf9561caf8e4f59448164a6634fabb70, type: 3}
+  m_Channel: {fileID: -6876267601498933641, guid: e0a4dc306a4291f44a4d867c38ff63df, type: 2}
 --- !u!1 &4953867885197177576
 GameObject:
   m_ObjectHideFlags: 0

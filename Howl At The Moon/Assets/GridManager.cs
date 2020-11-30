@@ -406,15 +406,27 @@ public class GridManager : MonoBehaviour
         {
             if(i == 0)
             {
-                foreach (GameObject NPC in tile.GetComponent<Room>().NPCs)
+                for(int j = 0; j < tile.GetComponent<Room>().NPCs.Count; j++)
                 {
-                    if (NPC != null)
+                    
+                    if(tile.GetComponent<Room>().NPCs[j] != null)
                     {
-                        NPC.GetComponent<WerewolfAI>().localPos = NPC.transform.localPosition;
+                        if (movedNpcs.Contains(tile.GetComponent<Room>().NPCs[j]))
+                        {
+                            Debug.Log(tile.GetComponent<Room>().NPCs[j].name + " in Room: " + rowSource[rowSource.Length - 1].name + " is a duplicate");
+                            tile.GetComponent<Room>().NPCs[j] = null;
+                            movedNpcs.Add(tile.GetComponent<Room>().NPCs[j]);
+                        }
+                        else
+                        {
+                            tile.GetComponent<Room>().NPCs[j].GetComponent<WerewolfAI>().localPos = tile.GetComponent<Room>().NPCs[j].transform.localPosition;
+                            movedNpcs.Add(tile.GetComponent<Room>().NPCs[j]);
+                        }
+                        
                     }
                     else
                     {
-                        movedNpcs.Add(NPC);
+                        movedNpcs.Add(tile.GetComponent<Room>().NPCs[j]);
                     }
                 }
                 rowSource[rowSource.Length - 1].GetComponent<Room>().NPCs = tile.GetComponent<Room>().NPCs;
@@ -422,15 +434,25 @@ public class GridManager : MonoBehaviour
             }
             else
             {
-                foreach (GameObject NPC in tile.GetComponent<Room>().NPCs)
+                for (int j = 0; j < tile.GetComponent<Room>().NPCs.Count; j++)
                 {
-                    if(NPC != null)
+                    if (tile.GetComponent<Room>().NPCs[j] != null)
                     {
-                        NPC.GetComponent<WerewolfAI>().localPos = NPC.transform.localPosition;
+                        if (movedNpcs.Contains(tile.GetComponent<Room>().NPCs[j]))
+                        {
+                            Debug.Log(tile.GetComponent<Room>().NPCs[j].name + " in Room: " + rowSource[i - 1].name + " is a duplicate");
+                            tile.GetComponent<Room>().NPCs[j] = null;
+                            movedNpcs.Add(tile.GetComponent<Room>().NPCs[j]);
+                        }
+                        else
+                        {
+                            tile.GetComponent<Room>().NPCs[j].GetComponent<WerewolfAI>().localPos = tile.GetComponent<Room>().NPCs[j].transform.localPosition;
+                            movedNpcs.Add(tile.GetComponent<Room>().NPCs[j]);
+                        }
                     }
                     else
                     {
-                        movedNpcs.Add(NPC);
+                        movedNpcs.Add(tile.GetComponent<Room>().NPCs[j]);
                     }
                 }
                 rowSource[i - 1].GetComponent<Room>().NPCs = tile.GetComponent<Room>().NPCs;
@@ -461,9 +483,12 @@ public class GridManager : MonoBehaviour
                 //int j = 0;
                 foreach (GameObject NPC in rowSource[rowSource.Length - 1].GetComponent<Room>().NPCs)
                 {
-                    NPC.transform.parent = tile.transform;
-                    NPC.transform.localPosition = NPC.GetComponent<WerewolfAI>().localPos;
-                    NPC.GetComponent<AI>().UpdateToNearestTarget();
+                    if (NPC != null)
+                    {
+                        NPC.transform.parent = tile.transform;
+                        NPC.transform.localPosition = NPC.GetComponent<WerewolfAI>().localPos;
+                        //NPC.GetComponent<AI>().UpdateToNearestTarget();
+                    }
                 }
             }
             else
@@ -471,9 +496,12 @@ public class GridManager : MonoBehaviour
                 tile.GetComponent<Room>().NPCs = rowSource[i - 1].GetComponent<Room>().NPCs;
                 foreach (GameObject NPC in tile.GetComponent<Room>().NPCs)
                 {
-                    NPC.transform.parent = tile.transform;
-                    NPC.transform.localPosition = NPC.GetComponent<WerewolfAI>().localPos;
-                    NPC.GetComponent<AI>().UpdateToNearestTarget();
+                    if(NPC != null)
+                    {
+                        NPC.transform.parent = tile.transform;
+                        NPC.transform.localPosition = NPC.GetComponent<WerewolfAI>().localPos;
+                        //NPC.GetComponent<AI>().UpdateToNearestTarget();
+                    }
                 }
             }
             i++;

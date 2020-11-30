@@ -1833,6 +1833,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chandelier Trap
       objectReference: {fileID: 0}
+    - target: {fileID: 6337857226908868031, guid: 7816d1e6467a8524ea531da0a983b87a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7816d1e6467a8524ea531da0a983b87a, type: 3}
 --- !u!1001 &8846931008819740309

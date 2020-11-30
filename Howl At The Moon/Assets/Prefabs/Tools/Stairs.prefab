@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextLevelTarget: {fileID: 0}
+  nextWaypointTargets: {fileID: 0}
 --- !u!1 &8701904526302871886
 GameObject:
   m_ObjectHideFlags: 0

@@ -77,6 +77,14 @@ abstract public class AI : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
     }
+    public void AnalyzePatrolArray(Transform NewPatrol)
+    {
+        targets.Clear();
+        foreach (Transform patrolPoint in NewPatrol)
+        {
+            targets.Add(patrolPoint);
+        }
+    }
 
     public void TakeDamage(float value)
     {
@@ -99,6 +107,8 @@ abstract public class AI : MonoBehaviour
         else
             hp = hp + value;
     }
+
+
     protected virtual void SetDefaultValues()
     {
         hpMax = 1f;

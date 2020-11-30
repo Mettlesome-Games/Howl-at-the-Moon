@@ -10,6 +10,7 @@ public class StairsTrigger : MonoBehaviour
 {
     private Transform teleportPoint;
     public Transform nextLevelTarget;
+    public Transform nextWaypointTargets;
     private void Awake()
     {
         teleportPoint = this.gameObject.transform.parent.Find("TP-Point");
@@ -25,14 +26,17 @@ public class StairsTrigger : MonoBehaviour
             werewolf.transform.position = teleportPoint.position;
             werewolf.singleTarget = nextLevelTarget;
             werewolf.levelTarget = nextLevelTarget;
-            collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+            collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(collision.gameObject.GetComponent<Rigidbody2D>().velocity.x * -1, collision.gameObject.GetComponent<Rigidbody2D>().velocity.y);
+            collision.gameObject.transform.parent.GetComponent<Room>().NPCs.Remove(collision.gameObject);//sometimes object no exist error
         }
         else if (collision.CompareTag("Servant"))
         {
             servant.transform.position = teleportPoint.position;
             servant.singleTarget = nextLevelTarget;
             servant.levelTarget = nextLevelTarget;
-            collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+            servant.AnalyzePatrolArray(nextWaypointTargets);
+            collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(collision.gameObject.GetComponent<Rigidbody2D>().velocity.x * -1, collision.gameObject.GetComponent<Rigidbody2D>().velocity.y);
+            collision.gameObject.transform.parent.GetComponent<Room>().NPCs.Remove(collision.gameObject);//sometimes object no exist error
         }
     }
     

@@ -37,10 +37,11 @@ public class ServantAI : AI
     }
     public Transform foodbowlPlacementSpot;
 
-
     protected override void SetDefaultValues()
     {
+
         base.SetDefaultValues();
+
         AIType = EAISelection.Servant;
         
         previousState = currentState;

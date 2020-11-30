@@ -9,9 +9,11 @@ public class MoonlightTrigger : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy"))
+        WerewolfAI werewolf = collision.gameObject.GetComponent<WerewolfAI>();
+        if (collision.CompareTag("Enemy") && werewolf != null)
         {
-            collision.gameObject.GetComponent<WerewolfAI>().newState = WerewolfAI.EWerewolfStates.Cursed;
+            werewolf.newState = WerewolfAI.EWerewolfStates.Cursed;
+            werewolf.Roar();
         }
     }
 }

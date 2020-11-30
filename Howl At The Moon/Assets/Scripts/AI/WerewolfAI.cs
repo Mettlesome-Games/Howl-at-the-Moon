@@ -10,7 +10,7 @@ using Pathfinding;
 public class WerewolfAI : AI
 {
     public Vector2 localPos;
-
+   
     public WaveController masterCommander;
     public uint MonsterID, WaveID;
     private float defaultAttackSpeed;
@@ -48,7 +48,17 @@ public class WerewolfAI : AI
     }
     public EWerewolfStates newState;
 
-    public AnimationClip redEyesWalking, redEyesIdle, redEyesAttack;
+    [SerializeField]
+    private AnimationClip redEyesWalking, redEyesIdle, redEyesAttack;
+
+    [SerializeField]
+    private AudioClip werewolfRoar;
+
+    [SerializeField]
+    private UnityEngine.Audio.AudioMixerGroup m_Channel;
+    AudioSource WerewolfVocalcords;
+
+    private bool hasRoarPlayed = false;
 
     protected AnimatorOverrideController myAnimatorOverrideController;
 
@@ -62,6 +72,10 @@ public class WerewolfAI : AI
 
         myAnimatorOverrideController = new AnimatorOverrideController(myAnimator.runtimeAnimatorController);
         myAnimator.runtimeAnimatorController = myAnimatorOverrideController;
+
+        WerewolfVocalcords = this.gameObject.AddComponent<AudioSource>();
+        WerewolfVocalcords.outputAudioMixerGroup = m_Channel;
+        WerewolfVocalcords.playOnAwake = false;
 
         if (attackSpeed <= 0f)
         {
@@ -102,6 +116,19 @@ public class WerewolfAI : AI
         }
         else
             defaultCursedAttackSpeed = cursedAttackSpeed;
+    }
+
+    IEnumerator RoarAudio()
+    {
+        yield return new WaitUntil(() => !WerewolfVocalcords.isPlaying);
+        WerewolfVocalcords.PlayOneShot(werewolfRoar);
+        hasRoarPlayed = true;
+    }
+
+    public void Roar()
+    {
+        if (!hasRoarPlayed)
+            StartCoroutine(RoarAudio());
     }
 
     protected override void SwitchGFXDirection(Vector2 force)

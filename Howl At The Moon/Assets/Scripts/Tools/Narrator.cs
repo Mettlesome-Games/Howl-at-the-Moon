@@ -7,6 +7,7 @@ public class Narrator : MonoBehaviour
 {
     [SerializeField] AudioClip[] Narrations;
     [SerializeField] UnityEngine.Audio.AudioMixerGroup m_Channel;
+
     int currentTrack = 0;
     AudioSource NarratorBox;
 
@@ -15,17 +16,23 @@ public class Narrator : MonoBehaviour
         NarratorBox = this.gameObject.AddComponent<AudioSource>();
         NarratorBox.outputAudioMixerGroup = m_Channel;
         NarratorBox.playOnAwake = false;
-        WaveTimer.OnSpawnWaveEvent += PlaySegement;
+       
+        WaveTimer.OnSpawnWaveEvent += Narrate;
   
-       // print("Number of lines: " + Narrations.Length);
     }
 
-    void PlaySegement() {
-        if (currentTrack >= (Narrations.Length - 1))
+    IEnumerator PlaySegement() {
+        yield return new WaitUntil(() => !NarratorBox.isPlaying);
+
+        if (currentTrack <= (Narrations.Length - 1))
         {
             NarratorBox.PlayOneShot(Narrations[currentTrack]);
             currentTrack++;
         }
-        return;
     }
+
+    private void Narrate() { StartCoroutine(PlaySegement()); }
+
+    private void OnDestroy() { WaveTimer.OnSpawnWaveEvent -= Narrate; }
+
 }
