@@ -102,7 +102,7 @@ public class ServantAI : AI
         else if (currentState == EServantStates.PresentingWolfsbane)
         {
             walkSpeed = defaultWalkSpeed;
-            currentWaypointMode = EAIWaypointMode.Patrol;
+            currentWaypointMode = EAIWaypointMode.OneWay;
         }
 
 

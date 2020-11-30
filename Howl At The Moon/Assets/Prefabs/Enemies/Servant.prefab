@@ -348,7 +348,7 @@ MonoBehaviour:
   defaultWalkSpeed: 0
   walkSpeed: 0
   defaultMaxTargetDistance: 0
-  maxTargetDistance: 0
+  maxTargetDistance: 1
   defaultAttackDistance: 0
   attackDistance: 1
   AIType: 0

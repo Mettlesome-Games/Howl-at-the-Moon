@@ -25,6 +25,7 @@ public class FoodTrap : MonoBehaviour
             Array.Clear(this.transform.parent.GetComponent<Room>().traps, 0, 1);
             this.transform.parent = collision.gameObject.transform.Find("ServantGFX").Find("FoodBowlPlacement");
             this.transform.position = collision.gameObject.transform.Find("ServantGFX").Find("FoodBowlPlacement").position;
+            collision.gameObject.GetComponent<ServantAI>().newState = ServantAI.EServantStates.Normal;
         }
 
         
