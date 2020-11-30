@@ -44,7 +44,7 @@ public class EyesightTrigger : MonoBehaviour
         }
         else if (collision.CompareTag("Food Bowl") && servant != null)
         {
-            if (servant.canMakeWolfsbane && !collision.GetComponent<FoodTrap>().isFoodPoisoned)
+            if (servant.canMakeWolfsbane && !collision.GetComponent<FoodTrap>().isfoodPoisoned)
             {
                 servant.newState = ServantAI.EServantStates.FoundFoodbowl;
                 servant.singleTarget = collision.gameObject.transform;

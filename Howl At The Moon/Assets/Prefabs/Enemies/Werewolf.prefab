@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 6258266458026906789}
   - component: {fileID: 4953867885005208729}
   - component: {fileID: 4953867885005208734}
+  - component: {fileID: 7036161859259103047}
   m_Layer: 0
   m_Name: Werewolf
   m_TagString: Enemy
@@ -157,13 +158,13 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4953867885005208735}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0056302547, y: -0.37161517}
+  m_Offset: {x: 0, y: -0.37161517}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -174,7 +175,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4617038, y: 2.554027}
+  m_Size: {x: 1.45, y: 2.554027}
   m_EdgeRadius: 0
 --- !u!50 &4953867885005208729
 Rigidbody2D:
@@ -213,7 +214,7 @@ MonoBehaviour:
   targets: []
   levelTarget: {fileID: 0}
   defaultWalkSpeed: 0
-  walkSpeed: 400
+  walkSpeed: 350
   defaultMaxTargetDistance: 0
   maxTargetDistance: 0
   defaultAttackDistance: 0
@@ -233,8 +234,8 @@ MonoBehaviour:
   attackTimer: 0
   attackSpeed: 0
   attackDmg: 0
-  chaseWalkSpeed: 450
-  cursedWalkSpeed: 500
+  chaseWalkSpeed: 400
+  cursedWalkSpeed: 450
   cursedAttackSpeed: 0
   attackTimerActive: 0
   canSwingAttack: 1
@@ -245,6 +246,22 @@ MonoBehaviour:
   redEyesAttack: {fileID: 7400000, guid: 5d2545eb64553484cbcd9ad86216b615, type: 2}
   werewolfRoar: {fileID: 8300000, guid: cf9561caf8e4f59448164a6634fabb70, type: 3}
   m_Channel: {fileID: -6876267601498933641, guid: e0a4dc306a4291f44a4d867c38ff63df, type: 2}
+--- !u!70 &7036161859259103047
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4953867885005208735}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.000000074505806, y: -0.35130367}
+  m_Size: {x: 1.4184047, y: 2.5808668}
+  m_Direction: 0
 --- !u!1 &4953867885197177576
 GameObject:
   m_ObjectHideFlags: 0

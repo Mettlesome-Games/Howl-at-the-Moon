@@ -24,11 +24,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1198681344}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.06767647, y: 0.14639787, z: 0}
-  m_LocalScale: {x: 1.3982625, y: 1.3982625, z: 0.13982625}
+  m_LocalPosition: {x: -0.45, y: 0.98, z: 0}
+  m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
-  m_Father: {fileID: 450578889215903006}
-  m_RootOrder: 0
+  m_Father: {fileID: 450578889902534681}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &450578888523842667
 GameObject:
@@ -56,7 +56,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 450578888523842667}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -81.92, y: -0.05, z: 0}
+  m_LocalPosition: {x: -14.5, y: -0.05, z: 0}
   m_LocalScale: {x: 2.2, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 450578889902534681}
@@ -86,7 +86,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 74.17659, y: 2.1543314}
+  m_Size: {x: 12.7, y: 2.1543314}
   m_EdgeRadius: 0
 --- !u!114 &450578888523842665
 MonoBehaviour:
@@ -129,8 +129,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 7.151733, y: 7.151733, z: 7.151733}
-  m_Children:
-  - {fileID: 1198681345}
+  m_Children: []
   m_Father: {fileID: 450578889902534681}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -229,6 +228,7 @@ GameObject:
   - component: {fileID: 604963318916645274}
   - component: {fileID: 450578889902534682}
   - component: {fileID: 450578889902534677}
+  - component: {fileID: 8509868380722212185}
   m_Layer: 0
   m_Name: Servant
   m_TagString: Servant
@@ -249,6 +249,7 @@ Transform:
   m_Children:
   - {fileID: 450578888523842664}
   - {fileID: 450578889215903006}
+  - {fileID: 1198681345}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -287,7 +288,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 450578889902534676}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -364,7 +365,22 @@ MonoBehaviour:
   wolfsbaneSpeedDefault: 0
   wolfsbaneMakeTimer: 0
   hasWolfsbane: 0
-  wolfsbaneTimerActive: 0
   previousState: 0
   newState: 0
   foodbowlPlacementSpot: {fileID: 1198681345}
+--- !u!70 &8509868380722212185
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450578889902534676}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.006968826}
+  m_Size: {x: 0.73694015, y: 2.3240776}
+  m_Direction: 0

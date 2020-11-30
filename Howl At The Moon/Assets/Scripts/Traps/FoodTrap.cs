@@ -6,7 +6,7 @@ using System;
 public class FoodTrap : MonoBehaviour
 {
     [SerializeField]
-    private bool isfoodPoisoned = false;
+    public bool isfoodPoisoned = false;
     private Animator wolfbaneAnimator;
     private void Awake()
     {
@@ -24,7 +24,7 @@ public class FoodTrap : MonoBehaviour
             this.GetComponent<Collider2D>().enabled = true;
             Array.Clear(this.transform.parent.GetComponent<Room>().traps, 0, 1);
             this.transform.parent = collision.gameObject.transform.Find("FoodBowlPlacement");
-            this.transform.position = collision.gameObject.transform.position;
+            this.transform.position = collision.gameObject.transform.Find("FoodBowlPlacement").position;
         }
 
         
