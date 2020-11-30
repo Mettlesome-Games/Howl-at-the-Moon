@@ -3,7 +3,7 @@
 # **Unity Version 2020.1.12f1**
 
 ---
-### ***Disclaimer this github contains all the source code but is missing assets that have copyright and/or are not shareable. It would be best to use the itch.io page to play the game***
+### ***Disclaimer this github contains all the source code but is missing assets that have copyright and/or are not shareable. It would be best to use the itch.io page to play the game.***
 
 ## Itch.io page *(this contains a workable version of the game) currently unpublished*
 
@@ -26,10 +26,10 @@ to you to rearrange the rooms and use the various traps that lay within to prote
 
 ### Team
 * Kamilla Brenneysen - Art
-* Kevin Caton-Largent - Art, Animation, Design, Programming
+* [Kevin Caton-Largent] (https://github.com/Code-Play-Repeat) - Art, Animation, Design, Programming
 * Mckinzy Mason - Art, Animation, Design
-* Matthew Sandfrey - Programming, Design, Art
-* Nathan Hales - Programming, Design, Art
+* [Matthew Sandfrey] (https://github.com/Msandfrey) - Programming, Design, Art
+* [Nathan Hales] (https://github.com/Shadowrunner-inc) - Programming, Design, Art
 * Sia Aleskovskaya - Narrative, Art, Design 
 * Steven Atha - Art, Design 
 
