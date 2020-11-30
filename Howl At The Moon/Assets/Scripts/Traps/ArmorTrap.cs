@@ -14,7 +14,7 @@ public class ArmorTrap : MonoBehaviour
     }
 
     void Attack() {
-        print("Smack!");
+        //print("Smack!");
     }
 
 }

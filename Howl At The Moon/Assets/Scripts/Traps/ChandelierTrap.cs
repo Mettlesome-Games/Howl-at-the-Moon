@@ -15,9 +15,9 @@ public class ChandelierTrap : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //TODO: check if the werewolf is on fire and the trap has not been used.
+        // check if the werewolf is on fire and the trap has not been used.
         if (collision.CompareTag("Enemy") && !bWasUsed) {
-            print(collision.name + "");
+           // print(collision.name + "");
             Chandelier.simulated = true;
             Chandelier.WakeUp();
             WerewolfAI ai = collision.gameObject.GetComponent<WerewolfAI>();

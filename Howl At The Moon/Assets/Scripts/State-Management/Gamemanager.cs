@@ -33,7 +33,7 @@ public class Gamemanager : MonoBehaviour
 
     public void hello()
     {
-        print("GM Reporting! " + this.name);
+        //print("GM Reporting! " + this.name);
     }
 
     public void LoseGame()
