@@ -19,6 +19,7 @@ to you to rearrange the rooms and use the various traps that lay within to prote
 ---
 ### Game Jam 
 *This is a game created for the 2020 Game Off Game Jam by Itch.io and GitHub hosted by Lee Reilly*
+
 [Game Off Game Jam 2020](https://itch.io/jam/game-off-2020)
 
 ---
