@@ -4,6 +4,7 @@ using UnityEngine;
 /// <summary>
 /// Author: Kevin Caton-Largent
 /// An area trigger to act as the enemy's eyesight
+/// v2
 /// </summary>
 public class EyesightTrigger : MonoBehaviour
 {
@@ -54,7 +55,7 @@ public class EyesightTrigger : MonoBehaviour
         
         if (collision.CompareTag("Servant") && werewolf != null)
         {
-            werewolf.singleTarget = null;         
+            werewolf.singleTarget = werewolf.levelTarget;         
         }
     }
 

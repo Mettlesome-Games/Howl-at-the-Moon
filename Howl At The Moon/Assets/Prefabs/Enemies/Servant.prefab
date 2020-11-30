@@ -340,24 +340,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   singleTarget: {fileID: 0}
-  targets: []
-  patrolWaypoints:
+  targets:
   - {fileID: 0}
   - {fileID: 0}
-  levelWaypoints: []
-  CurrentWaypointEditingMode: 0
+  levelTarget: {fileID: 0}
+  defaultWalkSpeed: 0
+  walkSpeed: 0
+  defaultMaxTargetDistance: 0
+  maxTargetDistance: 0
+  defaultAttackDistance: 0
+  attackDistance: 0
   AIType: 0
   currentWaypointMode: 1
-  walkSpeed: 0
-  nextWaypointDistance: 3
-  climbing: 0
   movementEnabled: 1
   attackEnabled: 1
   characterGFX: {fileID: 450578889215903006}
   characterEyesight: {fileID: 450578888523842664}
-  currentWaypoint: 0
   currentTarget: 0
-  reachedEndOfPath: 0
+  reachedEndOfPatrol: 0
   canMakeWolfsbane: 0
   wolfsbaneDamage: 0
   wolfsbaneSpeedDefault: 0

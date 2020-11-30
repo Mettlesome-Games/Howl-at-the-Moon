@@ -18,7 +18,6 @@ public class ServantAI : AI
     public float wolfsbaneMakeTimer;
     public bool hasWolfsbane = false;
     public bool wolfsbaneTimerActive = false;
-    private float defaultNextWaypointDistance;
     private float wolfsbaneDamageDefault;
 
     public enum EServantStates { Normal = 0, Running = 1, FoundFoodbowl = 2, CreatingWolfsbane = 3, PresentingWolfsbane = 4 };
@@ -37,15 +36,6 @@ public class ServantAI : AI
         }
     }
     public Transform foodbowlPlacementSpot;
-
-
-    protected override void Awake()
-    {
-        MethodBase AwakeMethod = MethodBase.GetCurrentMethod();
-        /*Debug.Log("<color=#4f7d00>Subscribing to OnDeath at function call: " + AwakeMethod.Name + " at script " + this.GetType().Name + " on the GameObject " + this.gameObject.name + "</color>", this);
-        ServantAI.OnDeathEvent += OnDeath;*/
-        base.Awake();
-    }
 
 
     protected override void SetDefaultValues()
@@ -72,16 +62,6 @@ public class ServantAI : AI
         if (wolfsbaneSpeedDefault <= 0f)            
             wolfsbaneSpeedDefault = 0f;
 
-        targets = patrolWaypoints;
-        if (nextWaypointDistance <= 0f)
-        {
-            defaultNextWaypointDistance = 3f;
-            nextWaypointDistance = defaultNextWaypointDistance;
-        }
-        else
-        {
-            defaultNextWaypointDistance = nextWaypointDistance;
-        }
     }
 
     void UpdateState()
@@ -93,33 +73,23 @@ public class ServantAI : AI
         if (currentState == EServantStates.Normal)
         {
             walkSpeed = defaultWalkSpeed;
-            targets = patrolWaypoints;
-
+            
             currentWaypointMode = EAIWaypointMode.Patrol;
             
-            currentTarget = 0;
-            nextWaypointDistance = defaultNextWaypointDistance;
-            revalulatePathing = true;
-
             myAnimator.SetBool("Running", false);
         }
         else if (currentState == EServantStates.Running)
         {
             currentWaypointMode = EAIWaypointMode.OneWay;
-            targets = levelWaypoints;
-            nextWaypointDistance = defaultNextWaypointDistance;
-            revalulatePathing = true;
-
+            singleTarget = levelTarget;
+           
             myAnimator.SetBool("Running", true);
         }
         else if (currentState == EServantStates.FoundFoodbowl)
         {
             currentWaypointMode = EAIWaypointMode.OneWay;
             currentTarget = 0;
-            nextWaypointDistance = .1f;
             
-            revalulatePathing = true;
-
             myAnimator.SetBool("Running", false);
 
         }
@@ -161,7 +131,7 @@ public class ServantAI : AI
                     {
                         singleTarget.parent = foodbowlPlacementSpot;
                         foodbowlPlacementSpot.transform.GetChild(0).localPosition = new Vector3(0, 0, 0);
-                        singleTarget = null;
+                        singleTarget = levelTarget;
                     }
                 }
             }
@@ -178,7 +148,7 @@ public class ServantAI : AI
                     hasWolfsbane = false;
                     
                     singleTarget.gameObject.GetComponent<WerewolfAI>().TakeDamage(wolfsbaneDamage);
-                    singleTarget = null;
+                    singleTarget = levelTarget;
                     newState = EServantStates.Running;
                     myAnimator.SetBool("Presenting Wolfsbane", false);
                     Destroy(foodbowlPlacementSpot.transform.gameObject);
@@ -199,28 +169,18 @@ public class ServantAI : AI
             myAnimator.SetBool("Presenting Wolfsbane", true);
            
         }
+
         if (newState != currentState)
             UpdateState();
-     
-        if (reachedEndOfPath)
+        
+        if (singleTarget.CompareTag ("Enemy"))
         {
-            if (singleTarget != null)
-            {
-                float distance = Vector2.Distance(transform.position, singleTarget.position);
-                if (currentState == EServantStates.PresentingWolfsbane && distance <= 1.5f)
-                    CheckAction();
-            }
+            float distance = Vector2.Distance(transform.position, singleTarget.position);
+            if (currentState == EServantStates.PresentingWolfsbane && distance <= attackDistance)
+                CheckAction();
         }
             
         if (wolfsbaneTimerActive)
             TickCountdowns(); 
     }
-    protected override void OnDestroy()
-    {
-        MethodBase OnDestroyMethod = MethodBase.GetCurrentMethod();
-        /*Debug.Log("<color=#910a00>Unsubscribing to OnDeath at function call: " + OnDestroyMethod.Name + " at script " + this.GetType().Name + " on the GameObject " + this.gameObject.name + "</color>", this);
-        ServantAI.OnDeathEvent -= OnDeath;*/
-        base.OnDestroy();
-    }
-
 }

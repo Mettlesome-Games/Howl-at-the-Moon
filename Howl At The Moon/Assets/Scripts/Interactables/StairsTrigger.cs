@@ -4,10 +4,12 @@ using UnityEngine;
 /// <summary>
 /// Author: Kevin Caton-Largent
 /// An area trigger to tell the enemy and servant to teleport
+/// V2
 /// </summary>
 public class StairsTrigger : MonoBehaviour
 {
     private Transform teleportPoint;
+    public Transform nextLevelTarget;
     private void Awake()
     {
         teleportPoint = this.gameObject.transform.parent.Find("TP-Point");
@@ -21,15 +23,16 @@ public class StairsTrigger : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             werewolf.transform.position = teleportPoint.position;
-            werewolf.UpdateToNearestTarget();
-            werewolf.revalulatePathing = true;
+            werewolf.singleTarget = nextLevelTarget;
+            werewolf.levelTarget = nextLevelTarget;
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
         }
         else if (collision.CompareTag("Servant"))
         {
             servant.transform.position = teleportPoint.position;
-            servant.UpdateToNearestTarget();
-            servant.revalulatePathing = true;
+            servant.singleTarget = nextLevelTarget;
+            servant.levelTarget = nextLevelTarget;
+            collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
         }
     }
     

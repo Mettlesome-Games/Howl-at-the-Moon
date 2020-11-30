@@ -32,7 +32,7 @@ public class WerewolfAI : AI
     private bool canSwingAttack = true;
 
     // Distracted was a planned feature to have additional environmental distractions for werewolves but we ran out of time
-    public enum EWerewolfStates { Normal = 0, Chasing = 1, Distracted = 2, Trapped = 3, Cursed = 4};
+    public enum EWerewolfStates { Normal = 0, Chasing = 1, Distracted = 2, Trapped = 3, Cursed = 4 };
     private EWerewolfStates currentState = EWerewolfStates.Normal;
     public EWerewolfStates previousStates;
 
@@ -51,14 +51,6 @@ public class WerewolfAI : AI
     public AnimationClip redEyesWalking, redEyesIdle, redEyesAttack;
 
     protected AnimatorOverrideController myAnimatorOverrideController;
-
-    protected override void Awake()
-    {
-        MethodBase AwakeMethod = MethodBase.GetCurrentMethod();
-        /*Debug.Log("<color=#4f7d00>Subscribing to OnDeath at function call: " + AwakeMethod.Name + " at script " + this.GetType().Name + " on the GameObject " + this.gameObject.name + "</color>", this);
-        WerewolfAI.OnDeathEvent += OnDeath;*/
-        base.Awake();
-    }
 
     protected override void SetDefaultValues()
     {
@@ -110,9 +102,6 @@ public class WerewolfAI : AI
         }
         else
             defaultCursedAttackSpeed = cursedAttackSpeed;
-
-        targets = levelWaypoints; 
-
     }
 
     protected override void SwitchGFXDirection(Vector2 force)
@@ -205,14 +194,15 @@ public class WerewolfAI : AI
     protected override void PerformAction()
     {
         if (singleTarget != null)
-        {   if (canSwingAttack)
+        {
+            if (canSwingAttack)
             {
                 if (singleTarget.CompareTag("Servant"))
                 {
                     canSwingAttack = false;
                     singleTarget.GetComponent<ServantAI>().TakeDamage(attackDmg);
                     myAnimator.SetBool("Attack", true);
-                
+
                     InvokeAttackCountdown();
                 }
                 else if (singleTarget.CompareTag("ManorLord"))
@@ -220,7 +210,7 @@ public class WerewolfAI : AI
                     canSwingAttack = false;
                     singleTarget.GetComponent<ManorLordAI>().TakeDamage(attackDmg);
                     myAnimator.SetBool("Attack", true);
-                
+
                     InvokeAttackCountdown();
                 }
             }
@@ -244,27 +234,16 @@ public class WerewolfAI : AI
         if (newState != currentState && currentState != EWerewolfStates.Trapped)
             UpdateState();
 
-        if (reachedEndOfPath)
+        if (singleTarget.CompareTag("Servant") || singleTarget.CompareTag("ManorLord"))
         {
-            if (singleTarget != null)
-            {
-                float distance = Vector2.Distance(transform.position, singleTarget.position);
-                //Debug.LogFormat("<color=#04b592> Distance: {0} </color>", distance );
-                if (currentState == EWerewolfStates.Chasing || currentState == EWerewolfStates.Cursed)
-                    if (distance <= 1f)
-                        CheckAction();
-            }
+            float distance = Vector2.Distance(transform.position, singleTarget.position);
+            if (currentState == EWerewolfStates.Chasing || currentState == EWerewolfStates.Cursed)
+                if (distance <= attackDistance)
+                    CheckAction();
         }
+
         if (attackTimerActive)
             TickCountdowns();
-    }
-
-    protected override void OnDestroy()
-    {
-        MethodBase OnDestroyMethod = MethodBase.GetCurrentMethod();
-        /*Debug.Log("<color=#910a00>Unsubscribing to OnDeath at function call: " + OnDestroyMethod.Name + " at script " + this.GetType().Name + " on the GameObject " + this.gameObject.name + "</color>", this);
-        WerewolfAI.OnDeathEvent -= OnDeath;*/
-        base.OnDestroy();
     }
 
 }

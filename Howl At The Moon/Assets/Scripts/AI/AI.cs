@@ -12,24 +12,32 @@ abstract public class AI : MonoBehaviour
 {
     public Transform singleTarget;
     public List<Transform> targets;
+    public Transform levelTarget;
+    [SerializeField]
+    [Space(10f)]
+    [Tooltip("Internal value exposed for debugging")]
+    protected float defaultWalkSpeed;
+    public float walkSpeed;
 
     [SerializeField]
     [Space(10f)]
-    [Header("Internal values exposed only for debugging")]
-    protected List<Transform> patrolWaypoints, levelWaypoints;
-    public enum EAIWaypointsEditing { AutoSearchLevel = 0, ManualAlotment = 1}
-    public EAIWaypointsEditing CurrentWaypointEditingMode = EAIWaypointsEditing.AutoSearchLevel;
+    [Tooltip("Internal value exposed for debugging")]
+    protected float defaultMaxTargetDistance;
+    public float maxTargetDistance;
+
+    [SerializeField]
+    [Space(10f)]
+    [Tooltip("Internal value exposed for debugging")]
+    protected float defaultAttackDistance;
+    public float attackDistance;
+        
 
     public enum EAISelection {Werewolf = 0, Servant = 1} 
     public EAISelection AIType;
 
-    public bool revalulatePathing = false;
     public enum EAIWaypointMode {OneWay = 0, Patrol = 1}
     public EAIWaypointMode currentWaypointMode = EAIWaypointMode.OneWay;
-    public float walkSpeed;
-    public float nextWaypointDistance;
-
-    public bool climbing = false;
+ 
     public bool movementEnabled = true;
     public bool attackEnabled = true;
 
@@ -46,19 +54,13 @@ abstract public class AI : MonoBehaviour
         }
     }
 
-    protected Path path;
 
-    protected float defaultWalkSpeed;
-    [SerializeField]
-    protected int currentWaypoint = 0;
     [SerializeField]
     protected int currentTarget = 0;
 
     [SerializeField]
-    protected bool reachedEndOfPath = false;
     protected bool reachedEndOfPatrol = false;
 
-    protected Seeker seeker;
     protected Rigidbody2D rb;
 
     protected float defaultCharacterLocalscaleX, reversedCharacterLocalscaleX;
@@ -67,32 +69,16 @@ abstract public class AI : MonoBehaviour
 
     protected Animator myAnimator;
 
-    /// <summary>
-    ///  The event delegate to subscribe to when to kill the AI
-    /// </summary>
-    protected delegate void DeathEvent();
-    protected static event DeathEvent OnDeathEvent;
-
-    /// <summary>
-    ///  The event delegate to subscribe to when an AI moves vertically with a room
-    /// </summary>
-    /*public delegate void VerticalRoomMoveEvent();
-    public static event VerticalRoomMoveEvent OnVerticalRoomMoveEvent;*/
-    protected virtual void Awake()
+    private void Awake()
     {
         MethodBase AwakeMethod = MethodBase.GetCurrentMethod();
-        /*Debug.Log("<color=#4f7d00>Subscribing to UpdateToNearestTarget at function call: " + AwakeMethod.Name + " at script " + this.GetType().Name + " on the GameObject " + this.gameObject.name + "</color>", this);
-        GridManager.OnVerticalRoomMoveEvent += UpdateToNearestTarget;*/
-
+     
         SetDefaultValues();
 
-        seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-
-        InvokeRepeating("UpdateNavigation", 0f, .5f);
     }
 
-    public virtual void TakeDamage(float value)
+    public void TakeDamage(float value)
     {
 
         if (hp - value <= 0.0f)
@@ -102,7 +88,6 @@ abstract public class AI : MonoBehaviour
 
         if (hp <= 0f)
         {
-            //OnDeathEvent?.Invoke();
             OnDeath();
         }
     }
@@ -116,23 +101,13 @@ abstract public class AI : MonoBehaviour
     }
     protected virtual void SetDefaultValues()
     {
-        if (CurrentWaypointEditingMode == EAIWaypointsEditing.AutoSearchLevel)
-        {
-            levelWaypoints = new List<Transform>();
-            Transform levelWaypointsParent = GameObject.FindGameObjectWithTag("Level Waypoints").transform;
-            foreach (Transform lChild in levelWaypointsParent)
-                levelWaypoints.Add(lChild);
-
-            /*
-            patrolWaypoints = new List<Transform>();
-            Transform patrolWaypointsParent = GameObject.FindGameObjectWithTag("Patrol Waypoints").transform;
-
-            foreach (Transform pChild in patrolWaypointsParent)
-                patrolWaypoints.Add(pChild);*/
-        }
-
         hpMax = 1f;
         hp = hpMax;
+
+        Transform levelWaypointsParent = GameObject.FindGameObjectWithTag("Level Waypoints").transform;
+        
+        singleTarget = levelWaypointsParent.GetChild(0);
+        levelTarget = levelWaypointsParent.GetChild(0);
 
         defaultCharacterLocalscaleX = characterGFX.localScale.x;
         reversedCharacterLocalscaleX = -1f * characterGFX.localScale.x;
@@ -141,7 +116,6 @@ abstract public class AI : MonoBehaviour
 
         myCollider = this.GetComponent<BoxCollider2D>();
         myAnimator = characterGFX.GetComponent<Animator>();
-       
         if (walkSpeed <= 0f)
         {
             defaultWalkSpeed = 400f;
@@ -149,6 +123,23 @@ abstract public class AI : MonoBehaviour
         }
         else
             defaultWalkSpeed = walkSpeed;
+        
+        if (maxTargetDistance <= 0f)
+        {
+            defaultMaxTargetDistance = 3f;
+            maxTargetDistance = defaultMaxTargetDistance;
+        }
+        else
+            defaultMaxTargetDistance = maxTargetDistance;
+
+        if (attackDistance <= 0f)
+        {
+            defaultAttackDistance = 1.5f;
+            attackDistance = defaultAttackDistance;
+        }
+        else
+            defaultAttackDistance = attackDistance;
+
 
 
     }
@@ -174,223 +165,48 @@ abstract public class AI : MonoBehaviour
     }
     protected abstract void PerformAction();
 
-    protected void UpdateCurrentTarget()
-    {
-        if (singleTarget == null)
-        {
-            if (currentWaypointMode == EAIWaypointMode.OneWay)
-            {
-                if (currentTarget < targets.Count - 1)
-                {
-                    currentTarget++;
-                    revalulatePathing = true;
-                }
-            }
-            else if (currentWaypointMode == EAIWaypointMode.Patrol)
-            { 
-                if (currentTarget < targets.Count - 1 && !reachedEndOfPatrol)
-                {
-                    currentTarget++;
-                    revalulatePathing = true;
-                }
-                else
-                {
-                    reachedEndOfPatrol = true;
-                    currentTarget--;
-
-                    revalulatePathing = true;
-
-                    if (currentTarget == 0)
-                        reachedEndOfPatrol = false;
-                }
-               
-            }
-        }
-    }
-
-    protected bool ReachedEndOfPath()
-    {
-        //Debug.LogFormat("CurrentWaypoint {0}, path.vectorPath.Count {1} what is this object {2}", currentWaypoint, path.vectorPath.Count, this.gameObject.name);
-        if (currentWaypoint >= path.vectorPath.Count)
-        {
-            reachedEndOfPath = true;
-        }
-        else
-        {
-            reachedEndOfPath = false;
-        }
-        return reachedEndOfPath;
-    }
-
-
     private void Movement()
     {
         if (movementEnabled)
         {
-            if (path == null)
-            {
-                return;
-            }
 
-
-            if (climbing)
+            Vector2 currentPath = (Vector2)singleTarget.position; 
+            if (currentWaypointMode == EAIWaypointMode.Patrol)
             {
-                if (rb != null)
-                {
-                    rb.gravityScale = 0f;
-                }
+                currentPath = (Vector2)targets[currentTarget].position;
             }
-            else
-            {
-                if (rb != null)
-                {
-                    rb.gravityScale = 1f;
-                }
-            }
-
-            if (ReachedEndOfPath())
-            {
-                UpdateCurrentTarget();
-                return;
-            }
-
-            Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+            Vector2 direction = (currentPath - rb.position).normalized;
             Vector2 force = direction * walkSpeed * Time.deltaTime;
             force.y = 0f;
             rb.AddForce(force);
 
             myAnimator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
             
-            float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+            float distance = Vector2.Distance(rb.position, currentPath);
 
-            if (distance < nextWaypointDistance)
+            if (distance < maxTargetDistance && currentWaypointMode == EAIWaypointMode.Patrol)
             {
-                currentWaypoint++;
+                if (currentTarget < targets.Count - 1 && !reachedEndOfPatrol)
+                {
+                    currentTarget++;
+                }
+                else
+                {
+                    reachedEndOfPatrol = true;
+                    currentTarget--;
+                    if (currentTarget == 0)
+                        reachedEndOfPatrol = false;
+                }
             }
             //Debug.LogFormat("<color=#01751a> Force: {0} </color>", force.x);
             SwitchGFXDirection(force);
         }
     }
 
-
-    public void UpdateToNearestTarget()
-    {
-        int i = 0, targetIndex = -1;
-        float shortestDistance = Mathf.Infinity, currentDistance = 0f;
-        Transform candidate = null; 
-
-        if (currentWaypointMode == EAIWaypointMode.OneWay)
-        {
-         
-            foreach (Transform target in targets)
-            {
-                currentDistance = Vector2.Distance(rb.position, target.position);
-                
-                if (currentDistance < shortestDistance)
-                {
-                    targetIndex = i;
-                    shortestDistance = currentDistance;
-                }
-                i++;
-
-            }
-            currentTarget = targetIndex;
-        }
-        else if (currentWaypointMode == EAIWaypointMode.Patrol)
-        {
-            GameObject[] possiblePatrolWaypoints = GameObject.FindGameObjectsWithTag("Patrol Waypoints");
-            foreach (GameObject patrolWaypointsArr in possiblePatrolWaypoints)
-            {
-                Transform patrolWaypointsParent = patrolWaypointsArr.transform;
-                i = 0;
-                foreach (Transform pChild in patrolWaypointsParent)
-                {
-                    currentDistance = Vector2.Distance(rb.position, pChild.position);
-                   
-                    if (currentDistance < shortestDistance)
-                    {
-                        targetIndex = i;
-                        shortestDistance = currentDistance;
-                        candidate = patrolWaypointsParent;
-                    }
-                    i++;
-                }
-            }
-            if (targetIndex != -1)
-            {
-                patrolWaypoints.Clear();
-                foreach (Transform cChild in candidate)
-                {
-                    patrolWaypoints.Add(cChild);
-                }
-                currentTarget = targetIndex;
-            }
-
-        }
-        revalulatePathing = true;
-
-    }
-
-    private void EvaluateDistanceOfCurrentWaypoint ()
-    {
-        int waypointIndex = 0, targetIndex = -1;
-        float shortestDistance = Mathf.Infinity, currentDistance = 0f; 
-        
-        foreach (Vector3 waypoint in path.vectorPath)
-        {
-            currentDistance = Vector2.Distance(rb.position, waypoint);
-
-            if (currentDistance < shortestDistance)
-            {
-                targetIndex = waypointIndex;
-                shortestDistance = currentDistance;
-            }
-            waypointIndex++;
-
-        }
-        currentWaypoint = targetIndex;
-    }
-    protected virtual void UpdateNavigation()
-    {
-        MethodBase UpdateNavigationMethod = MethodBase.GetCurrentMethod();
-
-        if (seeker.IsDone())
-        {
-            if (singleTarget != null)
-            {
-                seeker.StartPath(rb.position, singleTarget.position, OnPathComplete);
-            }
-            else if (targets.Count != 0)
-            {
-                if (revalulatePathing)
-                {
-                    //Debug.LogFormat("<color=#7e00a1> Before:EvaluateDistanceOfCurrentWaypoint() CurrentWaypoint: {0}, VectorPath.Count: {1} </color>", currentWaypoint, path.vectorPath.Count);
-                    EvaluateDistanceOfCurrentWaypoint();
-                    //Debug.LogFormat("<color=#f5aa42> After:EvaluateDistanceOfCurrentWaypoint() CurrentWaypoint: {0}, VectorPath.Count: {1} </color>", currentWaypoint, path.vectorPath.Count);
-                    revalulatePathing = false;
-                }    
-                seeker.StartPath(rb.position, targets[currentTarget].position, OnPathComplete);
-            }
-        }
-
-    }
-
-    public void MoveToNextNavigation()
-    {
-        UpdateCurrentTarget();
-        revalulatePathing = true;
-    }
+   
     protected virtual void OnDeath()
     {
         Destroy(this.gameObject);
-    }
-    protected void OnPathComplete(Path p)
-    {
-        if (!p.error)
-        {
-            path = p;
-            currentWaypoint = 0;
-        }
     }
 
     private void FixedUpdate()
@@ -398,14 +214,5 @@ abstract public class AI : MonoBehaviour
         Movement();
     }
 
-    /// <summary>
-    /// Whenever this object is destroyed unsubscribe the death event function which should only occur once per game object
-    /// </summary>
-    protected virtual void OnDestroy()
-    {
-        MethodBase OnDestroyMethod = MethodBase.GetCurrentMethod();
-        /*Debug.Log("<color=#910a00>Unsubscribing to UpdateToNearestTarget at function call: " + OnDestroyMethod.Name + " at script " + this.GetType().Name + " on the GameObject " + this.gameObject.name + "</color>", this);
-        GridManager.OnVerticalRoomMoveEvent -= UpdateToNearestTarget;*/
-    }
 }
 
