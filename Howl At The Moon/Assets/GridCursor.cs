@@ -39,12 +39,6 @@ public class GridCursor : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Gamemanager.instance.PauseGame();
-            gridManager.SaveNPCLocalPos(gridManager.gridPanelsRow0, gridManager.testRow1);
-            gridManager.SaveNPCLocalPos(gridManager.gridPanelsRow1, gridManager.testRow2);
-            gridManager.SaveNPCLocalPos(gridManager.gridPanelsRow2, gridManager.testRow3);
-            gridManager.SaveNPCLocalPos(gridManager.gridPanelsCol0, gridManager.testCol1);
-            gridManager.SaveNPCLocalPos(gridManager.gridPanelsCol1, gridManager.testCol2);
-            gridManager.SaveNPCLocalPos(gridManager.gridPanelsCol2, gridManager.testCol3);
             firstPressPos = Input.mousePosition;//get the location of the initial click
             dragging = true;
             ped = new PointerEventData(ev);
@@ -101,6 +95,12 @@ public class GridCursor : MonoBehaviour
             }
             if (Input.GetMouseButtonUp(0))
             {
+                gridManager.SaveNPCLocalPos(gridManager.gridPanelsRow0, gridManager.testRow1);
+                gridManager.SaveNPCLocalPos(gridManager.gridPanelsRow1, gridManager.testRow2);
+                gridManager.SaveNPCLocalPos(gridManager.gridPanelsRow2, gridManager.testRow3);
+                gridManager.SaveNPCLocalPos(gridManager.gridPanelsCol0, gridManager.testCol1);
+                gridManager.SaveNPCLocalPos(gridManager.gridPanelsCol1, gridManager.testCol2);
+                gridManager.SaveNPCLocalPos(gridManager.gridPanelsCol2, gridManager.testCol3);
                 if (leftRight)
                 {
                     if(gridManager.currentRow == gridManager.testRow1)
