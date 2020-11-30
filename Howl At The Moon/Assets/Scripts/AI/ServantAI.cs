@@ -173,12 +173,15 @@ public class ServantAI : AI
 
         if (newState != currentState)
             UpdateState();
-        
-        if (singleTarget.CompareTag ("Enemy"))
+
+        if (singleTarget != null)
         {
-            float distance = Vector2.Distance(transform.position, singleTarget.position);
-            if (currentState == EServantStates.PresentingWolfsbane && distance <= attackDistance)
-                CheckAction();
+            if (singleTarget.CompareTag("Enemy"))
+            {
+                float distance = Vector2.Distance(transform.position, singleTarget.position);
+                if (currentState == EServantStates.PresentingWolfsbane && distance <= attackDistance)
+                    CheckAction();
+            }
         }
             
         if (wolfsbaneTimerActive)
