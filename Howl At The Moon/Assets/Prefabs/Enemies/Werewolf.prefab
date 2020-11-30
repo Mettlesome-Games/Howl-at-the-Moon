@@ -244,8 +244,9 @@ MonoBehaviour:
   levelWaypoints: []
   CurrentWaypointEditingMode: 0
   AIType: 0
+  revalulatePathing: 0
   currentWaypointMode: 0
-  walkSpeed: 0
+  walkSpeed: 400
   nextWaypointDistance: 2
   climbing: 0
   movementEnabled: 1
@@ -262,8 +263,8 @@ MonoBehaviour:
   attackTimer: 0
   attackSpeed: 0
   attackDmg: 0
-  chaseWalkSpeed: 0
-  cursedWalkSpeed: 0
+  chaseWalkSpeed: 450
+  cursedWalkSpeed: 500
   cursedAttackSpeed: 0
   attackTimerActive: 0
   canSwingAttack: 1

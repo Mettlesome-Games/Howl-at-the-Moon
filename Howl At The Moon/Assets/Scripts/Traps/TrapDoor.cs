@@ -31,6 +31,6 @@ public class TrapDoor : MonoBehaviour
         // After three seconds reset to original position.
         connectedPlatform.GetComponent<HingeJoint2D>().useLimits = true;
         GetComponent<Collider2D>().enabled = true;
-        AstarPath.active.Scan();
+        //AstarPath.active.Scan();
     }
 }

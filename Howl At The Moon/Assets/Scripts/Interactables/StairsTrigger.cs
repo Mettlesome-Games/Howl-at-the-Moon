@@ -21,12 +21,15 @@ public class StairsTrigger : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             werewolf.transform.position = teleportPoint.position;
-            werewolf.MoveToNextNavigation();
+            werewolf.UpdateToNearestTarget();
+            werewolf.revalulatePathing = true;
+            collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
         }
         else if (collision.CompareTag("Servant"))
         {
             servant.transform.position = teleportPoint.position;
-            servant.MoveToNextNavigation();
+            servant.UpdateToNearestTarget();
+            servant.revalulatePathing = true;
         }
     }
     

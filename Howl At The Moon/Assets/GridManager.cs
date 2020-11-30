@@ -10,11 +10,6 @@ public class GridManager : MonoBehaviour
     private const float TILE_OFFSET = 0.5f;
     private const float GRID_HEIGHT = 3f;
     private const float GRID_WIDTH = 3f;
-    /// <summary>
-    ///  The event delegate to subscribe to when an AI moves vertically with a room
-    /// </summary>
-    public delegate void VerticalRoomMoveEvent();
-    public static event VerticalRoomMoveEvent OnVerticalRoomMoveEvent;
 
     //keep track of the current row and col so we know which ones to slide
     [HideInInspector] public GameObject[] currentRow;
@@ -464,12 +459,11 @@ public class GridManager : MonoBehaviour
             {
                 tile.GetComponent<Room>().NPCs = rowSource[rowSource.Length - 1].GetComponent<Room>().NPCs;
                 //int j = 0;
-                List<GameObject> movedNPCs = new List<GameObject>();
                 foreach (GameObject NPC in rowSource[rowSource.Length - 1].GetComponent<Room>().NPCs)
                 {
                     NPC.transform.parent = tile.transform;
                     NPC.transform.localPosition = NPC.GetComponent<WerewolfAI>().localPos;
-                    movedNPCs.Add(NPC);
+                    NPC.GetComponent<AI>().UpdateToNearestTarget();
                 }
             }
             else
@@ -479,6 +473,7 @@ public class GridManager : MonoBehaviour
                 {
                     NPC.transform.parent = tile.transform;
                     NPC.transform.localPosition = NPC.GetComponent<WerewolfAI>().localPos;
+                    NPC.GetComponent<AI>().UpdateToNearestTarget();
                 }
             }
             i++;
@@ -653,7 +648,6 @@ public class GridManager : MonoBehaviour
                         ResetPanels(gridPanelsCol2, originalPositionsCol2);
                         break;
                 }
-                OnVerticalRoomMoveEvent?.Invoke();
             }
             else if (upLeft == 1)//moving down
             {
@@ -675,7 +669,6 @@ public class GridManager : MonoBehaviour
                         ResetPanels(gridPanelsCol2, originalPositionsCol2);
                         break;
                 }
-                OnVerticalRoomMoveEvent?.Invoke();
             }
             else if (upLeft == 0)
             {
