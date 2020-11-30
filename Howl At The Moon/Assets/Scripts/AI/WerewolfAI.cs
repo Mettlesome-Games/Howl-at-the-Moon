@@ -229,7 +229,7 @@ public class WerewolfAI : AI
                     canSwingAttack = false;
                     singleTarget.GetComponent<ServantAI>().TakeDamage(attackDmg);
                     myAnimator.SetBool("Attack", true);
-
+                    singleTarget = levelTarget;
                     InvokeAttackCountdown();
                 }
                 else if (singleTarget.CompareTag("ManorLord"))
@@ -237,7 +237,7 @@ public class WerewolfAI : AI
                     canSwingAttack = false;
                     singleTarget.GetComponent<ManorLordAI>().TakeDamage(attackDmg);
                     myAnimator.SetBool("Attack", true);
-
+                    singleTarget = levelTarget;
                     InvokeAttackCountdown();
                 }
             }
@@ -250,23 +250,18 @@ public class WerewolfAI : AI
     }
     private void Update()
     {
-        if (singleTarget == null && currentState == EWerewolfStates.Chasing)
-        {
-            canSwingAttack = true;
-            attackTimerActive = false;
-            attackTimer = attackSpeed;
-            newState = previousStates;
-        }
-
+     
         if (newState != currentState && currentState != EWerewolfStates.Trapped)
             UpdateState();
-
-        if (singleTarget.CompareTag("Servant") || singleTarget.CompareTag("ManorLord"))
+        if (singleTarget != null)
         {
-            float distance = Vector2.Distance(transform.position, singleTarget.position);
-            if (currentState == EWerewolfStates.Chasing || currentState == EWerewolfStates.Cursed)
-                if (distance <= attackDistance)
-                    CheckAction();
+            if (singleTarget.CompareTag("Servant") || singleTarget.CompareTag("ManorLord"))
+            {
+                float distance = Vector2.Distance(transform.position, singleTarget.position);
+                if (currentState == EWerewolfStates.Chasing || currentState == EWerewolfStates.Cursed)
+                    if (distance <= attackDistance)
+                        CheckAction();
+            }
         }
 
         if (attackTimerActive)
