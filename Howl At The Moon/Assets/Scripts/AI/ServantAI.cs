@@ -10,6 +10,7 @@ using Pathfinding;
 /// </summary>
 public class ServantAI : AI
 {
+    public Vector2 localPos;
 
     public bool canMakeWolfsbane = false;
 

@@ -5,6 +5,7 @@ using UnityEngine;
 public class MoveAlong : MonoBehaviour
 {
     public Transform nextLevelTarget;
+    public Transform nextWaypointTargets;
     private void Awake()
     {
     }
@@ -23,6 +24,7 @@ public class MoveAlong : MonoBehaviour
         {
             servant.singleTarget = nextLevelTarget;
             servant.levelTarget = nextLevelTarget;
+            servant.AnalyzePatrolArray(nextWaypointTargets);
         }
     }
 }

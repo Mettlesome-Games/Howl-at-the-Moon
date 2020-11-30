@@ -217,7 +217,7 @@ MonoBehaviour:
   defaultMaxTargetDistance: 0
   maxTargetDistance: 0
   defaultAttackDistance: 0
-  attackDistance: 0
+  attackDistance: 1
   AIType: 0
   currentWaypointMode: 0
   movementEnabled: 1

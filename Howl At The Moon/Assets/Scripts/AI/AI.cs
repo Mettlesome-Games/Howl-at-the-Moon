@@ -179,10 +179,10 @@ abstract public class AI : MonoBehaviour
     {
         if (movementEnabled)
         {
-
             if (currentWaypointMode == EAIWaypointMode.OneWay)
             {
-                currentPath = (Vector2)singleTarget.position;
+                if (singleTarget != null)
+                    currentPath = (Vector2)singleTarget.position;
             }
             else if (currentWaypointMode == EAIWaypointMode.Patrol)
             {
