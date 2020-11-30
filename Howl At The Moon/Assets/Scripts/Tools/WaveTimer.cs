@@ -101,7 +101,18 @@ public class WaveTimer : Timer
             if (waveCooldownActive)
             {
                 ToPrint += " Next Wave in: " + waveCountdownTimer;
+                Debug.LogFormat("Whats going on here");
 
+                if (!ToPrint.Equals(this.gameObject.name))
+                {
+                    Debug.Log(ToPrint);
+                }
+            }
+            if (waveCooldownActive && enemySpawnCooldownActive)
+                ToPrint += "\n";
+            if (enemySpawnCooldownActive)
+            {
+                ToPrint += " Next Enemy in: " + enemySpawnCountdownTimer;
                 if (!ToPrint.Equals(this.gameObject.name))
                 {
                     Debug.Log(ToPrint);
