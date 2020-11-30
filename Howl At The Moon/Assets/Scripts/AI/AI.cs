@@ -65,7 +65,7 @@ abstract public class AI : MonoBehaviour
 
     protected float defaultCharacterLocalscaleX, reversedCharacterLocalscaleX;
     protected float defaultEyesightLocalpositionX, reversedEyesightLocalpositionX;
-    protected BoxCollider2D myCollider;
+    protected Collider2D myCollider;
 
     protected Animator myAnimator;
 
