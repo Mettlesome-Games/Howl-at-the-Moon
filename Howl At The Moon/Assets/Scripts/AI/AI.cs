@@ -57,7 +57,7 @@ abstract public class AI : MonoBehaviour
 
     [SerializeField]
     protected int currentTarget = 0;
-
+    protected Vector2 currentPath;
     [SerializeField]
     protected bool reachedEndOfPatrol = false;
 
@@ -180,8 +180,11 @@ abstract public class AI : MonoBehaviour
         if (movementEnabled)
         {
 
-            Vector2 currentPath = (Vector2)singleTarget.position; 
-            if (currentWaypointMode == EAIWaypointMode.Patrol)
+            if (currentWaypointMode == EAIWaypointMode.OneWay)
+            {
+                currentPath = (Vector2)singleTarget.position;
+            }
+            else if (currentWaypointMode == EAIWaypointMode.Patrol)
             {
                 currentPath = (Vector2)targets[currentTarget].position;
             }
