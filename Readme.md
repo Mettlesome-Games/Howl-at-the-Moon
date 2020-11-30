@@ -10,7 +10,9 @@
 [Howl at the Moon](https://mettlesome-games.itch.io/howl-at-the-moon)
 
 ---
-
+### Cover
+[Howl at the Moon](Howl At The Moon/Assets/Art/Sprites/Howl-at-the-Moon_Cover.gif)
+---
 ### About
 
 The lord of the manor is in danger for being torn apart by a mob of werewolves. As the manor itself, it is up
