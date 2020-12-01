@@ -38,7 +38,7 @@ public class GridCursor : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Gamemanager.instance.PauseGame();
+            Gamemanager.instance.Drag();
             firstPressPos = Input.mousePosition;//get the location of the initial click
             dragging = true;
             ped = new PointerEventData(ev);
@@ -121,7 +121,6 @@ public class GridCursor : MonoBehaviour
                         //MoveToCorrectPos(gridManager.gridPanelsRow2);
                         gridManager.UpdateGrid(i[0], true, 2, false);//(-1,0,1), true, 2, false
                     }
-                    Gamemanager.instance.ResumeGame();
                 }
                 if (upDown)
                 {
@@ -143,7 +142,6 @@ public class GridCursor : MonoBehaviour
                         //MoveToCorrectPos(gridManager.gridPanelsCol2);
                         gridManager.UpdateGrid(i[1], false, 2, true);//(-1,0,1), false, 2, true
                     }
-                    Gamemanager.instance.ResumeGame();
 
                 }
                 dragging = false;
@@ -155,6 +153,11 @@ public class GridCursor : MonoBehaviour
                 gridManager.ResetNPCs(gridManager.gridPanelsCol0, gridManager.testCol1);
                 gridManager.ResetNPCs(gridManager.gridPanelsCol1, gridManager.testCol2);
                 gridManager.ResetNPCs(gridManager.gridPanelsCol2, gridManager.testCol3);
+
+                if (!Gamemanager.GameIsPaused)
+                {
+                    Gamemanager.instance.Release();
+                }
             }
         }
     }

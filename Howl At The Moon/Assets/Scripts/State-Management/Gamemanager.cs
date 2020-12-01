@@ -24,6 +24,8 @@ public class Gamemanager : MonoBehaviour
 
     public static bool GameIsPaused = false;
 
+    public static bool drag = false;
+
     private void Awake()
     {
         if (_instance == null) _instance = this; //Assign yourself
@@ -60,5 +62,14 @@ public class Gamemanager : MonoBehaviour
         Time.timeScale = 1.0f;
         GameIsPaused = false;
     }
-    
+    public void Drag()
+    {
+        Time.timeScale = 0.0f;
+        drag = true;
+    }
+    public void Release()
+    {
+        Time.timeScale = 1.0f;
+        drag = false;
+    }
 }
