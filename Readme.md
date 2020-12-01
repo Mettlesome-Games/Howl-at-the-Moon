@@ -29,8 +29,9 @@ to you to rearrange the rooms and use the various traps that lay within to prote
 ### Team
 * Kamilla Brenneysen - Art
 * [Kevin Caton-Largent](https://github.com/Code-Play-Repeat) - Art, Animation, Design, Programming
-* Mckinzy Mason - Art, Animation, Design
 * [Matthew Sandfrey](https://github.com/Msandfrey) - Programming, Design, Art
+* Mark Krajnc - Voice Acting
+* Mckinzy Mason - Art, Animation, Design
 * [Nathan Hales](https://github.com/Shadowrunner-inc) - Programming, Design, Art
 * Sia Aleskovskaya - Narrative, Art, Design 
 * Steven Atha - Art, Design 
