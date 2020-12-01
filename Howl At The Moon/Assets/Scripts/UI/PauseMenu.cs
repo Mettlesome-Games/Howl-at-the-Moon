@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField]GameObject uiPauseMenu, pauseGroup, optionsMenu;
     [Header("Grid stuff:")]
     [SerializeField] GameObject mainGrid;
+    [SerializeField] GameObject tipBar;
 
     private void Update()
     {
@@ -29,6 +30,7 @@ public class PauseMenu : MonoBehaviour
         pauseGroup.SetActive(true);
         optionsMenu.SetActive(false);
         mainGrid.SetActive(true);
+        tipBar.SetActive(true);
         Gamemanager.instance.ResumeGame();
     }
     public void Pause() 
@@ -37,6 +39,7 @@ public class PauseMenu : MonoBehaviour
         pauseGroup.SetActive(true);
         optionsMenu.SetActive(false);
         mainGrid.SetActive(false);
+        tipBar.SetActive(false);
         Gamemanager.instance.PauseGame();
     }
 

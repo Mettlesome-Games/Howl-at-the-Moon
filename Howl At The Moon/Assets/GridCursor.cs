@@ -121,6 +121,7 @@ public class GridCursor : MonoBehaviour
                         //MoveToCorrectPos(gridManager.gridPanelsRow2);
                         gridManager.UpdateGrid(i[0], true, 2, false);//(-1,0,1), true, 2, false
                     }
+                    Gamemanager.instance.ResumeGame();
                 }
                 if (upDown)
                 {
@@ -142,7 +143,8 @@ public class GridCursor : MonoBehaviour
                         //MoveToCorrectPos(gridManager.gridPanelsCol2);
                         gridManager.UpdateGrid(i[1], false, 2, true);//(-1,0,1), false, 2, true
                     }
-                    
+                    Gamemanager.instance.ResumeGame();
+
                 }
                 dragging = false;
                 leftRight = false;
@@ -153,7 +155,6 @@ public class GridCursor : MonoBehaviour
                 gridManager.ResetNPCs(gridManager.gridPanelsCol0, gridManager.testCol1);
                 gridManager.ResetNPCs(gridManager.gridPanelsCol1, gridManager.testCol2);
                 gridManager.ResetNPCs(gridManager.gridPanelsCol2, gridManager.testCol3);
-                Gamemanager.instance.ResumeGame();
             }
         }
     }
