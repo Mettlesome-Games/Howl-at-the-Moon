@@ -5,9 +5,7 @@
 ---
 ### ***Disclaimer this github contains all the source code but is missing assets that have copyright and/or are not shareable. It would be best to use the itch.io page to play the game.***
 
-## Itch.io page *(this contains a workable version of the game) currently unpublished*
-
-[Howl at the Moon](https://mettlesome-games.itch.io/howl-at-the-moon)
+## Itch.io page *(this contains a workable version of the game) [Howl at the Moon](https://mettlesome-games.itch.io/howl-at-the-moon)*
 
 ---
 ### Cover
